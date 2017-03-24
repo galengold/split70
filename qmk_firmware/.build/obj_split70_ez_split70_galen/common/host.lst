@@ -1,0 +1,359 @@
+   1               		.file	"host.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.host_set_driver,"ax",@progbits
+  11               	.global	host_set_driver
+  13               	host_set_driver:
+  14               	.LFB100:
+  15               		.file 1 "./tmk_core/common/host.c"
+   1:./tmk_core/common/host.c **** /*
+   2:./tmk_core/common/host.c **** Copyright 2011,2012 Jun Wako <wakojun@gmail.com>
+   3:./tmk_core/common/host.c **** 
+   4:./tmk_core/common/host.c **** This program is free software: you can redistribute it and/or modify
+   5:./tmk_core/common/host.c **** it under the terms of the GNU General Public License as published by
+   6:./tmk_core/common/host.c **** the Free Software Foundation, either version 2 of the License, or
+   7:./tmk_core/common/host.c **** (at your option) any later version.
+   8:./tmk_core/common/host.c **** 
+   9:./tmk_core/common/host.c **** This program is distributed in the hope that it will be useful,
+  10:./tmk_core/common/host.c **** but WITHOUT ANY WARRANTY; without even the implied warranty of
+  11:./tmk_core/common/host.c **** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  12:./tmk_core/common/host.c **** GNU General Public License for more details.
+  13:./tmk_core/common/host.c **** 
+  14:./tmk_core/common/host.c **** You should have received a copy of the GNU General Public License
+  15:./tmk_core/common/host.c **** along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  16:./tmk_core/common/host.c **** */
+  17:./tmk_core/common/host.c **** 
+  18:./tmk_core/common/host.c **** #include <stdint.h>
+  19:./tmk_core/common/host.c **** //#include <avr/interrupt.h>
+  20:./tmk_core/common/host.c **** #include "keycode.h"
+  21:./tmk_core/common/host.c **** #include "host.h"
+  22:./tmk_core/common/host.c **** #include "util.h"
+  23:./tmk_core/common/host.c **** #include "debug.h"
+  24:./tmk_core/common/host.c **** 
+  25:./tmk_core/common/host.c **** static host_driver_t *driver;
+  26:./tmk_core/common/host.c **** static uint16_t last_system_report = 0;
+  27:./tmk_core/common/host.c **** static uint16_t last_consumer_report = 0;
+  28:./tmk_core/common/host.c **** 
+  29:./tmk_core/common/host.c **** 
+  30:./tmk_core/common/host.c **** void host_set_driver(host_driver_t *d)
+  31:./tmk_core/common/host.c **** {
+  16               		.loc 1 31 0
+  17               		.cfi_startproc
+  18               	.LVL0:
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+  32:./tmk_core/common/host.c ****     driver = d;
+  23               		.loc 1 32 0
+  24 0000 9093 0000 		sts driver+1,r25
+  25 0004 8093 0000 		sts driver,r24
+  26 0008 0895      		ret
+  27               		.cfi_endproc
+  28               	.LFE100:
+  30               		.section	.text.host_get_driver,"ax",@progbits
+  31               	.global	host_get_driver
+  33               	host_get_driver:
+  34               	.LFB101:
+  33:./tmk_core/common/host.c **** }
+  34:./tmk_core/common/host.c **** 
+  35:./tmk_core/common/host.c **** host_driver_t *host_get_driver(void)
+  36:./tmk_core/common/host.c **** {
+  35               		.loc 1 36 0
+  36               		.cfi_startproc
+  37               	/* prologue: function */
+  38               	/* frame size = 0 */
+  39               	/* stack size = 0 */
+  40               	.L__stack_usage = 0
+  37:./tmk_core/common/host.c ****     return driver;
+  38:./tmk_core/common/host.c **** }
+  41               		.loc 1 38 0
+  42 0000 8091 0000 		lds r24,driver
+  43 0004 9091 0000 		lds r25,driver+1
+  44 0008 0895      		ret
+  45               		.cfi_endproc
+  46               	.LFE101:
+  48               		.section	.text.host_keyboard_leds,"ax",@progbits
+  49               	.global	host_keyboard_leds
+  51               	host_keyboard_leds:
+  52               	.LFB102:
+  39:./tmk_core/common/host.c **** 
+  40:./tmk_core/common/host.c **** uint8_t host_keyboard_leds(void)
+  41:./tmk_core/common/host.c **** {
+  53               		.loc 1 41 0
+  54               		.cfi_startproc
+  55               	/* prologue: function */
+  56               	/* frame size = 0 */
+  57               	/* stack size = 0 */
+  58               	.L__stack_usage = 0
+  42:./tmk_core/common/host.c ****     if (!driver) return 0;
+  59               		.loc 1 42 0
+  60 0000 E091 0000 		lds r30,driver
+  61 0004 F091 0000 		lds r31,driver+1
+  62 0008 3097      		sbiw r30,0
+  63 000a 01F0      		breq .L4
+  43:./tmk_core/common/host.c ****     return (*driver->keyboard_leds)();
+  64               		.loc 1 43 0
+  65 000c 0190      		ld __tmp_reg__,Z+
+  66 000e F081      		ld r31,Z
+  67 0010 E02D      		mov r30,__tmp_reg__
+  68 0012 0994      		ijmp
+  69               	.LVL1:
+  70               	.L4:
+  44:./tmk_core/common/host.c **** }
+  71               		.loc 1 44 0
+  72 0014 80E0      		ldi r24,0
+  73 0016 0895      		ret
+  74               		.cfi_endproc
+  75               	.LFE102:
+  77               		.section	.text.host_keyboard_send,"ax",@progbits
+  78               	.global	host_keyboard_send
+  80               	host_keyboard_send:
+  81               	.LFB103:
+  45:./tmk_core/common/host.c **** /* send report */
+  46:./tmk_core/common/host.c **** void host_keyboard_send(report_keyboard_t *report)
+  47:./tmk_core/common/host.c **** {
+  82               		.loc 1 47 0
+  83               		.cfi_startproc
+  84               	.LVL2:
+  85               	/* prologue: function */
+  86               	/* frame size = 0 */
+  87               	/* stack size = 0 */
+  88               	.L__stack_usage = 0
+  48:./tmk_core/common/host.c ****     if (!driver) return;
+  89               		.loc 1 48 0
+  90 0000 E091 0000 		lds r30,driver
+  91 0004 F091 0000 		lds r31,driver+1
+  92 0008 3097      		sbiw r30,0
+  93 000a 01F0      		breq .L5
+  49:./tmk_core/common/host.c ****     (*driver->send_keyboard)(report);
+  94               		.loc 1 49 0
+  95 000c 0280      		ldd __tmp_reg__,Z+2
+  96 000e F381      		ldd r31,Z+3
+  97 0010 E02D      		mov r30,__tmp_reg__
+  98 0012 0994      		ijmp
+  99               	.LVL3:
+ 100               	.L5:
+ 101 0014 0895      		ret
+ 102               		.cfi_endproc
+ 103               	.LFE103:
+ 105               		.section	.text.host_mouse_send,"ax",@progbits
+ 106               	.global	host_mouse_send
+ 108               	host_mouse_send:
+ 109               	.LFB104:
+  50:./tmk_core/common/host.c **** 
+  51:./tmk_core/common/host.c ****     if (debug_keyboard) {
+  52:./tmk_core/common/host.c ****         dprint("keyboard_report: ");
+  53:./tmk_core/common/host.c ****         for (uint8_t i = 0; i < KEYBOARD_REPORT_SIZE; i++) {
+  54:./tmk_core/common/host.c ****             dprintf("%02X ", report->raw[i]);
+  55:./tmk_core/common/host.c ****         }
+  56:./tmk_core/common/host.c ****         dprint("\n");
+  57:./tmk_core/common/host.c ****     }
+  58:./tmk_core/common/host.c **** }
+  59:./tmk_core/common/host.c **** 
+  60:./tmk_core/common/host.c **** void host_mouse_send(report_mouse_t *report)
+  61:./tmk_core/common/host.c **** {
+ 110               		.loc 1 61 0
+ 111               		.cfi_startproc
+ 112               	.LVL4:
+ 113               	/* prologue: function */
+ 114               	/* frame size = 0 */
+ 115               	/* stack size = 0 */
+ 116               	.L__stack_usage = 0
+  62:./tmk_core/common/host.c ****     if (!driver) return;
+ 117               		.loc 1 62 0
+ 118 0000 E091 0000 		lds r30,driver
+ 119 0004 F091 0000 		lds r31,driver+1
+ 120 0008 3097      		sbiw r30,0
+ 121 000a 01F0      		breq .L7
+  63:./tmk_core/common/host.c ****     (*driver->send_mouse)(report);
+ 122               		.loc 1 63 0
+ 123 000c 0480      		ldd __tmp_reg__,Z+4
+ 124 000e F581      		ldd r31,Z+5
+ 125 0010 E02D      		mov r30,__tmp_reg__
+ 126 0012 0994      		ijmp
+ 127               	.LVL5:
+ 128               	.L7:
+ 129 0014 0895      		ret
+ 130               		.cfi_endproc
+ 131               	.LFE104:
+ 133               		.section	.text.host_system_send,"ax",@progbits
+ 134               	.global	host_system_send
+ 136               	host_system_send:
+ 137               	.LFB105:
+  64:./tmk_core/common/host.c **** }
+  65:./tmk_core/common/host.c **** 
+  66:./tmk_core/common/host.c **** void host_system_send(uint16_t report)
+  67:./tmk_core/common/host.c **** {
+ 138               		.loc 1 67 0
+ 139               		.cfi_startproc
+ 140               	.LVL6:
+ 141               	/* prologue: function */
+ 142               	/* frame size = 0 */
+ 143               	/* stack size = 0 */
+ 144               	.L__stack_usage = 0
+  68:./tmk_core/common/host.c ****     if (report == last_system_report) return;
+ 145               		.loc 1 68 0
+ 146 0000 2091 0000 		lds r18,last_system_report
+ 147 0004 3091 0000 		lds r19,last_system_report+1
+ 148 0008 2817      		cp r18,r24
+ 149 000a 3907      		cpc r19,r25
+ 150 000c 01F0      		breq .L9
+  69:./tmk_core/common/host.c ****     last_system_report = report;
+ 151               		.loc 1 69 0
+ 152 000e 9093 0000 		sts last_system_report+1,r25
+ 153 0012 8093 0000 		sts last_system_report,r24
+  70:./tmk_core/common/host.c **** 
+  71:./tmk_core/common/host.c ****     if (!driver) return;
+ 154               		.loc 1 71 0
+ 155 0016 E091 0000 		lds r30,driver
+ 156 001a F091 0000 		lds r31,driver+1
+ 157 001e 3097      		sbiw r30,0
+ 158 0020 01F0      		breq .L9
+  72:./tmk_core/common/host.c ****     (*driver->send_system)(report);
+ 159               		.loc 1 72 0
+ 160 0022 0680      		ldd __tmp_reg__,Z+6
+ 161 0024 F781      		ldd r31,Z+7
+ 162 0026 E02D      		mov r30,__tmp_reg__
+ 163 0028 0994      		ijmp
+ 164               	.LVL7:
+ 165               	.L9:
+ 166 002a 0895      		ret
+ 167               		.cfi_endproc
+ 168               	.LFE105:
+ 170               		.section	.text.host_consumer_send,"ax",@progbits
+ 171               	.global	host_consumer_send
+ 173               	host_consumer_send:
+ 174               	.LFB106:
+  73:./tmk_core/common/host.c **** }
+  74:./tmk_core/common/host.c **** 
+  75:./tmk_core/common/host.c **** void host_consumer_send(uint16_t report)
+  76:./tmk_core/common/host.c **** {
+ 175               		.loc 1 76 0
+ 176               		.cfi_startproc
+ 177               	.LVL8:
+ 178               	/* prologue: function */
+ 179               	/* frame size = 0 */
+ 180               	/* stack size = 0 */
+ 181               	.L__stack_usage = 0
+  77:./tmk_core/common/host.c ****     if (report == last_consumer_report) return;
+ 182               		.loc 1 77 0
+ 183 0000 2091 0000 		lds r18,last_consumer_report
+ 184 0004 3091 0000 		lds r19,last_consumer_report+1
+ 185 0008 2817      		cp r18,r24
+ 186 000a 3907      		cpc r19,r25
+ 187 000c 01F0      		breq .L16
+  78:./tmk_core/common/host.c ****     last_consumer_report = report;
+ 188               		.loc 1 78 0
+ 189 000e 9093 0000 		sts last_consumer_report+1,r25
+ 190 0012 8093 0000 		sts last_consumer_report,r24
+  79:./tmk_core/common/host.c **** 
+  80:./tmk_core/common/host.c ****     if (!driver) return;
+ 191               		.loc 1 80 0
+ 192 0016 E091 0000 		lds r30,driver
+ 193 001a F091 0000 		lds r31,driver+1
+ 194 001e 3097      		sbiw r30,0
+ 195 0020 01F0      		breq .L16
+  81:./tmk_core/common/host.c ****     (*driver->send_consumer)(report);
+ 196               		.loc 1 81 0
+ 197 0022 0084      		ldd __tmp_reg__,Z+8
+ 198 0024 F185      		ldd r31,Z+9
+ 199 0026 E02D      		mov r30,__tmp_reg__
+ 200 0028 0994      		ijmp
+ 201               	.LVL9:
+ 202               	.L16:
+ 203 002a 0895      		ret
+ 204               		.cfi_endproc
+ 205               	.LFE106:
+ 207               		.section	.text.host_last_system_report,"ax",@progbits
+ 208               	.global	host_last_system_report
+ 210               	host_last_system_report:
+ 211               	.LFB107:
+  82:./tmk_core/common/host.c **** }
+  83:./tmk_core/common/host.c **** 
+  84:./tmk_core/common/host.c **** uint16_t host_last_system_report(void)
+  85:./tmk_core/common/host.c **** {
+ 212               		.loc 1 85 0
+ 213               		.cfi_startproc
+ 214               	/* prologue: function */
+ 215               	/* frame size = 0 */
+ 216               	/* stack size = 0 */
+ 217               	.L__stack_usage = 0
+  86:./tmk_core/common/host.c ****     return last_system_report;
+  87:./tmk_core/common/host.c **** }
+ 218               		.loc 1 87 0
+ 219 0000 8091 0000 		lds r24,last_system_report
+ 220 0004 9091 0000 		lds r25,last_system_report+1
+ 221 0008 0895      		ret
+ 222               		.cfi_endproc
+ 223               	.LFE107:
+ 225               		.section	.text.host_last_consumer_report,"ax",@progbits
+ 226               	.global	host_last_consumer_report
+ 228               	host_last_consumer_report:
+ 229               	.LFB108:
+  88:./tmk_core/common/host.c **** 
+  89:./tmk_core/common/host.c **** uint16_t host_last_consumer_report(void)
+  90:./tmk_core/common/host.c **** {
+ 230               		.loc 1 90 0
+ 231               		.cfi_startproc
+ 232               	/* prologue: function */
+ 233               	/* frame size = 0 */
+ 234               	/* stack size = 0 */
+ 235               	.L__stack_usage = 0
+  91:./tmk_core/common/host.c ****     return last_consumer_report;
+  92:./tmk_core/common/host.c **** }
+ 236               		.loc 1 92 0
+ 237 0000 8091 0000 		lds r24,last_consumer_report
+ 238 0004 9091 0000 		lds r25,last_consumer_report+1
+ 239 0008 0895      		ret
+ 240               		.cfi_endproc
+ 241               	.LFE108:
+ 243               		.section	.bss.last_consumer_report,"aw",@nobits
+ 246               	last_consumer_report:
+ 247 0000 0000      		.zero	2
+ 248               		.section	.bss.last_system_report,"aw",@nobits
+ 251               	last_system_report:
+ 252 0000 0000      		.zero	2
+ 253               		.section	.bss.driver,"aw",@nobits
+ 256               	driver:
+ 257 0000 0000      		.zero	2
+ 258               		.text
+ 259               	.Letext0:
+ 260               		.file 2 "/usr/avr/include/stdint.h"
+ 261               		.file 3 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 262               		.file 4 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 263               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+ 264               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 265               		.file 7 "/usr/avr/include/stdio.h"
+ 266               		.file 8 "./tmk_core/common/report.h"
+ 267               		.file 9 "./tmk_core/common/host_driver.h"
+ 268               		.file 10 "./tmk_core/common/host.h"
+ 269               		.file 11 "./tmk_core/common/debug.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 host.c
+     /tmp/ccQYmgd0.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccQYmgd0.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccQYmgd0.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccQYmgd0.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccQYmgd0.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccQYmgd0.s:13     .text.host_set_driver:0000000000000000 host_set_driver
+     /tmp/ccQYmgd0.s:256    .bss.driver:0000000000000000 driver
+     /tmp/ccQYmgd0.s:33     .text.host_get_driver:0000000000000000 host_get_driver
+     /tmp/ccQYmgd0.s:51     .text.host_keyboard_leds:0000000000000000 host_keyboard_leds
+     /tmp/ccQYmgd0.s:80     .text.host_keyboard_send:0000000000000000 host_keyboard_send
+     /tmp/ccQYmgd0.s:108    .text.host_mouse_send:0000000000000000 host_mouse_send
+     /tmp/ccQYmgd0.s:136    .text.host_system_send:0000000000000000 host_system_send
+     /tmp/ccQYmgd0.s:251    .bss.last_system_report:0000000000000000 last_system_report
+     /tmp/ccQYmgd0.s:173    .text.host_consumer_send:0000000000000000 host_consumer_send
+     /tmp/ccQYmgd0.s:246    .bss.last_consumer_report:0000000000000000 last_consumer_report
+     /tmp/ccQYmgd0.s:210    .text.host_last_system_report:0000000000000000 host_last_system_report
+     /tmp/ccQYmgd0.s:228    .text.host_last_consumer_report:0000000000000000 host_last_consumer_report
+
+UNDEFINED SYMBOLS
+__do_clear_bss

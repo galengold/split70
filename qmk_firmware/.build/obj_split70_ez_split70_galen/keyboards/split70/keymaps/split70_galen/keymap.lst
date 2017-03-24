@@ -1,0 +1,445 @@
+   1               		.file	"keymap.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.action_get_macro,"ax",@progbits
+  11               	.global	action_get_macro
+  13               	action_get_macro:
+  14               	.LFB107:
+  15               		.file 1 "keyboards/split70/keymaps/split70_galen/keymap.c"
+   1:keyboards/split70/keymaps/split70_galen/keymap.c **** #include "split70.h"
+   2:keyboards/split70/keymaps/split70_galen/keymap.c **** #include "debug.h"
+   3:keyboards/split70/keymaps/split70_galen/keymap.c **** #include "action_layer.h"
+   4:keyboards/split70/keymaps/split70_galen/keymap.c **** #include "version.h"
+   5:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+   6:keyboards/split70/keymaps/split70_galen/keymap.c **** #define BASE 0 // default layer
+   7:keyboards/split70/keymaps/split70_galen/keymap.c **** #define FN1  1 // Fn layer
+   8:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+   9:keyboards/split70/keymaps/split70_galen/keymap.c **** /* Matrix (row:col):
+  10:keyboards/split70/keymaps/split70_galen/keymap.c ****  *
+  11:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    ,----------------------------------------.       ,----------------------------------------.
+  12:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | 5:0 | 5:1  | 5:2  | 5:3  | 5:4  | 5:5  |       | 5:6  | 5:7  | 5:8  | 5:9  | 5:10 | 5:11|
+  13:keyboards/split70/keymaps/split70_galen/keymap.c ****  * ,--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  14:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |    4:0 | 4:1  | 4:2  | 4:3  | 4:4  | 4:5  |       | 4:6  | 4:7  | 4:8  | 4:9  | 4:10 | 4:11   
+  15:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  16:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |    3:0 | 3:1  | 3:2  | 3:3  | 3:4  | 3:5  |       | 3:6  | 3:7  | 3:8  | 3:9  | 3:10 | 3:11   
+  17:keyboards/split70/keymaps/split70_galen/keymap.c ****  * '--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  18:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | 2:0 | 2:1  | 2:2  | 2:3  | 2:4  | 2:5  |       | 2:6  | 2:7  | 2:8  | 2:9  | 2:10 | 2:11|
+  19:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    |-----+------+------+------+------+------'       '------+------+------+------+------+-----|
+  20:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | 1:0 | 1:1  | 1:2  | 1:3  | 1:4  |                     | 1:7  | 1:8  | 1:9  | 1:10 | 1:11|
+  21:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    '---------------------------------'                     '---------------------------------'
+  22:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        ,--------------------.       ,--------------------.
+  23:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        | 0:5  | 0:4  | 0:3  |       | 0:8  | 0:7  | 0:6  |
+  24:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |------|------|      |       |      |------+------|
+  25:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      |------|       |------|      |      |
+  26:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        | 0:2  | 0:1  |      |       |      | 0:10 | 0:9  |
+  27:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      | 0:0  |       | 0:11 |      |      |
+  28:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        '-------------|      |       |      |-------------'
+  29:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                                      '------'       '------'
+  30:keyboards/split70/keymaps/split70_galen/keymap.c ****  */
+  31:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+  32:keyboards/split70/keymaps/split70_galen/keymap.c **** const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  33:keyboards/split70/keymaps/split70_galen/keymap.c **** /* Keymap 0: Basic layer
+  34:keyboards/split70/keymaps/split70_galen/keymap.c ****  *
+  35:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    ,----------------------------------------.       ,----------------------------------------.
+  36:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | `   |   1  |   2  |   3  |   4  |   5  |       |   6  |   7  |   8  |   9  |   0  | F19 |
+  37:keyboards/split70/keymaps/split70_galen/keymap.c ****  * ,--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  38:keyboards/split70/keymaps/split70_galen/keymap.c ****  * | Tab    |   Q  |   W  |   E  |   R  |   T  |       |   Y  |   U  |   I  |   O  |   P  |   \    
+  39:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  40:keyboards/split70/keymaps/split70_galen/keymap.c ****  * | Esc    |   A  |   S  |   D  |   F  |   G  |       |   H  |   J  |   K  |   L  |   ;  |   '    
+  41:keyboards/split70/keymaps/split70_galen/keymap.c ****  * '--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  42:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | F1  |   Z  |   X  |   C  |   V  |   B  |       |   N  |   M  |   ,  |   .  |   /  | F12 |
+  43:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    |-----+------+------+------+------+------'       '------+------+------+------+------+-----|
+  44:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | F2  |  F3  |  F4  |  F5  |  F6  |                     |  F7  |  F8  |  F9  |  F10 | F11 |
+  45:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    '---------------------------------'                     '---------------------------------'
+  46:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        ,--------------------.       ,--------------------.
+  47:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |   -  |   [  | Super|       | Bksp |  ]   |  =   |
+  48:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |------|------|      |       |      |------+------|
+  49:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      |------|       |------|      |      |
+  50:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        | Ctrl |Alt   |      |       |      |Shift |Space |
+  51:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      | Shift|       | Enter|      |      |
+  52:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        '-------------|      |       | /Fn  |-------------'
+  53:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                                      '------'       '------'
+  54:keyboards/split70/keymaps/split70_galen/keymap.c ****  */
+  55:keyboards/split70/keymaps/split70_galen/keymap.c **** // If it accepts an argument (i.e, is a function), it doesn't need KC_.
+  56:keyboards/split70/keymaps/split70_galen/keymap.c **** // Otherwise, it needs KC_*
+  57:keyboards/split70/keymaps/split70_galen/keymap.c **** [BASE] = KEYMAP(  // layer 0 : default
+  58:keyboards/split70/keymaps/split70_galen/keymap.c ****         // left hand
+  59:keyboards/split70/keymaps/split70_galen/keymap.c **** // COL: 0         1        2        3        4       5  
+  60:keyboards/split70/keymaps/split70_galen/keymap.c **** //ROW:
+  61:keyboards/split70/keymaps/split70_galen/keymap.c **** /*5*/   KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
+  62:keyboards/split70/keymaps/split70_galen/keymap.c **** /*4*/   KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,
+  63:keyboards/split70/keymaps/split70_galen/keymap.c **** /*3*/   KC_ESC,   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,
+  64:keyboards/split70/keymaps/split70_galen/keymap.c **** /*2*/   KC_F1,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,
+  65:keyboards/split70/keymaps/split70_galen/keymap.c **** /*1*/   KC_F2,    KC_F3,   KC_F4,   KC_F5,   KC_F6,
+  66:keyboards/split70/keymaps/split70_galen/keymap.c **** /*0*/   KC_LSFT,  KC_LALT, KC_LCTL, KC_LGUI, KC_LBRC, KC_MINS,
+  67:keyboards/split70/keymaps/split70_galen/keymap.c ****         // right hand
+  68:keyboards/split70/keymaps/split70_galen/keymap.c **** // COL: 6         7        8        9        10       11
+  69:keyboards/split70/keymaps/split70_galen/keymap.c **** //ROW:
+  70:keyboards/split70/keymaps/split70_galen/keymap.c **** /*5*/   KC_6,     KC_7,    KC_8,    KC_9,    KC_0,    KC_F19,
+  71:keyboards/split70/keymaps/split70_galen/keymap.c **** /*4*/   KC_Y,     KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
+  72:keyboards/split70/keymaps/split70_galen/keymap.c **** /*3*/   KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  73:keyboards/split70/keymaps/split70_galen/keymap.c **** /*2*/   KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_F12,
+  74:keyboards/split70/keymaps/split70_galen/keymap.c **** /*1*/             KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+  75:keyboards/split70/keymaps/split70_galen/keymap.c **** /*0*/   KC_EQL,   KC_RBRC, KC_BSPC, KC_SPC,  KC_RSFT, LT(FN1, KC_ENT)
+  76:keyboards/split70/keymaps/split70_galen/keymap.c ****     ),
+  77:keyboards/split70/keymaps/split70_galen/keymap.c **** /* Keymap 1: Fn Layer
+  78:keyboards/split70/keymaps/split70_galen/keymap.c ****  *
+  79:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    ,----------------------------------------.       ,----------------------------------------.
+  80:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    |     |      |      |      |      |      |       |      |      |      |      |      |     |
+  81:keyboards/split70/keymaps/split70_galen/keymap.c ****  * ,--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  82:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |        |      |      |      |      |      |       |      | PgDn | PgUp |      |      |        
+  83:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  84:keyboards/split70/keymaps/split70_galen/keymap.c ****  * |        |      |      |      |      |      |       |  <   |  v   |  ^   |  >   |      |        
+  85:keyboards/split70/keymaps/split70_galen/keymap.c ****  * '--------+------+------+------+------+------|       |------+------+------+------+------+--------
+  86:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | F13 |      |      |      |      |      |       |      | End  | Home |      |      | VUp |
+  87:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    |-----+------+------+------+------+------'       '------+------+------+------+------+-----|
+  88:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    | F14 | F15  | F16  | F17  | F18  |                     | Prev | Play | Next | Mute | VDn |
+  89:keyboards/split70/keymaps/split70_galen/keymap.c ****  *    '---------------------------------'                     '---------------------------------'
+  90:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        ,--------------------.       ,--------------------.
+  91:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      |      |       | Del  |      |      |
+  92:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |------|------|      |       |      |------+------|
+  93:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      |------|       |------|      |      |
+  94:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      |      |       |      |      |      |
+  95:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        |      |      |      |       |      |      |      |
+  96:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                        '-------------|      |       |      |-------------'
+  97:keyboards/split70/keymaps/split70_galen/keymap.c ****  *                                      '------'       '------'
+  98:keyboards/split70/keymaps/split70_galen/keymap.c ****  */
+  99:keyboards/split70/keymaps/split70_galen/keymap.c **** // If it accepts an argument (i.e, is a function), it doesn't need KC_.
+ 100:keyboards/split70/keymaps/split70_galen/keymap.c **** // Otherwise, it needs KC_*
+ 101:keyboards/split70/keymaps/split70_galen/keymap.c **** [FN1] = KEYMAP(  // layer 1 : Fn
+ 102:keyboards/split70/keymaps/split70_galen/keymap.c ****         // left hand
+ 103:keyboards/split70/keymaps/split70_galen/keymap.c **** // COL: 0         1        2        3        4        5  
+ 104:keyboards/split70/keymaps/split70_galen/keymap.c **** //ROW:
+ 105:keyboards/split70/keymaps/split70_galen/keymap.c **** /*5*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+ 106:keyboards/split70/keymaps/split70_galen/keymap.c **** /*4*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+ 107:keyboards/split70/keymaps/split70_galen/keymap.c **** /*3*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+ 108:keyboards/split70/keymaps/split70_galen/keymap.c **** /*2*/   KC_F13,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+ 109:keyboards/split70/keymaps/split70_galen/keymap.c **** /*1*/   KC_F14,   KC_F15,  KC_F16,  KC_F17,  KC_F18,
+ 110:keyboards/split70/keymaps/split70_galen/keymap.c **** /*0*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+ 111:keyboards/split70/keymaps/split70_galen/keymap.c ****         // right hand
+ 112:keyboards/split70/keymaps/split70_galen/keymap.c **** // COL: 6         7        8        9        10       11
+ 113:keyboards/split70/keymaps/split70_galen/keymap.c **** //ROW:
+ 114:keyboards/split70/keymaps/split70_galen/keymap.c **** /*5*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+ 115:keyboards/split70/keymaps/split70_galen/keymap.c **** /*4*/   KC_TRNS,  KC_PGDN, KC_PGUP, KC_TRNS, KC_TRNS, KC_TRNS,
+ 116:keyboards/split70/keymaps/split70_galen/keymap.c **** /*3*/   KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_TRNS, KC_TRNS,
+ 117:keyboards/split70/keymaps/split70_galen/keymap.c **** /*2*/   KC_TRNS,  KC_END,  KC_HOME, KC_TRNS, KC_TRNS, KC_VOLU,
+ 118:keyboards/split70/keymaps/split70_galen/keymap.c **** /*1*/             KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,
+ 119:keyboards/split70/keymaps/split70_galen/keymap.c **** /*0*/   KC_TRNS,  KC_TRNS, KC_DEL,  KC_TRNS, KC_TRNS, KC_TRNS
+ 120:keyboards/split70/keymaps/split70_galen/keymap.c **** ),
+ 121:keyboards/split70/keymaps/split70_galen/keymap.c **** };
+ 122:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+ 123:keyboards/split70/keymaps/split70_galen/keymap.c **** const uint16_t PROGMEM fn_actions[] = {
+ 124:keyboards/split70/keymaps/split70_galen/keymap.c ****     [1] = ACTION_LAYER_TAP_TOGGLE(FN1)                // FN1 - Momentary Layer 1
+ 125:keyboards/split70/keymaps/split70_galen/keymap.c **** };
+ 126:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+ 127:keyboards/split70/keymaps/split70_galen/keymap.c **** const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+ 128:keyboards/split70/keymaps/split70_galen/keymap.c **** {
+  16               		.loc 1 128 0
+  17               		.cfi_startproc
+  18               	.LVL0:
+  19               	/* prologue: function */
+  20               	/* frame size = 0 */
+  21               	/* stack size = 0 */
+  22               	.L__stack_usage = 0
+ 129:keyboards/split70/keymaps/split70_galen/keymap.c ****   // MACRODOWN only works in this function
+ 130:keyboards/split70/keymaps/split70_galen/keymap.c ****       switch(id) {
+  23               		.loc 1 130 0
+  24 0000 6623      		tst r22
+  25 0002 01F0      		breq .L3
+  26 0004 6130      		cpi r22,lo8(1)
+  27 0006 01F0      		breq .L4
+  28               	.LVL1:
+  29               	.L2:
+ 131:keyboards/split70/keymaps/split70_galen/keymap.c ****         case 0:
+ 132:keyboards/split70/keymaps/split70_galen/keymap.c ****         if (record->event.pressed) {
+ 133:keyboards/split70/keymaps/split70_galen/keymap.c ****           SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+ 134:keyboards/split70/keymaps/split70_galen/keymap.c ****         }
+ 135:keyboards/split70/keymaps/split70_galen/keymap.c ****         break;
+ 136:keyboards/split70/keymaps/split70_galen/keymap.c ****         case 1:
+ 137:keyboards/split70/keymaps/split70_galen/keymap.c ****         if (record->event.pressed) { // For resetting EEPROM
+ 138:keyboards/split70/keymaps/split70_galen/keymap.c ****           eeconfig_init();
+ 139:keyboards/split70/keymaps/split70_galen/keymap.c ****         }
+ 140:keyboards/split70/keymaps/split70_galen/keymap.c ****         break;
+ 141:keyboards/split70/keymaps/split70_galen/keymap.c ****       }
+ 142:keyboards/split70/keymaps/split70_galen/keymap.c ****     return MACRO_NONE;
+ 143:keyboards/split70/keymaps/split70_galen/keymap.c **** };
+  30               		.loc 1 143 0
+  31 0008 80E0      		ldi r24,0
+  32 000a 90E0      		ldi r25,0
+  33 000c 0895      		ret
+  34               	.LVL2:
+  35               	.L3:
+ 132:keyboards/split70/keymaps/split70_galen/keymap.c ****           SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+  36               		.loc 1 132 0
+  37 000e FC01      		movw r30,r24
+  38 0010 8281      		ldd r24,Z+2
+  39               	.LVL3:
+  40 0012 8823      		tst r24
+  41 0014 01F0      		breq .L2
+ 133:keyboards/split70/keymaps/split70_galen/keymap.c ****         }
+  42               		.loc 1 133 0
+  43 0016 80E0      		ldi r24,lo8(__c.5267)
+  44 0018 90E0      		ldi r25,hi8(__c.5267)
+  45 001a 0E94 0000 		call send_string
+  46               	.LVL4:
+  47 001e 00C0      		rjmp .L2
+  48               	.LVL5:
+  49               	.L4:
+ 137:keyboards/split70/keymaps/split70_galen/keymap.c ****           eeconfig_init();
+  50               		.loc 1 137 0
+  51 0020 FC01      		movw r30,r24
+  52 0022 8281      		ldd r24,Z+2
+  53               	.LVL6:
+  54 0024 8823      		tst r24
+  55 0026 01F0      		breq .L2
+ 138:keyboards/split70/keymaps/split70_galen/keymap.c ****         }
+  56               		.loc 1 138 0
+  57 0028 0E94 0000 		call eeconfig_init
+  58               	.LVL7:
+  59 002c 00C0      		rjmp .L2
+  60               		.cfi_endproc
+  61               	.LFE107:
+  63               		.section	.text.matrix_init_user,"ax",@progbits
+  64               	.global	matrix_init_user
+  66               	matrix_init_user:
+  67               	.LFB111:
+  68               		.cfi_startproc
+  69               	/* prologue: function */
+  70               	/* frame size = 0 */
+  71               	/* stack size = 0 */
+  72               	.L__stack_usage = 0
+  73 0000 0895      		ret
+  74               		.cfi_endproc
+  75               	.LFE111:
+  77               		.section	.text.matrix_scan_user,"ax",@progbits
+  78               	.global	matrix_scan_user
+  80               	matrix_scan_user:
+  81               	.LFB109:
+ 144:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+ 145:keyboards/split70/keymaps/split70_galen/keymap.c **** // Runs just one time when the keyboard initializes.
+ 146:keyboards/split70/keymaps/split70_galen/keymap.c **** void matrix_init_user(void) {
+ 147:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+ 148:keyboards/split70/keymaps/split70_galen/keymap.c **** };
+ 149:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+ 150:keyboards/split70/keymaps/split70_galen/keymap.c **** 
+ 151:keyboards/split70/keymaps/split70_galen/keymap.c **** // Runs constantly in the background, in a loop.
+ 152:keyboards/split70/keymaps/split70_galen/keymap.c **** void matrix_scan_user(void) {
+  82               		.loc 1 152 0
+  83               		.cfi_startproc
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  86               	/* stack size = 0 */
+  87               	.L__stack_usage = 0
+  88 0000 0895      		ret
+  89               		.cfi_endproc
+  90               	.LFE109:
+  92               		.section	.progmem.data.__c.5267,"a",@progbits
+  95               	__c.5267:
+  96 0000 7370 6C69 		.string	"split70/split70_galen @ 0.5.32-67-gc36a44"
+  96      7437 302F 
+  96      7370 6C69 
+  96      7437 305F 
+  96      6761 6C65 
+  97               	.global	fn_actions
+  98               		.section	.progmem.data.fn_actions,"a",@progbits
+ 101               	fn_actions:
+ 102 0000 0000      		.zero	2
+ 103 0002 F0A1      		.word	-24080
+ 104               	.global	keymaps
+ 105               		.section	.progmem.data.keymaps,"a",@progbits
+ 108               	keymaps:
+ 109 0000 3500      		.word	53
+ 110 0002 2B00      		.word	43
+ 111 0004 2900      		.word	41
+ 112 0006 3A00      		.word	58
+ 113 0008 3B00      		.word	59
+ 114 000a E100      		.word	225
+ 115 000c 1E00      		.word	30
+ 116 000e 1400      		.word	20
+ 117 0010 0400      		.word	4
+ 118 0012 1D00      		.word	29
+ 119 0014 3C00      		.word	60
+ 120 0016 E200      		.word	226
+ 121 0018 1F00      		.word	31
+ 122 001a 1A00      		.word	26
+ 123 001c 1600      		.word	22
+ 124 001e 1B00      		.word	27
+ 125 0020 3D00      		.word	61
+ 126 0022 E000      		.word	224
+ 127 0024 2000      		.word	32
+ 128 0026 0800      		.word	8
+ 129 0028 0700      		.word	7
+ 130 002a 0600      		.word	6
+ 131 002c 3E00      		.word	62
+ 132 002e E300      		.word	227
+ 133 0030 2100      		.word	33
+ 134 0032 1500      		.word	21
+ 135 0034 0900      		.word	9
+ 136 0036 1900      		.word	25
+ 137 0038 3F00      		.word	63
+ 138 003a 2F00      		.word	47
+ 139 003c 2200      		.word	34
+ 140 003e 1700      		.word	23
+ 141 0040 0A00      		.word	10
+ 142 0042 0500      		.word	5
+ 143 0044 0000      		.word	0
+ 144 0046 2D00      		.word	45
+ 145 0048 2300      		.word	35
+ 146 004a 1C00      		.word	28
+ 147 004c 0B00      		.word	11
+ 148 004e 1100      		.word	17
+ 149 0050 0000      		.word	0
+ 150 0052 2E00      		.word	46
+ 151 0054 2400      		.word	36
+ 152 0056 1800      		.word	24
+ 153 0058 0D00      		.word	13
+ 154 005a 1000      		.word	16
+ 155 005c 4000      		.word	64
+ 156 005e 3000      		.word	48
+ 157 0060 2500      		.word	37
+ 158 0062 0C00      		.word	12
+ 159 0064 0E00      		.word	14
+ 160 0066 3600      		.word	54
+ 161 0068 4100      		.word	65
+ 162 006a 2A00      		.word	42
+ 163 006c 2600      		.word	38
+ 164 006e 1200      		.word	18
+ 165 0070 0F00      		.word	15
+ 166 0072 3700      		.word	55
+ 167 0074 4200      		.word	66
+ 168 0076 2C00      		.word	44
+ 169 0078 2700      		.word	39
+ 170 007a 1300      		.word	19
+ 171 007c 3300      		.word	51
+ 172 007e 3800      		.word	56
+ 173 0080 4300      		.word	67
+ 174 0082 E500      		.word	229
+ 175 0084 6E00      		.word	110
+ 176 0086 3100      		.word	49
+ 177 0088 3400      		.word	52
+ 178 008a 4500      		.word	69
+ 179 008c 4400      		.word	68
+ 180 008e 2841      		.word	16680
+ 181 0090 0100      		.word	1
+ 182 0092 0100      		.word	1
+ 183 0094 0100      		.word	1
+ 184 0096 6800      		.word	104
+ 185 0098 6900      		.word	105
+ 186 009a 0100      		.word	1
+ 187 009c 0100      		.word	1
+ 188 009e 0100      		.word	1
+ 189 00a0 0100      		.word	1
+ 190 00a2 0100      		.word	1
+ 191 00a4 6A00      		.word	106
+ 192 00a6 0100      		.word	1
+ 193 00a8 0100      		.word	1
+ 194 00aa 0100      		.word	1
+ 195 00ac 0100      		.word	1
+ 196 00ae 0100      		.word	1
+ 197 00b0 6B00      		.word	107
+ 198 00b2 0100      		.word	1
+ 199 00b4 0100      		.word	1
+ 200 00b6 0100      		.word	1
+ 201 00b8 0100      		.word	1
+ 202 00ba 0100      		.word	1
+ 203 00bc 6C00      		.word	108
+ 204 00be 0100      		.word	1
+ 205 00c0 0100      		.word	1
+ 206 00c2 0100      		.word	1
+ 207 00c4 0100      		.word	1
+ 208 00c6 0100      		.word	1
+ 209 00c8 6D00      		.word	109
+ 210 00ca 0100      		.word	1
+ 211 00cc 0100      		.word	1
+ 212 00ce 0100      		.word	1
+ 213 00d0 0100      		.word	1
+ 214 00d2 0100      		.word	1
+ 215 00d4 0000      		.word	0
+ 216 00d6 0100      		.word	1
+ 217 00d8 0100      		.word	1
+ 218 00da 0100      		.word	1
+ 219 00dc 5000      		.word	80
+ 220 00de 0100      		.word	1
+ 221 00e0 0000      		.word	0
+ 222 00e2 0100      		.word	1
+ 223 00e4 0100      		.word	1
+ 224 00e6 4E00      		.word	78
+ 225 00e8 5100      		.word	81
+ 226 00ea 4D00      		.word	77
+ 227 00ec AC00      		.word	172
+ 228 00ee 0100      		.word	1
+ 229 00f0 0100      		.word	1
+ 230 00f2 4B00      		.word	75
+ 231 00f4 5200      		.word	82
+ 232 00f6 4A00      		.word	74
+ 233 00f8 AE00      		.word	174
+ 234 00fa 4C00      		.word	76
+ 235 00fc 0100      		.word	1
+ 236 00fe 0100      		.word	1
+ 237 0100 4F00      		.word	79
+ 238 0102 0100      		.word	1
+ 239 0104 AB00      		.word	171
+ 240 0106 0100      		.word	1
+ 241 0108 0100      		.word	1
+ 242 010a 0100      		.word	1
+ 243 010c 0100      		.word	1
+ 244 010e 0100      		.word	1
+ 245 0110 A800      		.word	168
+ 246 0112 0100      		.word	1
+ 247 0114 0100      		.word	1
+ 248 0116 0100      		.word	1
+ 249 0118 0100      		.word	1
+ 250 011a A900      		.word	169
+ 251 011c AA00      		.word	170
+ 252 011e 0100      		.word	1
+ 253               		.text
+ 254               	.Letext0:
+ 255               		.file 2 "/usr/avr/include/stdint.h"
+ 256               		.file 3 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
+ 257               		.file 4 "./tmk_core/common/keyboard.h"
+ 258               		.file 5 "./tmk_core/common/keycode.h"
+ 259               		.file 6 "./tmk_core/common/action_code.h"
+ 260               		.file 7 "./tmk_core/common/action_macro.h"
+ 261               		.file 8 "./tmk_core/common/action.h"
+ 262               		.file 9 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 263               		.file 10 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 264               		.file 11 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+ 265               		.file 12 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 266               		.file 13 "/usr/avr/include/stdio.h"
+ 267               		.file 14 "./tmk_core/common/report.h"
+ 268               		.file 15 "./tmk_core/common/host.h"
+ 269               		.file 16 "./tmk_core/common/debug.h"
+ 270               		.file 17 "./quantum/keycode_config.h"
+ 271               		.file 18 "./quantum/quantum_keycodes.h"
+ 272               		.file 19 "./quantum/keymap.h"
+ 273               		.file 20 "./tmk_core/common/action_layer.h"
+ 274               		.file 21 "./tmk_core/common/timer.h"
+ 275               		.file 22 "./tmk_core/common/action_util.h"
+ 276               		.file 23 "/usr/avr/include/stdlib.h"
+ 277               		.file 24 "keyboards/split70/ez/ez.h"
+ 278               		.file 25 "./quantum/quantum.h"
+ 279               		.file 26 "./tmk_core/common/eeconfig.h"
+ 280               		.file 27 "./quantum/process_keycode/process_unicode_common.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 keymap.c
+     /tmp/cc4xohI3.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc4xohI3.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc4xohI3.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc4xohI3.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc4xohI3.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc4xohI3.s:13     .text.action_get_macro:0000000000000000 action_get_macro
+     /tmp/cc4xohI3.s:95     .progmem.data.__c.5267:0000000000000000 __c.5267
+     /tmp/cc4xohI3.s:66     .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/cc4xohI3.s:80     .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/cc4xohI3.s:101    .progmem.data.fn_actions:0000000000000000 fn_actions
+     /tmp/cc4xohI3.s:108    .progmem.data.keymaps:0000000000000000 keymaps
+
+UNDEFINED SYMBOLS
+send_string
+eeconfig_init
