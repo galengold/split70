@@ -76,8 +76,8 @@
   45               		.loc 1 32 0
   46 0026 682F      		mov r22,r24
   47 0028 70E0      		ldi r23,0
-  48 002a 80E0      		ldi r24,0
-  49 002c 90E0      		ldi r25,0
+  48 002a 90E0      		ldi r25,0
+  49 002c 80E0      		ldi r24,0
   50               	.LVL6:
   51 002e 0C94 0000 		jmp default_layer_set
   52               	.LVL7:
@@ -100,12 +100,12 @@
   70               		.file 13 "./tmk_core/common/eeconfig.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 magic.c
-     /tmp/ccnNwiqr.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccnNwiqr.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccnNwiqr.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccnNwiqr.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccnNwiqr.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccnNwiqr.s:13     .text.magic:0000000000000000 magic
+     /tmp/ccZzlsKN.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccZzlsKN.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccZzlsKN.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccZzlsKN.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccZzlsKN.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccZzlsKN.s:13     .text.magic:0000000000000000 magic
                             *COM*:0000000000000002 keymap_config
 
 UNDEFINED SYMBOLS

@@ -61,15 +61,17 @@
   24               		.loc 1 38 0
   25 0004 8AE0      		ldi r24,lo8(10)
   26 0006 8093 B800 		sts 184,r24
-  27 000a 0895      		ret
-  28               		.cfi_endproc
-  29               	.LFE0:
-  31               		.section	.text.i2c_start,"ax",@progbits
-  32               	.global	i2c_start
-  34               	i2c_start:
-  35               	.LFB1:
+  27               	/* epilogue start */
   39:keyboards/split70/ez/twimaster.c **** 
   40:keyboards/split70/ez/twimaster.c **** }/* i2c_init */
+  28               		.loc 1 40 0
+  29 000a 0895      		ret
+  30               		.cfi_endproc
+  31               	.LFE0:
+  33               		.section	.text.i2c_start,"ax",@progbits
+  34               	.global	i2c_start
+  36               	i2c_start:
+  37               	.LFB1:
   41:keyboards/split70/ez/twimaster.c **** 
   42:keyboards/split70/ez/twimaster.c **** 
   43:keyboards/split70/ez/twimaster.c **** /*************************************************************************	
@@ -78,98 +80,99 @@
   46:keyboards/split70/ez/twimaster.c **** *************************************************************************/
   47:keyboards/split70/ez/twimaster.c **** unsigned char i2c_start(unsigned char address)
   48:keyboards/split70/ez/twimaster.c **** {
-  36               		.loc 1 48 0
-  37               		.cfi_startproc
-  38               	.LVL0:
-  39               	/* prologue: function */
-  40               	/* frame size = 0 */
-  41               	/* stack size = 0 */
-  42               	.L__stack_usage = 0
+  38               		.loc 1 48 0
+  39               		.cfi_startproc
+  40               	.LVL0:
+  41               	/* prologue: function */
+  42               	/* frame size = 0 */
+  43               	/* stack size = 0 */
+  44               	.L__stack_usage = 0
   49:keyboards/split70/ez/twimaster.c ****     uint8_t   twst;
   50:keyboards/split70/ez/twimaster.c **** 
   51:keyboards/split70/ez/twimaster.c **** 	// send START condition
   52:keyboards/split70/ez/twimaster.c **** 	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
-  43               		.loc 1 52 0
-  44 0000 94EA      		ldi r25,lo8(-92)
-  45 0002 9093 BC00 		sts 188,r25
-  46               	.L3:
+  45               		.loc 1 52 0
+  46 0000 94EA      		ldi r25,lo8(-92)
+  47 0002 9093 BC00 		sts 188,r25
+  48               	.L3:
   53:keyboards/split70/ez/twimaster.c **** 
   54:keyboards/split70/ez/twimaster.c **** 	// wait until transmission completed
   55:keyboards/split70/ez/twimaster.c **** 	while(!(TWCR & (1<<TWINT)));
-  47               		.loc 1 55 0 discriminator 1
-  48 0006 9091 BC00 		lds r25,188
-  49 000a 97FF      		sbrs r25,7
-  50 000c 00C0      		rjmp .L3
+  49               		.loc 1 55 0 discriminator 1
+  50 0006 9091 BC00 		lds r25,188
+  51 000a 97FF      		sbrs r25,7
+  52 000c 00C0      		rjmp .L3
   56:keyboards/split70/ez/twimaster.c **** 
   57:keyboards/split70/ez/twimaster.c **** 	// check value of TWI Status Register. Mask prescaler bits.
   58:keyboards/split70/ez/twimaster.c **** 	twst = TW_STATUS & 0xF8;
-  51               		.loc 1 58 0
-  52 000e 9091 B900 		lds r25,185
-  53 0012 987F      		andi r25,lo8(-8)
-  54               	.LVL1:
+  53               		.loc 1 58 0
+  54 000e 9091 B900 		lds r25,185
+  55 0012 987F      		andi r25,lo8(-8)
+  56               	.LVL1:
   59:keyboards/split70/ez/twimaster.c **** 	if ( (twst != TW_START) && (twst != TW_REP_START)) return 1;
-  55               		.loc 1 59 0
-  56 0014 9830      		cpi r25,lo8(8)
-  57 0016 01F0      		breq .L4
-  58               		.loc 1 59 0 is_stmt 0 discriminator 1
-  59 0018 9031      		cpi r25,lo8(16)
-  60 001a 01F0      		breq .L4
-  61               	.LVL2:
-  62               	.L7:
-  63               		.loc 1 59 0
-  64 001c 81E0      		ldi r24,lo8(1)
-  65 001e 0895      		ret
-  66               	.LVL3:
-  67               	.L4:
+  57               		.loc 1 59 0
+  58 0014 9830      		cpi r25,lo8(8)
+  59 0016 01F0      		breq .L4
+  60               		.loc 1 59 0 is_stmt 0 discriminator 1
+  61 0018 9031      		cpi r25,lo8(16)
+  62 001a 01F0      		breq .L4
+  63               	.LVL2:
+  64               	.L7:
+  65               		.loc 1 59 0
+  66 001c 81E0      		ldi r24,lo8(1)
+  67 001e 0895      		ret
+  68               	.LVL3:
+  69               	.L4:
   60:keyboards/split70/ez/twimaster.c **** 
   61:keyboards/split70/ez/twimaster.c **** 	// send device address
   62:keyboards/split70/ez/twimaster.c **** 	TWDR = address;
-  68               		.loc 1 62 0 is_stmt 1
-  69 0020 8093 BB00 		sts 187,r24
+  70               		.loc 1 62 0 is_stmt 1
+  71 0020 8093 BB00 		sts 187,r24
   63:keyboards/split70/ez/twimaster.c **** 	TWCR = (1<<TWINT) | (1<<TWEN);
-  70               		.loc 1 63 0
-  71 0024 84E8      		ldi r24,lo8(-124)
-  72               	.LVL4:
-  73 0026 8093 BC00 		sts 188,r24
-  74               	.LVL5:
-  75               	.L6:
+  72               		.loc 1 63 0
+  73 0024 84E8      		ldi r24,lo8(-124)
+  74               	.LVL4:
+  75 0026 8093 BC00 		sts 188,r24
+  76               	.LVL5:
+  77               	.L6:
   64:keyboards/split70/ez/twimaster.c **** 
   65:keyboards/split70/ez/twimaster.c **** 	// wail until transmission completed and ACK/NACK has been received
   66:keyboards/split70/ez/twimaster.c **** 	while(!(TWCR & (1<<TWINT)));
-  76               		.loc 1 66 0 discriminator 1
-  77 002a 8091 BC00 		lds r24,188
-  78 002e 87FF      		sbrs r24,7
-  79 0030 00C0      		rjmp .L6
+  78               		.loc 1 66 0 discriminator 1
+  79 002a 8091 BC00 		lds r24,188
+  80 002e 87FF      		sbrs r24,7
+  81 0030 00C0      		rjmp .L6
   67:keyboards/split70/ez/twimaster.c **** 
   68:keyboards/split70/ez/twimaster.c **** 	// check value of TWI Status Register. Mask prescaler bits.
   69:keyboards/split70/ez/twimaster.c **** 	twst = TW_STATUS & 0xF8;
-  80               		.loc 1 69 0
-  81 0032 8091 B900 		lds r24,185
-  82 0036 887F      		andi r24,lo8(-8)
-  83               	.LVL6:
+  82               		.loc 1 69 0
+  83 0032 8091 B900 		lds r24,185
+  84 0036 887F      		andi r24,lo8(-8)
+  85               	.LVL6:
   70:keyboards/split70/ez/twimaster.c **** 	if ( (twst != TW_MT_SLA_ACK) && (twst != TW_MR_SLA_ACK) ) return 1;
-  84               		.loc 1 70 0
-  85 0038 8831      		cpi r24,lo8(24)
-  86 003a 01F0      		breq .L8
-  87               		.loc 1 70 0 is_stmt 0 discriminator 1
-  88 003c 8034      		cpi r24,lo8(64)
-  89 003e 01F4      		brne .L7
-  90               	.L8:
+  86               		.loc 1 70 0
+  87 0038 8831      		cpi r24,lo8(24)
+  88 003a 01F0      		breq .L8
+  89               		.loc 1 70 0 is_stmt 0 discriminator 1
+  90 003c 8034      		cpi r24,lo8(64)
+  91 003e 01F4      		brne .L7
+  92               	.L8:
   71:keyboards/split70/ez/twimaster.c **** 
   72:keyboards/split70/ez/twimaster.c **** 	return 0;
-  91               		.loc 1 72 0 is_stmt 1
-  92 0040 80E0      		ldi r24,0
-  93               	.LVL7:
+  93               		.loc 1 72 0 is_stmt 1
+  94 0040 80E0      		ldi r24,0
+  95               	.LVL7:
+  96               	/* epilogue start */
   73:keyboards/split70/ez/twimaster.c **** 
   74:keyboards/split70/ez/twimaster.c **** }/* i2c_start */
-  94               		.loc 1 74 0
-  95 0042 0895      		ret
-  96               		.cfi_endproc
-  97               	.LFE1:
-  99               		.section	.text.i2c_start_wait,"ax",@progbits
- 100               	.global	i2c_start_wait
- 102               	i2c_start_wait:
- 103               	.LFB2:
+  97               		.loc 1 74 0
+  98 0042 0895      		ret
+  99               		.cfi_endproc
+ 100               	.LFE1:
+ 102               		.section	.text.i2c_start_wait,"ax",@progbits
+ 103               	.global	i2c_start_wait
+ 105               	i2c_start_wait:
+ 106               	.LFB2:
   75:keyboards/split70/ez/twimaster.c **** 
   76:keyboards/split70/ez/twimaster.c **** 
   77:keyboards/split70/ez/twimaster.c **** /*************************************************************************
@@ -180,13 +183,13 @@
   82:keyboards/split70/ez/twimaster.c **** *************************************************************************/
   83:keyboards/split70/ez/twimaster.c **** void i2c_start_wait(unsigned char address)
   84:keyboards/split70/ez/twimaster.c **** {
- 104               		.loc 1 84 0
- 105               		.cfi_startproc
- 106               	.LVL8:
- 107               	/* prologue: function */
- 108               	/* frame size = 0 */
- 109               	/* stack size = 0 */
- 110               	.L__stack_usage = 0
+ 107               		.loc 1 84 0
+ 108               		.cfi_startproc
+ 109               	.LVL8:
+ 110               	/* prologue: function */
+ 111               	/* frame size = 0 */
+ 112               	/* stack size = 0 */
+ 113               	.L__stack_usage = 0
   85:keyboards/split70/ez/twimaster.c ****     uint8_t   twst;
   86:keyboards/split70/ez/twimaster.c **** 
   87:keyboards/split70/ez/twimaster.c **** 
@@ -194,8 +197,8 @@
   89:keyboards/split70/ez/twimaster.c ****     {
   90:keyboards/split70/ez/twimaster.c **** 	    // send START condition
   91:keyboards/split70/ez/twimaster.c **** 	    TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
- 111               		.loc 1 91 0
- 112 0000 24EA      		ldi r18,lo8(-92)
+ 114               		.loc 1 91 0
+ 115 0000 24EA      		ldi r18,lo8(-92)
   92:keyboards/split70/ez/twimaster.c ****     
   93:keyboards/split70/ez/twimaster.c ****     	// wait until transmission completed
   94:keyboards/split70/ez/twimaster.c ****     	while(!(TWCR & (1<<TWINT)));
@@ -207,8 +210,8 @@
  100:keyboards/split70/ez/twimaster.c ****     	// send device address
  101:keyboards/split70/ez/twimaster.c ****     	TWDR = address;
  102:keyboards/split70/ez/twimaster.c ****     	TWCR = (1<<TWINT) | (1<<TWEN);
- 113               		.loc 1 102 0
- 114 0002 34E8      		ldi r19,lo8(-124)
+ 116               		.loc 1 102 0
+ 117 0002 34E8      		ldi r19,lo8(-124)
  103:keyboards/split70/ez/twimaster.c ****     
  104:keyboards/split70/ez/twimaster.c ****     	// wail until transmission completed
  105:keyboards/split70/ez/twimaster.c ****     	while(!(TWCR & (1<<TWINT)));
@@ -219,80 +222,74 @@
  110:keyboards/split70/ez/twimaster.c ****     	{    	    
  111:keyboards/split70/ez/twimaster.c ****     	    /* device busy, send stop condition to terminate write operation */
  112:keyboards/split70/ez/twimaster.c **** 	        TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
- 115               		.loc 1 112 0
- 116 0004 44E9      		ldi r20,lo8(-108)
- 117               	.L18:
+ 118               		.loc 1 112 0
+ 119 0004 44E9      		ldi r20,lo8(-108)
+ 120               	.L18:
   91:keyboards/split70/ez/twimaster.c ****     
- 118               		.loc 1 91 0
- 119 0006 2093 BC00 		sts 188,r18
- 120               	.L19:
+ 121               		.loc 1 91 0
+ 122 0006 2093 BC00 		sts 188,r18
+ 123               	.L19:
   94:keyboards/split70/ez/twimaster.c ****     
- 121               		.loc 1 94 0 discriminator 1
- 122 000a 9091 BC00 		lds r25,188
- 123 000e 97FF      		sbrs r25,7
- 124 0010 00C0      		rjmp .L19
+ 124               		.loc 1 94 0 discriminator 1
+ 125 000a 9091 BC00 		lds r25,188
+ 126 000e 97FF      		sbrs r25,7
+ 127 0010 00C0      		rjmp .L19
   97:keyboards/split70/ez/twimaster.c ****     	if ( (twst != TW_START) && (twst != TW_REP_START)) continue;
- 125               		.loc 1 97 0
- 126 0012 9091 B900 		lds r25,185
- 127 0016 987F      		andi r25,lo8(-8)
- 128               	.LVL9:
+ 128               		.loc 1 97 0
+ 129 0012 9091 B900 		lds r25,185
+ 130 0016 987F      		andi r25,lo8(-8)
+ 131               	.LVL9:
   98:keyboards/split70/ez/twimaster.c ****     
- 129               		.loc 1 98 0
- 130 0018 9830      		cpi r25,lo8(8)
- 131 001a 01F0      		breq .L20
+ 132               		.loc 1 98 0
+ 133 0018 9830      		cpi r25,lo8(8)
+ 134 001a 01F0      		breq .L20
   98:keyboards/split70/ez/twimaster.c ****     
- 132               		.loc 1 98 0 is_stmt 0 discriminator 1
- 133 001c 9031      		cpi r25,lo8(16)
- 134 001e 01F4      		brne .L18
- 135               	.L20:
+ 135               		.loc 1 98 0 is_stmt 0 discriminator 1
+ 136 001c 9031      		cpi r25,lo8(16)
+ 137 001e 01F4      		brne .L18
+ 138               	.L20:
  101:keyboards/split70/ez/twimaster.c ****     	TWCR = (1<<TWINT) | (1<<TWEN);
- 136               		.loc 1 101 0 is_stmt 1
- 137 0020 8093 BB00 		sts 187,r24
+ 139               		.loc 1 101 0 is_stmt 1
+ 140 0020 8093 BB00 		sts 187,r24
  102:keyboards/split70/ez/twimaster.c ****     
- 138               		.loc 1 102 0
- 139 0024 3093 BC00 		sts 188,r19
- 140               	.LVL10:
- 141               	.L22:
+ 141               		.loc 1 102 0
+ 142 0024 3093 BC00 		sts 188,r19
+ 143               	.LVL10:
+ 144               	.L22:
  105:keyboards/split70/ez/twimaster.c ****     
- 142               		.loc 1 105 0 discriminator 1
- 143 0028 9091 BC00 		lds r25,188
- 144 002c 97FF      		sbrs r25,7
- 145 002e 00C0      		rjmp .L22
+ 145               		.loc 1 105 0 discriminator 1
+ 146 0028 9091 BC00 		lds r25,188
+ 147 002c 97FF      		sbrs r25,7
+ 148 002e 00C0      		rjmp .L22
  108:keyboards/split70/ez/twimaster.c ****     	if ( (twst == TW_MT_SLA_NACK )||(twst ==TW_MR_DATA_NACK) ) 
- 146               		.loc 1 108 0
- 147 0030 9091 B900 		lds r25,185
- 148 0034 987F      		andi r25,lo8(-8)
- 149               	.LVL11:
+ 149               		.loc 1 108 0
+ 150 0030 9091 B900 		lds r25,185
+ 151 0034 987F      		andi r25,lo8(-8)
+ 152               	.LVL11:
  109:keyboards/split70/ez/twimaster.c ****     	{    	    
- 150               		.loc 1 109 0
- 151 0036 9032      		cpi r25,lo8(32)
- 152 0038 01F0      		breq .L23
+ 153               		.loc 1 109 0
+ 154 0036 9032      		cpi r25,lo8(32)
+ 155 0038 01F0      		breq .L23
  109:keyboards/split70/ez/twimaster.c ****     	{    	    
- 153               		.loc 1 109 0 is_stmt 0 discriminator 1
- 154 003a 9835      		cpi r25,lo8(88)
- 155 003c 01F4      		brne .L17
- 156               	.L23:
- 157               		.loc 1 112 0 is_stmt 1
- 158 003e 4093 BC00 		sts 188,r20
- 159               	.LVL12:
- 160               	.L25:
+ 156               		.loc 1 109 0 is_stmt 0 discriminator 1
+ 157 003a 9835      		cpi r25,lo8(88)
+ 158 003c 01F4      		brne .L17
+ 159               	.L23:
+ 160               		.loc 1 112 0 is_stmt 1
+ 161 003e 4093 BC00 		sts 188,r20
+ 162               	.LVL12:
+ 163               	.L25:
  113:keyboards/split70/ez/twimaster.c **** 	        
  114:keyboards/split70/ez/twimaster.c **** 	        // wait until stop condition is executed and bus released
  115:keyboards/split70/ez/twimaster.c **** 	        while(TWCR & (1<<TWSTO));
- 161               		.loc 1 115 0 discriminator 1
- 162 0042 9091 BC00 		lds r25,188
- 163 0046 94FD      		sbrc r25,4
- 164 0048 00C0      		rjmp .L25
- 165 004a 00C0      		rjmp .L18
- 166               	.LVL13:
- 167               	.L17:
- 168 004c 0895      		ret
- 169               		.cfi_endproc
- 170               	.LFE2:
- 172               		.section	.text.i2c_rep_start,"ax",@progbits
- 173               	.global	i2c_rep_start
- 175               	i2c_rep_start:
- 176               	.LFB3:
+ 164               		.loc 1 115 0 discriminator 1
+ 165 0042 9091 BC00 		lds r25,188
+ 166 0046 94FD      		sbrc r25,4
+ 167 0048 00C0      		rjmp .L25
+ 168 004a 00C0      		rjmp .L18
+ 169               	.LVL13:
+ 170               	.L17:
+ 171               	/* epilogue start */
  116:keyboards/split70/ez/twimaster.c **** 	        
  117:keyboards/split70/ez/twimaster.c ****     	    continue;
  118:keyboards/split70/ez/twimaster.c ****     	}
@@ -301,6 +298,14 @@
  121:keyboards/split70/ez/twimaster.c ****      }
  122:keyboards/split70/ez/twimaster.c **** 
  123:keyboards/split70/ez/twimaster.c **** }/* i2c_start_wait */
+ 172               		.loc 1 123 0
+ 173 004c 0895      		ret
+ 174               		.cfi_endproc
+ 175               	.LFE2:
+ 177               		.section	.text.i2c_rep_start,"ax",@progbits
+ 178               	.global	i2c_rep_start
+ 180               	i2c_rep_start:
+ 181               	.LFB3:
  124:keyboards/split70/ez/twimaster.c **** 
  125:keyboards/split70/ez/twimaster.c **** 
  126:keyboards/split70/ez/twimaster.c **** /*************************************************************************
@@ -313,23 +318,23 @@
  133:keyboards/split70/ez/twimaster.c **** *************************************************************************/
  134:keyboards/split70/ez/twimaster.c **** unsigned char i2c_rep_start(unsigned char address)
  135:keyboards/split70/ez/twimaster.c **** {
- 177               		.loc 1 135 0
- 178               		.cfi_startproc
- 179               	.LVL14:
- 180               	/* prologue: function */
- 181               	/* frame size = 0 */
- 182               	/* stack size = 0 */
- 183               	.L__stack_usage = 0
+ 182               		.loc 1 135 0
+ 183               		.cfi_startproc
+ 184               	.LVL14:
+ 185               	/* prologue: function */
+ 186               	/* frame size = 0 */
+ 187               	/* stack size = 0 */
+ 188               	.L__stack_usage = 0
  136:keyboards/split70/ez/twimaster.c ****     return i2c_start( address );
- 184               		.loc 1 136 0
- 185 0000 0C94 0000 		jmp i2c_start
- 186               	.LVL15:
- 187               		.cfi_endproc
- 188               	.LFE3:
- 190               		.section	.text.i2c_stop,"ax",@progbits
- 191               	.global	i2c_stop
- 193               	i2c_stop:
- 194               	.LFB4:
+ 189               		.loc 1 136 0
+ 190 0000 0C94 0000 		jmp i2c_start
+ 191               	.LVL15:
+ 192               		.cfi_endproc
+ 193               	.LFE3:
+ 195               		.section	.text.i2c_stop,"ax",@progbits
+ 196               	.global	i2c_stop
+ 198               	i2c_stop:
+ 199               	.LFB4:
  137:keyboards/split70/ez/twimaster.c **** 
  138:keyboards/split70/ez/twimaster.c **** }/* i2c_rep_start */
  139:keyboards/split70/ez/twimaster.c **** 
@@ -339,36 +344,36 @@
  143:keyboards/split70/ez/twimaster.c **** *************************************************************************/
  144:keyboards/split70/ez/twimaster.c **** void i2c_stop(void)
  145:keyboards/split70/ez/twimaster.c **** {
- 195               		.loc 1 145 0
- 196               		.cfi_startproc
- 197               	/* prologue: function */
- 198               	/* frame size = 0 */
- 199               	/* stack size = 0 */
- 200               	.L__stack_usage = 0
+ 200               		.loc 1 145 0
+ 201               		.cfi_startproc
+ 202               	/* prologue: function */
+ 203               	/* frame size = 0 */
+ 204               	/* stack size = 0 */
+ 205               	.L__stack_usage = 0
  146:keyboards/split70/ez/twimaster.c ****     /* send stop condition */
  147:keyboards/split70/ez/twimaster.c **** 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
- 201               		.loc 1 147 0
- 202 0000 84E9      		ldi r24,lo8(-108)
- 203 0002 8093 BC00 		sts 188,r24
- 204               	.L37:
+ 206               		.loc 1 147 0
+ 207 0000 84E9      		ldi r24,lo8(-108)
+ 208 0002 8093 BC00 		sts 188,r24
+ 209               	.L37:
  148:keyboards/split70/ez/twimaster.c **** 	
  149:keyboards/split70/ez/twimaster.c **** 	// wait until stop condition is executed and bus released
  150:keyboards/split70/ez/twimaster.c **** 	while(TWCR & (1<<TWSTO));
- 205               		.loc 1 150 0 discriminator 1
- 206 0006 8091 BC00 		lds r24,188
- 207 000a 84FD      		sbrc r24,4
- 208 000c 00C0      		rjmp .L37
- 209               	/* epilogue start */
+ 210               		.loc 1 150 0 discriminator 1
+ 211 0006 8091 BC00 		lds r24,188
+ 212 000a 84FD      		sbrc r24,4
+ 213 000c 00C0      		rjmp .L37
+ 214               	/* epilogue start */
  151:keyboards/split70/ez/twimaster.c **** 
  152:keyboards/split70/ez/twimaster.c **** }/* i2c_stop */
- 210               		.loc 1 152 0
- 211 000e 0895      		ret
- 212               		.cfi_endproc
- 213               	.LFE4:
- 215               		.section	.text.i2c_write,"ax",@progbits
- 216               	.global	i2c_write
- 218               	i2c_write:
- 219               	.LFB5:
+ 215               		.loc 1 152 0
+ 216 000e 0895      		ret
+ 217               		.cfi_endproc
+ 218               	.LFE4:
+ 220               		.section	.text.i2c_write,"ax",@progbits
+ 221               	.global	i2c_write
+ 223               	i2c_write:
+ 224               	.LFB5:
  153:keyboards/split70/ez/twimaster.c **** 
  154:keyboards/split70/ez/twimaster.c **** 
  155:keyboards/split70/ez/twimaster.c **** /*************************************************************************
@@ -380,59 +385,60 @@
  161:keyboards/split70/ez/twimaster.c **** *************************************************************************/
  162:keyboards/split70/ez/twimaster.c **** unsigned char i2c_write( unsigned char data )
  163:keyboards/split70/ez/twimaster.c **** {	
- 220               		.loc 1 163 0
- 221               		.cfi_startproc
- 222               	.LVL16:
- 223               	/* prologue: function */
- 224               	/* frame size = 0 */
- 225               	/* stack size = 0 */
- 226               	.L__stack_usage = 0
+ 225               		.loc 1 163 0
+ 226               		.cfi_startproc
+ 227               	.LVL16:
+ 228               	/* prologue: function */
+ 229               	/* frame size = 0 */
+ 230               	/* stack size = 0 */
+ 231               	.L__stack_usage = 0
  164:keyboards/split70/ez/twimaster.c ****     uint8_t   twst;
  165:keyboards/split70/ez/twimaster.c ****     
  166:keyboards/split70/ez/twimaster.c **** 	// send data to the previously addressed device
  167:keyboards/split70/ez/twimaster.c **** 	TWDR = data;
- 227               		.loc 1 167 0
- 228 0000 8093 BB00 		sts 187,r24
+ 232               		.loc 1 167 0
+ 233 0000 8093 BB00 		sts 187,r24
  168:keyboards/split70/ez/twimaster.c **** 	TWCR = (1<<TWINT) | (1<<TWEN);
- 229               		.loc 1 168 0
- 230 0004 84E8      		ldi r24,lo8(-124)
- 231               	.LVL17:
- 232 0006 8093 BC00 		sts 188,r24
- 233               	.LVL18:
- 234               	.L40:
+ 234               		.loc 1 168 0
+ 235 0004 84E8      		ldi r24,lo8(-124)
+ 236               	.LVL17:
+ 237 0006 8093 BC00 		sts 188,r24
+ 238               	.LVL18:
+ 239               	.L40:
  169:keyboards/split70/ez/twimaster.c **** 
  170:keyboards/split70/ez/twimaster.c **** 	// wait until transmission completed
  171:keyboards/split70/ez/twimaster.c **** 	while(!(TWCR & (1<<TWINT)));
- 235               		.loc 1 171 0 discriminator 1
- 236 000a 8091 BC00 		lds r24,188
- 237 000e 87FF      		sbrs r24,7
- 238 0010 00C0      		rjmp .L40
+ 240               		.loc 1 171 0 discriminator 1
+ 241 000a 8091 BC00 		lds r24,188
+ 242 000e 87FF      		sbrs r24,7
+ 243 0010 00C0      		rjmp .L40
  172:keyboards/split70/ez/twimaster.c **** 
  173:keyboards/split70/ez/twimaster.c **** 	// check value of TWI Status Register. Mask prescaler bits
  174:keyboards/split70/ez/twimaster.c **** 	twst = TW_STATUS & 0xF8;
- 239               		.loc 1 174 0
- 240 0012 9091 B900 		lds r25,185
- 241               	.LVL19:
- 242 0016 987F      		andi r25,lo8(-8)
- 243               	.LVL20:
+ 244               		.loc 1 174 0
+ 245 0012 9091 B900 		lds r25,185
+ 246               	.LVL19:
+ 247 0016 987F      		andi r25,lo8(-8)
+ 248               	.LVL20:
  175:keyboards/split70/ez/twimaster.c **** 	if( twst != TW_MT_DATA_ACK) return 1;
- 244               		.loc 1 175 0
- 245 0018 81E0      		ldi r24,lo8(1)
- 246 001a 9832      		cpi r25,lo8(40)
- 247 001c 01F4      		brne .L41
- 248 001e 80E0      		ldi r24,0
- 249               	.L41:
+ 249               		.loc 1 175 0
+ 250 0018 81E0      		ldi r24,lo8(1)
+ 251 001a 9832      		cpi r25,lo8(40)
+ 252 001c 01F4      		brne .L41
+ 253 001e 80E0      		ldi r24,0
+ 254               	.L41:
+ 255               	/* epilogue start */
  176:keyboards/split70/ez/twimaster.c **** 	return 0;
  177:keyboards/split70/ez/twimaster.c **** 
  178:keyboards/split70/ez/twimaster.c **** }/* i2c_write */
- 250               		.loc 1 178 0
- 251 0020 0895      		ret
- 252               		.cfi_endproc
- 253               	.LFE5:
- 255               		.section	.text.i2c_readAck,"ax",@progbits
- 256               	.global	i2c_readAck
- 258               	i2c_readAck:
- 259               	.LFB6:
+ 256               		.loc 1 178 0
+ 257 0020 0895      		ret
+ 258               		.cfi_endproc
+ 259               	.LFE5:
+ 261               		.section	.text.i2c_readAck,"ax",@progbits
+ 262               	.global	i2c_readAck
+ 264               	i2c_readAck:
+ 265               	.LFB6:
  179:keyboards/split70/ez/twimaster.c **** 
  180:keyboards/split70/ez/twimaster.c **** 
  181:keyboards/split70/ez/twimaster.c **** /*************************************************************************
@@ -442,36 +448,37 @@
  185:keyboards/split70/ez/twimaster.c **** *************************************************************************/
  186:keyboards/split70/ez/twimaster.c **** unsigned char i2c_readAck(void)
  187:keyboards/split70/ez/twimaster.c **** {
- 260               		.loc 1 187 0
- 261               		.cfi_startproc
- 262               	/* prologue: function */
- 263               	/* frame size = 0 */
- 264               	/* stack size = 0 */
- 265               	.L__stack_usage = 0
+ 266               		.loc 1 187 0
+ 267               		.cfi_startproc
+ 268               	/* prologue: function */
+ 269               	/* frame size = 0 */
+ 270               	/* stack size = 0 */
+ 271               	.L__stack_usage = 0
  188:keyboards/split70/ez/twimaster.c **** 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWEA);
- 266               		.loc 1 188 0
- 267 0000 84EC      		ldi r24,lo8(-60)
- 268 0002 8093 BC00 		sts 188,r24
- 269               	.L44:
+ 272               		.loc 1 188 0
+ 273 0000 84EC      		ldi r24,lo8(-60)
+ 274 0002 8093 BC00 		sts 188,r24
+ 275               	.L44:
  189:keyboards/split70/ez/twimaster.c **** 	while(!(TWCR & (1<<TWINT)));    
- 270               		.loc 1 189 0 discriminator 1
- 271 0006 8091 BC00 		lds r24,188
- 272 000a 87FF      		sbrs r24,7
- 273 000c 00C0      		rjmp .L44
+ 276               		.loc 1 189 0 discriminator 1
+ 277 0006 8091 BC00 		lds r24,188
+ 278 000a 87FF      		sbrs r24,7
+ 279 000c 00C0      		rjmp .L44
  190:keyboards/split70/ez/twimaster.c **** 
  191:keyboards/split70/ez/twimaster.c ****     return TWDR;
- 274               		.loc 1 191 0
- 275 000e 8091 BB00 		lds r24,187
+ 280               		.loc 1 191 0
+ 281 000e 8091 BB00 		lds r24,187
+ 282               	/* epilogue start */
  192:keyboards/split70/ez/twimaster.c **** 
  193:keyboards/split70/ez/twimaster.c **** }/* i2c_readAck */
- 276               		.loc 1 193 0
- 277 0012 0895      		ret
- 278               		.cfi_endproc
- 279               	.LFE6:
- 281               		.section	.text.i2c_readNak,"ax",@progbits
- 282               	.global	i2c_readNak
- 284               	i2c_readNak:
- 285               	.LFB7:
+ 283               		.loc 1 193 0
+ 284 0012 0895      		ret
+ 285               		.cfi_endproc
+ 286               	.LFE6:
+ 288               		.section	.text.i2c_readNak,"ax",@progbits
+ 289               	.global	i2c_readNak
+ 291               	i2c_readNak:
+ 292               	.LFB7:
  194:keyboards/split70/ez/twimaster.c **** 
  195:keyboards/split70/ez/twimaster.c **** 
  196:keyboards/split70/ez/twimaster.c **** /*************************************************************************
@@ -481,49 +488,50 @@
  200:keyboards/split70/ez/twimaster.c **** *************************************************************************/
  201:keyboards/split70/ez/twimaster.c **** unsigned char i2c_readNak(void)
  202:keyboards/split70/ez/twimaster.c **** {
- 286               		.loc 1 202 0
- 287               		.cfi_startproc
- 288               	/* prologue: function */
- 289               	/* frame size = 0 */
- 290               	/* stack size = 0 */
- 291               	.L__stack_usage = 0
+ 293               		.loc 1 202 0
+ 294               		.cfi_startproc
+ 295               	/* prologue: function */
+ 296               	/* frame size = 0 */
+ 297               	/* stack size = 0 */
+ 298               	.L__stack_usage = 0
  203:keyboards/split70/ez/twimaster.c **** 	TWCR = (1<<TWINT) | (1<<TWEN);
- 292               		.loc 1 203 0
- 293 0000 84E8      		ldi r24,lo8(-124)
- 294 0002 8093 BC00 		sts 188,r24
- 295               	.L47:
+ 299               		.loc 1 203 0
+ 300 0000 84E8      		ldi r24,lo8(-124)
+ 301 0002 8093 BC00 		sts 188,r24
+ 302               	.L47:
  204:keyboards/split70/ez/twimaster.c **** 	while(!(TWCR & (1<<TWINT)));
- 296               		.loc 1 204 0 discriminator 1
- 297 0006 8091 BC00 		lds r24,188
- 298 000a 87FF      		sbrs r24,7
- 299 000c 00C0      		rjmp .L47
+ 303               		.loc 1 204 0 discriminator 1
+ 304 0006 8091 BC00 		lds r24,188
+ 305 000a 87FF      		sbrs r24,7
+ 306 000c 00C0      		rjmp .L47
  205:keyboards/split70/ez/twimaster.c **** 	
  206:keyboards/split70/ez/twimaster.c ****     return TWDR;
- 300               		.loc 1 206 0
- 301 000e 8091 BB00 		lds r24,187
+ 307               		.loc 1 206 0
+ 308 000e 8091 BB00 		lds r24,187
+ 309               	/* epilogue start */
  207:keyboards/split70/ez/twimaster.c **** 
  208:keyboards/split70/ez/twimaster.c **** }/* i2c_readNak */
- 302               		.loc 1 208 0
- 303 0012 0895      		ret
- 304               		.cfi_endproc
- 305               	.LFE7:
- 307               		.text
- 308               	.Letext0:
- 309               		.file 2 "/usr/avr/include/stdint.h"
+ 310               		.loc 1 208 0
+ 311 0012 0895      		ret
+ 312               		.cfi_endproc
+ 313               	.LFE7:
+ 315               		.text
+ 316               	.Letext0:
+ 317               		.file 2 "/usr/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 twimaster.c
-     /tmp/ccpXyIws.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccpXyIws.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccpXyIws.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccpXyIws.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccpXyIws.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccpXyIws.s:13     .text.i2c_init:0000000000000000 i2c_init
-     /tmp/ccpXyIws.s:34     .text.i2c_start:0000000000000000 i2c_start
-     /tmp/ccpXyIws.s:102    .text.i2c_start_wait:0000000000000000 i2c_start_wait
-     /tmp/ccpXyIws.s:175    .text.i2c_rep_start:0000000000000000 i2c_rep_start
-     /tmp/ccpXyIws.s:193    .text.i2c_stop:0000000000000000 i2c_stop
-     /tmp/ccpXyIws.s:218    .text.i2c_write:0000000000000000 i2c_write
-     /tmp/ccpXyIws.s:258    .text.i2c_readAck:0000000000000000 i2c_readAck
-     /tmp/ccpXyIws.s:284    .text.i2c_readNak:0000000000000000 i2c_readNak
+     /tmp/cc647hyz.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc647hyz.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc647hyz.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc647hyz.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc647hyz.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc647hyz.s:13     .text.i2c_init:0000000000000000 i2c_init
+     /tmp/cc647hyz.s:36     .text.i2c_start:0000000000000000 i2c_start
+     /tmp/cc647hyz.s:105    .text.i2c_start_wait:0000000000000000 i2c_start_wait
+     /tmp/cc647hyz.s:180    .text.i2c_rep_start:0000000000000000 i2c_rep_start
+     /tmp/cc647hyz.s:198    .text.i2c_stop:0000000000000000 i2c_stop
+     /tmp/cc647hyz.s:223    .text.i2c_write:0000000000000000 i2c_write
+     /tmp/cc647hyz.s:264    .text.i2c_readAck:0000000000000000 i2c_readAck
+     /tmp/cc647hyz.s:291    .text.i2c_readNak:0000000000000000 i2c_readNak
 
 NO UNDEFINED SYMBOLS

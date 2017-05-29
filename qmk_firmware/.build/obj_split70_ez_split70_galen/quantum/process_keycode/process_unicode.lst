@@ -79,7 +79,7 @@
   69               		.text
   70               	.Letext0:
   71               		.file 2 "/usr/avr/include/stdint.h"
-  72               		.file 3 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
+  72               		.file 3 "/usr/lib/gcc/avr/7.1.0/include/stddef.h"
   73               		.file 4 "./tmk_core/common/keyboard.h"
   74               		.file 5 "./tmk_core/common/action.h"
   75               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
@@ -100,12 +100,12 @@
   90               		.file 21 "./quantum/quantum_keycodes.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 process_unicode.c
-     /tmp/ccU2ag2U.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccU2ag2U.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccU2ag2U.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccU2ag2U.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccU2ag2U.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccU2ag2U.s:13     .text.process_unicode:0000000000000000 process_unicode
+     /tmp/ccJKe7Q3.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccJKe7Q3.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccJKe7Q3.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccJKe7Q3.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccJKe7Q3.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccJKe7Q3.s:13     .text.process_unicode:0000000000000000 process_unicode
 
 UNDEFINED SYMBOLS
 unicode_input_start

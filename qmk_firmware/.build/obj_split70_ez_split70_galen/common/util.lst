@@ -60,502 +60,502 @@
   30               		.loc 1 31 0 is_stmt 1
   31 0006 892F      		mov r24,r25
   32               	.LVL2:
-  33 0008 0895      		ret
-  34               	.LVL3:
-  35               	.L3:
+  33               	/* epilogue start */
+  34 0008 0895      		ret
+  35               	.LVL3:
+  36               	.L3:
   25:./tmk_core/common/util.c ****         bits &= bits - 1;
-  36               		.loc 1 25 0 discriminator 3
-  37 000a 2FEF      		ldi r18,lo8(-1)
-  38 000c 280F      		add r18,r24
-  39 000e 8223      		and r24,r18
-  40               	.LVL4:
+  37               		.loc 1 25 0 discriminator 3
+  38 000a 2FEF      		ldi r18,lo8(-1)
+  39 000c 280F      		add r18,r24
+  40 000e 8223      		and r24,r18
+  41               	.LVL4:
   24:./tmk_core/common/util.c ****         bits &= bits - 1;
-  41               		.loc 1 24 0 discriminator 3
-  42 0010 9F5F      		subi r25,lo8(-(1))
-  43               	.LVL5:
-  44 0012 00C0      		rjmp .L2
-  45               		.cfi_endproc
-  46               	.LFE0:
-  48               		.section	.text.bitpop16,"ax",@progbits
-  49               	.global	bitpop16
-  51               	bitpop16:
-  52               	.LFB1:
+  42               		.loc 1 24 0 discriminator 3
+  43 0010 9F5F      		subi r25,lo8(-(1))
+  44               	.LVL5:
+  45 0012 00C0      		rjmp .L2
+  46               		.cfi_endproc
+  47               	.LFE0:
+  49               		.section	.text.bitpop16,"ax",@progbits
+  50               	.global	bitpop16
+  52               	bitpop16:
+  53               	.LFB1:
   32:./tmk_core/common/util.c **** 
   33:./tmk_core/common/util.c **** uint8_t bitpop16(uint16_t bits)
   34:./tmk_core/common/util.c **** {
-  53               		.loc 1 34 0
-  54               		.cfi_startproc
-  55               	.LVL6:
-  56               	/* prologue: function */
-  57               	/* frame size = 0 */
-  58               	/* stack size = 0 */
-  59               	.L__stack_usage = 0
+  54               		.loc 1 34 0
+  55               		.cfi_startproc
+  56               	.LVL6:
+  57               	/* prologue: function */
+  58               	/* frame size = 0 */
+  59               	/* stack size = 0 */
+  60               	.L__stack_usage = 0
   35:./tmk_core/common/util.c ****     uint8_t c;
   36:./tmk_core/common/util.c ****     for (c = 0; bits; c++)
-  60               		.loc 1 36 0
-  61 0000 20E0      		ldi r18,0
-  62               	.LVL7:
-  63               	.L5:
-  64               		.loc 1 36 0 is_stmt 0 discriminator 1
-  65 0002 0097      		sbiw r24,0
-  66 0004 01F4      		brne .L6
+  61               		.loc 1 36 0
+  62 0000 20E0      		ldi r18,0
+  63               	.LVL7:
+  64               	.L5:
+  65               		.loc 1 36 0 is_stmt 0 discriminator 1
+  66 0002 0097      		sbiw r24,0
+  67 0004 01F4      		brne .L6
   37:./tmk_core/common/util.c ****         bits &= bits - 1;
   38:./tmk_core/common/util.c ****     return c;
   39:./tmk_core/common/util.c **** }
-  67               		.loc 1 39 0 is_stmt 1
-  68 0006 822F      		mov r24,r18
-  69               	.LVL8:
-  70 0008 0895      		ret
-  71               	.LVL9:
-  72               	.L6:
+  68               		.loc 1 39 0 is_stmt 1
+  69 0006 822F      		mov r24,r18
+  70               	.LVL8:
+  71               	/* epilogue start */
+  72 0008 0895      		ret
+  73               	.LVL9:
+  74               	.L6:
   37:./tmk_core/common/util.c ****         bits &= bits - 1;
-  73               		.loc 1 37 0 discriminator 3
-  74 000a AC01      		movw r20,r24
-  75 000c 4150      		subi r20,1
-  76 000e 5109      		sbc r21,__zero_reg__
-  77 0010 8423      		and r24,r20
-  78 0012 9523      		and r25,r21
-  79               	.LVL10:
-  36:./tmk_core/common/util.c ****         bits &= bits - 1;
-  80               		.loc 1 36 0 discriminator 3
-  81 0014 2F5F      		subi r18,lo8(-(1))
+  75               		.loc 1 37 0 discriminator 3
+  76 000a AC01      		movw r20,r24
+  77 000c 4150      		subi r20,1
+  78 000e 5109      		sbc r21,__zero_reg__
+  79 0010 8423      		and r24,r20
+  80               	.LVL10:
+  81 0012 9523      		and r25,r21
   82               	.LVL11:
-  83 0016 00C0      		rjmp .L5
-  84               		.cfi_endproc
-  85               	.LFE1:
-  87               		.section	.text.bitpop32,"ax",@progbits
-  88               	.global	bitpop32
-  90               	bitpop32:
-  91               	.LFB2:
+  36:./tmk_core/common/util.c ****         bits &= bits - 1;
+  83               		.loc 1 36 0 discriminator 3
+  84 0014 2F5F      		subi r18,lo8(-(1))
+  85               	.LVL12:
+  86 0016 00C0      		rjmp .L5
+  87               		.cfi_endproc
+  88               	.LFE1:
+  90               		.section	.text.bitpop32,"ax",@progbits
+  91               	.global	bitpop32
+  93               	bitpop32:
+  94               	.LFB2:
   40:./tmk_core/common/util.c **** 
   41:./tmk_core/common/util.c **** uint8_t bitpop32(uint32_t bits)
   42:./tmk_core/common/util.c **** {
-  92               		.loc 1 42 0
-  93               		.cfi_startproc
-  94               	.LVL12:
-  95 0000 CF92      		push r12
-  96               	.LCFI0:
-  97               		.cfi_def_cfa_offset 3
-  98               		.cfi_offset 12, -2
-  99 0002 DF92      		push r13
- 100               	.LCFI1:
- 101               		.cfi_def_cfa_offset 4
- 102               		.cfi_offset 13, -3
- 103 0004 EF92      		push r14
- 104               	.LCFI2:
- 105               		.cfi_def_cfa_offset 5
- 106               		.cfi_offset 14, -4
- 107 0006 FF92      		push r15
- 108               	.LCFI3:
- 109               		.cfi_def_cfa_offset 6
- 110               		.cfi_offset 15, -5
- 111               	/* prologue: function */
- 112               	/* frame size = 0 */
- 113               	/* stack size = 4 */
- 114               	.L__stack_usage = 4
- 115               	.LVL13:
+  95               		.loc 1 42 0
+  96               		.cfi_startproc
+  97               	.LVL13:
+  98 0000 CF92      		push r12
+  99               	.LCFI0:
+ 100               		.cfi_def_cfa_offset 3
+ 101               		.cfi_offset 12, -2
+ 102 0002 DF92      		push r13
+ 103               	.LCFI1:
+ 104               		.cfi_def_cfa_offset 4
+ 105               		.cfi_offset 13, -3
+ 106 0004 EF92      		push r14
+ 107               	.LCFI2:
+ 108               		.cfi_def_cfa_offset 5
+ 109               		.cfi_offset 14, -4
+ 110 0006 FF92      		push r15
+ 111               	.LCFI3:
+ 112               		.cfi_def_cfa_offset 6
+ 113               		.cfi_offset 15, -5
+ 114               	/* prologue: function */
+ 115               	/* frame size = 0 */
+ 116               	/* stack size = 4 */
+ 117               	.L__stack_usage = 4
+ 118               	.LVL14:
   43:./tmk_core/common/util.c ****     uint8_t c;
   44:./tmk_core/common/util.c ****     for (c = 0; bits; c++)
- 116               		.loc 1 44 0
- 117 0008 20E0      		ldi r18,0
- 118               	.LVL14:
- 119               	.L8:
- 120               		.loc 1 44 0 is_stmt 0 discriminator 1
- 121 000a 6115      		cp r22,__zero_reg__
- 122 000c 7105      		cpc r23,__zero_reg__
- 123 000e 8105      		cpc r24,__zero_reg__
- 124 0010 9105      		cpc r25,__zero_reg__
- 125 0012 01F4      		brne .L9
+ 119               		.loc 1 44 0
+ 120 0008 20E0      		ldi r18,0
+ 121               	.LVL15:
+ 122               	.L8:
+ 123               		.loc 1 44 0 is_stmt 0 discriminator 1
+ 124 000a 6115      		cp r22,__zero_reg__
+ 125 000c 7105      		cpc r23,__zero_reg__
+ 126 000e 8105      		cpc r24,__zero_reg__
+ 127 0010 9105      		cpc r25,__zero_reg__
+ 128 0012 01F4      		brne .L9
   45:./tmk_core/common/util.c ****         bits &= bits - 1;
   46:./tmk_core/common/util.c ****     return c;
   47:./tmk_core/common/util.c **** }
- 126               		.loc 1 47 0 is_stmt 1
- 127 0014 822F      		mov r24,r18
- 128               	/* epilogue start */
- 129 0016 FF90      		pop r15
- 130 0018 EF90      		pop r14
- 131 001a DF90      		pop r13
- 132 001c CF90      		pop r12
- 133 001e 0895      		ret
- 134               	.L9:
+ 129               		.loc 1 47 0 is_stmt 1
+ 130 0014 822F      		mov r24,r18
+ 131               	/* epilogue start */
+ 132 0016 FF90      		pop r15
+ 133 0018 EF90      		pop r14
+ 134 001a DF90      		pop r13
+ 135 001c CF90      		pop r12
+ 136 001e 0895      		ret
+ 137               	.L9:
   45:./tmk_core/common/util.c ****         bits &= bits - 1;
- 135               		.loc 1 45 0 discriminator 3
- 136 0020 6B01      		movw r12,r22
- 137 0022 7C01      		movw r14,r24
- 138 0024 31E0      		ldi r19,1
- 139 0026 C31A      		sub r12,r19
- 140 0028 D108      		sbc r13,__zero_reg__
- 141 002a E108      		sbc r14,__zero_reg__
- 142 002c F108      		sbc r15,__zero_reg__
- 143 002e 6C21      		and r22,r12
- 144 0030 7D21      		and r23,r13
- 145 0032 8E21      		and r24,r14
- 146 0034 9F21      		and r25,r15
- 147               	.LVL15:
+ 138               		.loc 1 45 0 discriminator 3
+ 139 0020 6B01      		movw r12,r22
+ 140 0022 7C01      		movw r14,r24
+ 141 0024 31E0      		ldi r19,1
+ 142 0026 C31A      		sub r12,r19
+ 143 0028 D108      		sbc r13,__zero_reg__
+ 144 002a E108      		sbc r14,__zero_reg__
+ 145 002c F108      		sbc r15,__zero_reg__
+ 146 002e 6C21      		and r22,r12
+ 147               	.LVL16:
+ 148 0030 7D21      		and r23,r13
+ 149 0032 8E21      		and r24,r14
+ 150 0034 9F21      		and r25,r15
+ 151               	.LVL17:
   44:./tmk_core/common/util.c ****         bits &= bits - 1;
- 148               		.loc 1 44 0 discriminator 3
- 149 0036 2F5F      		subi r18,lo8(-(1))
- 150               	.LVL16:
- 151 0038 00C0      		rjmp .L8
- 152               		.cfi_endproc
- 153               	.LFE2:
- 155               		.section	.text.biton,"ax",@progbits
- 156               	.global	biton
- 158               	biton:
- 159               	.LFB3:
+ 152               		.loc 1 44 0 discriminator 3
+ 153 0036 2F5F      		subi r18,lo8(-(1))
+ 154               	.LVL18:
+ 155 0038 00C0      		rjmp .L8
+ 156               		.cfi_endproc
+ 157               	.LFE2:
+ 159               		.section	.text.biton,"ax",@progbits
+ 160               	.global	biton
+ 162               	biton:
+ 163               	.LFB3:
   48:./tmk_core/common/util.c **** 
   49:./tmk_core/common/util.c **** // most significant on-bit - return highest location of on-bit
   50:./tmk_core/common/util.c **** // NOTE: return 0 when bit0 is on or all bits are off
   51:./tmk_core/common/util.c **** uint8_t biton(uint8_t bits)
   52:./tmk_core/common/util.c **** {
- 160               		.loc 1 52 0
- 161               		.cfi_startproc
- 162               	.LVL17:
- 163               	/* prologue: function */
- 164               	/* frame size = 0 */
- 165               	/* stack size = 0 */
- 166               	.L__stack_usage = 0
+ 164               		.loc 1 52 0
+ 165               		.cfi_startproc
+ 166               	.LVL19:
+ 167               	/* prologue: function */
+ 168               	/* frame size = 0 */
+ 169               	/* stack size = 0 */
+ 170               	.L__stack_usage = 0
   53:./tmk_core/common/util.c ****     uint8_t n = 0;
   54:./tmk_core/common/util.c ****     if (bits >> 4) { bits >>= 4; n += 4;}
- 167               		.loc 1 54 0
- 168 0000 982F      		mov r25,r24
- 169 0002 9295      		swap r25
- 170 0004 9F70      		andi r25,lo8(15)
- 171 0006 01F0      		breq .L14
- 172 0008 892F      		mov r24,r25
- 173               	.LVL18:
- 174 000a 24E0      		ldi r18,lo8(4)
- 175               	.L11:
- 176               	.LVL19:
+ 171               		.loc 1 54 0
+ 172 0000 982F      		mov r25,r24
+ 173 0002 9295      		swap r25
+ 174 0004 9F70      		andi r25,lo8(15)
+  53:./tmk_core/common/util.c ****     uint8_t n = 0;
+ 175               		.loc 1 53 0
+ 176 0006 20E0      		ldi r18,0
+ 177               		.loc 1 54 0
+ 178 0008 01F0      		breq .L11
+ 179 000a 892F      		mov r24,r25
+ 180               	.LVL20:
+ 181 000c 24E0      		ldi r18,lo8(4)
+ 182               	.L11:
+ 183               	.LVL21:
   55:./tmk_core/common/util.c ****     if (bits >> 2) { bits >>= 2; n += 2;}
- 177               		.loc 1 55 0
- 178 000c 982F      		mov r25,r24
- 179 000e 9695      		lsr r25
- 180 0010 9695      		lsr r25
- 181 0012 01F0      		breq .L12
- 182               	.LVL20:
- 183               		.loc 1 55 0 is_stmt 0 discriminator 1
- 184 0014 2E5F      		subi r18,lo8(-(2))
- 185               	.LVL21:
- 186 0016 892F      		mov r24,r25
- 187               	.LVL22:
- 188               	.L12:
+ 184               		.loc 1 55 0
+ 185 000e 982F      		mov r25,r24
+ 186 0010 9695      		lsr r25
+ 187 0012 9695      		lsr r25
+ 188 0014 01F0      		breq .L12
+ 189               	.LVL22:
+ 190               		.loc 1 55 0 is_stmt 0 discriminator 1
+ 191 0016 2E5F      		subi r18,lo8(-(2))
+ 192               	.LVL23:
+ 193 0018 892F      		mov r24,r25
+ 194               	.LVL24:
+ 195               	.L12:
   56:./tmk_core/common/util.c ****     if (bits >> 1) { bits >>= 1; n += 1;}
- 189               		.loc 1 56 0 is_stmt 1
- 190 0018 982F      		mov r25,r24
- 191 001a 9695      		lsr r25
- 192 001c 01F0      		breq .L10
- 193               	.LVL23:
- 194               		.loc 1 56 0 is_stmt 0 discriminator 1
- 195 001e 2F5F      		subi r18,lo8(-(1))
- 196               	.LVL24:
- 197               	.L10:
+ 196               		.loc 1 56 0 is_stmt 1
+ 197 001a 982F      		mov r25,r24
+ 198 001c 9695      		lsr r25
+ 199 001e 01F0      		breq .L10
+ 200               	.LVL25:
+ 201               		.loc 1 56 0 is_stmt 0 discriminator 1
+ 202 0020 2F5F      		subi r18,lo8(-(1))
+ 203               	.LVL26:
+ 204               	.L10:
   57:./tmk_core/common/util.c ****     return n;
   58:./tmk_core/common/util.c **** }
- 198               		.loc 1 58 0 is_stmt 1
- 199 0020 822F      		mov r24,r18
- 200 0022 0895      		ret
- 201               	.LVL25:
- 202               	.L14:
-  53:./tmk_core/common/util.c ****     if (bits >> 4) { bits >>= 4; n += 4;}
- 203               		.loc 1 53 0
- 204 0024 20E0      		ldi r18,0
- 205 0026 00C0      		rjmp .L11
- 206               		.cfi_endproc
- 207               	.LFE3:
- 209               		.section	.text.biton16,"ax",@progbits
- 210               	.global	biton16
- 212               	biton16:
- 213               	.LFB4:
+ 205               		.loc 1 58 0 is_stmt 1
+ 206 0022 822F      		mov r24,r18
+ 207               	/* epilogue start */
+ 208 0024 0895      		ret
+ 209               		.cfi_endproc
+ 210               	.LFE3:
+ 212               		.section	.text.biton16,"ax",@progbits
+ 213               	.global	biton16
+ 215               	biton16:
+ 216               	.LFB4:
   59:./tmk_core/common/util.c **** 
   60:./tmk_core/common/util.c **** uint8_t biton16(uint16_t bits)
   61:./tmk_core/common/util.c **** {
- 214               		.loc 1 61 0
- 215               		.cfi_startproc
- 216               	.LVL26:
- 217               	/* prologue: function */
- 218               	/* frame size = 0 */
- 219               	/* stack size = 0 */
- 220               	.L__stack_usage = 0
+ 217               		.loc 1 61 0
+ 218               		.cfi_startproc
+ 219               	.LVL27:
+ 220               	/* prologue: function */
+ 221               	/* frame size = 0 */
+ 222               	/* stack size = 0 */
+ 223               	.L__stack_usage = 0
   62:./tmk_core/common/util.c ****     uint8_t n = 0;
   63:./tmk_core/common/util.c ****     if (bits >> 8) { bits >>= 8; n += 8;}
- 221               		.loc 1 63 0
- 222 0000 292F      		mov r18,r25
- 223 0002 3327      		clr r19
- 224 0004 2115      		cp r18,__zero_reg__
- 225 0006 3105      		cpc r19,__zero_reg__
- 226 0008 01F0      		breq .L26
- 227 000a C901      		movw r24,r18
- 228               	.LVL27:
- 229 000c 48E0      		ldi r20,lo8(8)
- 230               	.L22:
- 231               	.LVL28:
+ 224               		.loc 1 63 0
+ 225 0000 292F      		mov r18,r25
+ 226 0002 3327      		clr r19
+  62:./tmk_core/common/util.c ****     uint8_t n = 0;
+ 227               		.loc 1 62 0
+ 228 0004 40E0      		ldi r20,0
+ 229               		.loc 1 63 0
+ 230 0006 2115      		cp r18,__zero_reg__
+ 231 0008 3105      		cpc r19,__zero_reg__
+ 232 000a 01F0      		breq .L22
+ 233 000c C901      		movw r24,r18
+ 234               	.LVL28:
+ 235 000e 48E0      		ldi r20,lo8(8)
+ 236               	.L22:
+ 237               	.LVL29:
   64:./tmk_core/common/util.c ****     if (bits >> 4) { bits >>= 4; n += 4;}
- 232               		.loc 1 64 0
- 233 000e 9C01      		movw r18,r24
- 234 0010 64E0      		ldi r22,4
- 235               		1:
- 236 0012 3695      		lsr r19
- 237 0014 2795      		ror r18
- 238 0016 6A95      		dec r22
- 239 0018 01F4      		brne 1b
- 240 001a 2115      		cp r18,__zero_reg__
- 241 001c 3105      		cpc r19,__zero_reg__
- 242 001e 01F0      		breq .L23
- 243               	.LVL29:
- 244               		.loc 1 64 0 is_stmt 0 discriminator 1
- 245 0020 4C5F      		subi r20,lo8(-(4))
- 246               	.LVL30:
- 247 0022 C901      		movw r24,r18
- 248               	.LVL31:
- 249               	.L23:
+ 238               		.loc 1 64 0
+ 239 0010 9C01      		movw r18,r24
+ 240 0012 64E0      		ldi r22,4
+ 241               		1:
+ 242 0014 3695      		lsr r19
+ 243 0016 2795      		ror r18
+ 244 0018 6A95      		dec r22
+ 245 001a 01F4      		brne 1b
+ 246 001c 2115      		cp r18,__zero_reg__
+ 247 001e 3105      		cpc r19,__zero_reg__
+ 248 0020 01F0      		breq .L23
+ 249               	.LVL30:
+ 250               		.loc 1 64 0 is_stmt 0 discriminator 1
+ 251 0022 4C5F      		subi r20,lo8(-(4))
+ 252               	.LVL31:
+ 253 0024 C901      		movw r24,r18
+ 254               	.LVL32:
+ 255               	.L23:
   65:./tmk_core/common/util.c ****     if (bits >> 2) { bits >>= 2; n += 2;}
- 250               		.loc 1 65 0 is_stmt 1
- 251 0024 9C01      		movw r18,r24
- 252 0026 3695      		lsr r19
- 253 0028 2795      		ror r18
- 254 002a 3695      		lsr r19
- 255 002c 2795      		ror r18
- 256 002e 2115      		cp r18,__zero_reg__
- 257 0030 3105      		cpc r19,__zero_reg__
- 258 0032 01F0      		breq .L24
- 259               	.LVL32:
- 260               		.loc 1 65 0 is_stmt 0 discriminator 1
- 261 0034 4E5F      		subi r20,lo8(-(2))
- 262               	.LVL33:
- 263 0036 C901      		movw r24,r18
- 264               	.LVL34:
- 265               	.L24:
+ 256               		.loc 1 65 0 is_stmt 1
+ 257 0026 9C01      		movw r18,r24
+ 258 0028 3695      		lsr r19
+ 259 002a 2795      		ror r18
+ 260 002c 3695      		lsr r19
+ 261 002e 2795      		ror r18
+ 262 0030 2115      		cp r18,__zero_reg__
+ 263 0032 3105      		cpc r19,__zero_reg__
+ 264 0034 01F0      		breq .L24
+ 265               	.LVL33:
+ 266               		.loc 1 65 0 is_stmt 0 discriminator 1
+ 267 0036 4E5F      		subi r20,lo8(-(2))
+ 268               	.LVL34:
+ 269 0038 C901      		movw r24,r18
+ 270               	.LVL35:
+ 271               	.L24:
   66:./tmk_core/common/util.c ****     if (bits >> 1) { bits >>= 1; n += 1;}
- 266               		.loc 1 66 0 is_stmt 1
- 267 0038 9695      		lsr r25
- 268 003a 8795      		ror r24
- 269               	.LVL35:
- 270 003c 892B      		or r24,r25
- 271 003e 01F0      		breq .L21
- 272               	.LVL36:
- 273               		.loc 1 66 0 is_stmt 0 discriminator 1
- 274 0040 4F5F      		subi r20,lo8(-(1))
- 275               	.LVL37:
- 276               	.L21:
+ 272               		.loc 1 66 0 is_stmt 1
+ 273 003a 9695      		lsr r25
+ 274 003c 8795      		ror r24
+ 275               	.LVL36:
+ 276 003e 892B      		or r24,r25
+ 277 0040 01F0      		breq .L21
+ 278               	.LVL37:
+ 279               		.loc 1 66 0 is_stmt 0 discriminator 1
+ 280 0042 4F5F      		subi r20,lo8(-(1))
+ 281               	.LVL38:
+ 282               	.L21:
   67:./tmk_core/common/util.c ****     return n;
   68:./tmk_core/common/util.c **** }
- 277               		.loc 1 68 0 is_stmt 1
- 278 0042 842F      		mov r24,r20
- 279 0044 0895      		ret
- 280               	.LVL38:
- 281               	.L26:
-  62:./tmk_core/common/util.c ****     if (bits >> 8) { bits >>= 8; n += 8;}
- 282               		.loc 1 62 0
- 283 0046 40E0      		ldi r20,0
- 284 0048 00C0      		rjmp .L22
- 285               		.cfi_endproc
- 286               	.LFE4:
- 288               		.section	.text.biton32,"ax",@progbits
- 289               	.global	biton32
- 291               	biton32:
- 292               	.LFB5:
+ 283               		.loc 1 68 0 is_stmt 1
+ 284 0044 842F      		mov r24,r20
+ 285               	/* epilogue start */
+ 286 0046 0895      		ret
+ 287               		.cfi_endproc
+ 288               	.LFE4:
+ 290               		.section	.text.biton32,"ax",@progbits
+ 291               	.global	biton32
+ 293               	biton32:
+ 294               	.LFB5:
   69:./tmk_core/common/util.c **** 
   70:./tmk_core/common/util.c **** uint8_t biton32(uint32_t bits)
   71:./tmk_core/common/util.c **** {
- 293               		.loc 1 71 0
- 294               		.cfi_startproc
- 295               	.LVL39:
- 296 0000 CF92      		push r12
- 297               	.LCFI4:
- 298               		.cfi_def_cfa_offset 3
- 299               		.cfi_offset 12, -2
- 300 0002 DF92      		push r13
- 301               	.LCFI5:
- 302               		.cfi_def_cfa_offset 4
- 303               		.cfi_offset 13, -3
- 304 0004 EF92      		push r14
- 305               	.LCFI6:
- 306               		.cfi_def_cfa_offset 5
- 307               		.cfi_offset 14, -4
- 308 0006 FF92      		push r15
- 309               	.LCFI7:
- 310               		.cfi_def_cfa_offset 6
- 311               		.cfi_offset 15, -5
- 312               	/* prologue: function */
- 313               	/* frame size = 0 */
- 314               	/* stack size = 4 */
- 315               	.L__stack_usage = 4
- 316               	.LVL40:
+ 295               		.loc 1 71 0
+ 296               		.cfi_startproc
+ 297               	.LVL39:
+ 298 0000 CF92      		push r12
+ 299               	.LCFI4:
+ 300               		.cfi_def_cfa_offset 3
+ 301               		.cfi_offset 12, -2
+ 302 0002 DF92      		push r13
+ 303               	.LCFI5:
+ 304               		.cfi_def_cfa_offset 4
+ 305               		.cfi_offset 13, -3
+ 306 0004 EF92      		push r14
+ 307               	.LCFI6:
+ 308               		.cfi_def_cfa_offset 5
+ 309               		.cfi_offset 14, -4
+ 310 0006 FF92      		push r15
+ 311               	.LCFI7:
+ 312               		.cfi_def_cfa_offset 6
+ 313               		.cfi_offset 15, -5
+ 314               	/* prologue: function */
+ 315               	/* frame size = 0 */
+ 316               	/* stack size = 4 */
+ 317               	.L__stack_usage = 4
+ 318               	.LVL40:
   72:./tmk_core/common/util.c ****     uint8_t n = 0;
   73:./tmk_core/common/util.c ****     if (bits >>16) { bits >>=16; n +=16;}
- 317               		.loc 1 73 0
- 318 0008 6C01      		movw r12,r24
- 319 000a EE24      		clr r14
- 320 000c FF24      		clr r15
- 321 000e C114      		cp r12,__zero_reg__
- 322 0010 D104      		cpc r13,__zero_reg__
- 323 0012 E104      		cpc r14,__zero_reg__
- 324 0014 F104      		cpc r15,__zero_reg__
- 325 0016 01F4      		brne .+2
- 326 0018 00C0      		rjmp .L42
- 327 001a C701      		movw r24,r14
- 328 001c B601      		movw r22,r12
- 329               	.LVL41:
- 330 001e 20E1      		ldi r18,lo8(16)
- 331               	.L37:
- 332               	.LVL42:
+ 319               		.loc 1 73 0
+ 320 0008 6C01      		movw r12,r24
+ 321 000a EE24      		clr r14
+ 322 000c FF24      		clr r15
+  72:./tmk_core/common/util.c ****     uint8_t n = 0;
+ 323               		.loc 1 72 0
+ 324 000e 20E0      		ldi r18,0
+ 325               		.loc 1 73 0
+ 326 0010 C114      		cp r12,__zero_reg__
+ 327 0012 D104      		cpc r13,__zero_reg__
+ 328 0014 E104      		cpc r14,__zero_reg__
+ 329 0016 F104      		cpc r15,__zero_reg__
+ 330 0018 01F0      		breq .L37
+ 331 001a C701      		movw r24,r14
+ 332 001c B601      		movw r22,r12
+ 333               	.LVL41:
+ 334 001e 20E1      		ldi r18,lo8(16)
+ 335               	.L37:
+ 336               	.LVL42:
   74:./tmk_core/common/util.c ****     if (bits >> 8) { bits >>= 8; n += 8;}
- 333               		.loc 1 74 0
- 334 0020 C72E      		mov r12,r23
- 335 0022 D82E      		mov r13,r24
- 336 0024 E92E      		mov r14,r25
- 337 0026 FF24      		clr r15
- 338 0028 C114      		cp r12,__zero_reg__
- 339 002a D104      		cpc r13,__zero_reg__
- 340 002c E104      		cpc r14,__zero_reg__
- 341 002e F104      		cpc r15,__zero_reg__
- 342 0030 01F0      		breq .L38
- 343               	.LVL43:
- 344               		.loc 1 74 0 is_stmt 0 discriminator 1
- 345 0032 285F      		subi r18,lo8(-(8))
- 346               	.LVL44:
- 347 0034 C701      		movw r24,r14
- 348 0036 B601      		movw r22,r12
- 349               	.LVL45:
- 350               	.L38:
+ 337               		.loc 1 74 0
+ 338 0020 C72E      		mov r12,r23
+ 339 0022 D82E      		mov r13,r24
+ 340 0024 E92E      		mov r14,r25
+ 341 0026 FF24      		clr r15
+ 342 0028 C114      		cp r12,__zero_reg__
+ 343 002a D104      		cpc r13,__zero_reg__
+ 344 002c E104      		cpc r14,__zero_reg__
+ 345 002e F104      		cpc r15,__zero_reg__
+ 346 0030 01F0      		breq .L38
+ 347               	.LVL43:
+ 348               		.loc 1 74 0 is_stmt 0 discriminator 1
+ 349 0032 285F      		subi r18,lo8(-(8))
+ 350               	.LVL44:
+ 351 0034 C701      		movw r24,r14
+ 352 0036 B601      		movw r22,r12
+ 353               	.LVL45:
+ 354               	.L38:
   75:./tmk_core/common/util.c ****     if (bits >> 4) { bits >>= 4; n += 4;}
- 351               		.loc 1 75 0 is_stmt 1
- 352 0038 6B01      		movw r12,r22
- 353 003a 7C01      		movw r14,r24
- 354 003c 54E0      		ldi r21,4
- 355               		1:
- 356 003e F694      		lsr r15
- 357 0040 E794      		ror r14
- 358 0042 D794      		ror r13
- 359 0044 C794      		ror r12
- 360 0046 5A95      		dec r21
- 361 0048 01F4      		brne 1b
- 362 004a C114      		cp r12,__zero_reg__
- 363 004c D104      		cpc r13,__zero_reg__
- 364 004e E104      		cpc r14,__zero_reg__
- 365 0050 F104      		cpc r15,__zero_reg__
- 366 0052 01F0      		breq .L39
- 367               	.LVL46:
- 368               		.loc 1 75 0 is_stmt 0 discriminator 1
- 369 0054 2C5F      		subi r18,lo8(-(4))
- 370               	.LVL47:
- 371 0056 C701      		movw r24,r14
- 372 0058 B601      		movw r22,r12
- 373               	.LVL48:
- 374               	.L39:
+ 355               		.loc 1 75 0 is_stmt 1
+ 356 0038 6B01      		movw r12,r22
+ 357 003a 7C01      		movw r14,r24
+ 358 003c 54E0      		ldi r21,4
+ 359               		1:
+ 360 003e F694      		lsr r15
+ 361 0040 E794      		ror r14
+ 362 0042 D794      		ror r13
+ 363 0044 C794      		ror r12
+ 364 0046 5A95      		dec r21
+ 365 0048 01F4      		brne 1b
+ 366 004a C114      		cp r12,__zero_reg__
+ 367 004c D104      		cpc r13,__zero_reg__
+ 368 004e E104      		cpc r14,__zero_reg__
+ 369 0050 F104      		cpc r15,__zero_reg__
+ 370 0052 01F0      		breq .L39
+ 371               	.LVL46:
+ 372               		.loc 1 75 0 is_stmt 0 discriminator 1
+ 373 0054 2C5F      		subi r18,lo8(-(4))
+ 374               	.LVL47:
+ 375 0056 C701      		movw r24,r14
+ 376 0058 B601      		movw r22,r12
+ 377               	.LVL48:
+ 378               	.L39:
   76:./tmk_core/common/util.c ****     if (bits >> 2) { bits >>= 2; n += 2;}
- 375               		.loc 1 76 0 is_stmt 1
- 376 005a 6B01      		movw r12,r22
- 377 005c 7C01      		movw r14,r24
- 378 005e 42E0      		ldi r20,2
- 379               		1:
- 380 0060 F694      		lsr r15
- 381 0062 E794      		ror r14
- 382 0064 D794      		ror r13
- 383 0066 C794      		ror r12
- 384 0068 4A95      		dec r20
- 385 006a 01F4      		brne 1b
- 386 006c C114      		cp r12,__zero_reg__
- 387 006e D104      		cpc r13,__zero_reg__
- 388 0070 E104      		cpc r14,__zero_reg__
- 389 0072 F104      		cpc r15,__zero_reg__
- 390 0074 01F0      		breq .L40
- 391               	.LVL49:
- 392               		.loc 1 76 0 is_stmt 0 discriminator 1
- 393 0076 2E5F      		subi r18,lo8(-(2))
- 394               	.LVL50:
- 395 0078 C701      		movw r24,r14
- 396 007a B601      		movw r22,r12
- 397               	.LVL51:
- 398               	.L40:
+ 379               		.loc 1 76 0 is_stmt 1
+ 380 005a 6B01      		movw r12,r22
+ 381 005c 7C01      		movw r14,r24
+ 382 005e 42E0      		ldi r20,2
+ 383               		1:
+ 384 0060 F694      		lsr r15
+ 385 0062 E794      		ror r14
+ 386 0064 D794      		ror r13
+ 387 0066 C794      		ror r12
+ 388 0068 4A95      		dec r20
+ 389 006a 01F4      		brne 1b
+ 390 006c C114      		cp r12,__zero_reg__
+ 391 006e D104      		cpc r13,__zero_reg__
+ 392 0070 E104      		cpc r14,__zero_reg__
+ 393 0072 F104      		cpc r15,__zero_reg__
+ 394 0074 01F0      		breq .L40
+ 395               	.LVL49:
+ 396               		.loc 1 76 0 is_stmt 0 discriminator 1
+ 397 0076 2E5F      		subi r18,lo8(-(2))
+ 398               	.LVL50:
+ 399 0078 C701      		movw r24,r14
+ 400 007a B601      		movw r22,r12
+ 401               	.LVL51:
+ 402               	.L40:
   77:./tmk_core/common/util.c ****     if (bits >> 1) { bits >>= 1; n += 1;}
- 399               		.loc 1 77 0 is_stmt 1
- 400 007c 9695      		lsr r25
- 401 007e 8795      		ror r24
- 402 0080 7795      		ror r23
- 403 0082 6795      		ror r22
- 404               	.LVL52:
- 405 0084 672B      		or r22,r23
- 406 0086 682B      		or r22,r24
- 407 0088 692B      		or r22,r25
- 408 008a 01F0      		breq .L36
- 409               	.LVL53:
- 410               		.loc 1 77 0 is_stmt 0 discriminator 1
- 411 008c 2F5F      		subi r18,lo8(-(1))
- 412               	.LVL54:
- 413               	.L36:
+ 403               		.loc 1 77 0 is_stmt 1
+ 404 007c 9695      		lsr r25
+ 405 007e 8795      		ror r24
+ 406 0080 7795      		ror r23
+ 407 0082 6795      		ror r22
+ 408               	.LVL52:
+ 409 0084 672B      		or r22,r23
+ 410 0086 682B      		or r22,r24
+ 411 0088 692B      		or r22,r25
+ 412 008a 01F0      		breq .L36
+ 413               	.LVL53:
+ 414               		.loc 1 77 0 is_stmt 0 discriminator 1
+ 415 008c 2F5F      		subi r18,lo8(-(1))
+ 416               	.LVL54:
+ 417               	.L36:
   78:./tmk_core/common/util.c ****     return n;
   79:./tmk_core/common/util.c **** }
- 414               		.loc 1 79 0 is_stmt 1
- 415 008e 822F      		mov r24,r18
- 416               	/* epilogue start */
- 417 0090 FF90      		pop r15
- 418 0092 EF90      		pop r14
- 419 0094 DF90      		pop r13
- 420 0096 CF90      		pop r12
- 421 0098 0895      		ret
- 422               	.LVL55:
- 423               	.L42:
-  72:./tmk_core/common/util.c ****     if (bits >>16) { bits >>=16; n +=16;}
- 424               		.loc 1 72 0
- 425 009a 20E0      		ldi r18,0
- 426 009c 00C0      		rjmp .L37
- 427               		.cfi_endproc
- 428               	.LFE5:
- 430               		.section	.text.bitrev,"ax",@progbits
- 431               	.global	bitrev
- 433               	bitrev:
- 434               	.LFB6:
+ 418               		.loc 1 79 0 is_stmt 1
+ 419 008e 822F      		mov r24,r18
+ 420               	/* epilogue start */
+ 421 0090 FF90      		pop r15
+ 422 0092 EF90      		pop r14
+ 423 0094 DF90      		pop r13
+ 424 0096 CF90      		pop r12
+ 425 0098 0895      		ret
+ 426               		.cfi_endproc
+ 427               	.LFE5:
+ 429               		.section	.text.bitrev,"ax",@progbits
+ 430               	.global	bitrev
+ 432               	bitrev:
+ 433               	.LFB6:
   80:./tmk_core/common/util.c **** 
   81:./tmk_core/common/util.c **** 
   82:./tmk_core/common/util.c **** 
   83:./tmk_core/common/util.c **** uint8_t bitrev(uint8_t bits)
   84:./tmk_core/common/util.c **** {
- 435               		.loc 1 84 0
- 436               		.cfi_startproc
- 437               	.LVL56:
- 438               	/* prologue: function */
- 439               	/* frame size = 0 */
- 440               	/* stack size = 0 */
- 441               	.L__stack_usage = 0
+ 434               		.loc 1 84 0
+ 435               		.cfi_startproc
+ 436               	.LVL55:
+ 437               	/* prologue: function */
+ 438               	/* frame size = 0 */
+ 439               	/* stack size = 0 */
+ 440               	.L__stack_usage = 0
   85:./tmk_core/common/util.c ****     bits = (bits & 0x0f)<<4 | (bits & 0xf0)>>4;
- 442               		.loc 1 85 0
- 443 0000 8295      		swap r24
- 444               	.LVL57:
+ 441               		.loc 1 85 0
+ 442 0000 8295      		swap r24
+ 443               	.LVL56:
   86:./tmk_core/common/util.c ****     bits = (bits & 0b00110011)<<2 | (bits & 0b11001100)>>2;
- 445               		.loc 1 86 0
- 446 0002 90E0      		ldi r25,0
- 447               	.LVL58:
- 448 0004 9C01      		movw r18,r24
- 449 0006 220F      		lsl r18
- 450 0008 331F      		rol r19
- 451 000a 220F      		lsl r18
- 452 000c 331F      		rol r19
- 453 000e 2C7C      		andi r18,lo8(-52)
- 454 0010 9595      		asr r25
- 455 0012 8795      		ror r24
- 456 0014 9595      		asr r25
- 457 0016 8795      		ror r24
- 458               	.LVL59:
- 459 0018 8373      		andi r24,lo8(51)
- 460 001a 282B      		or r18,r24
+ 444               		.loc 1 86 0
+ 445 0002 90E0      		ldi r25,0
+ 446               	.LVL57:
+ 447 0004 9C01      		movw r18,r24
+ 448 0006 220F      		lsl r18
+ 449 0008 331F      		rol r19
+ 450 000a 220F      		lsl r18
+ 451 000c 331F      		rol r19
+ 452 000e 2C7C      		andi r18,lo8(-52)
+ 453 0010 9595      		asr r25
+ 454 0012 8795      		ror r24
+ 455 0014 9595      		asr r25
+ 456 0016 8795      		ror r24
+ 457               	.LVL58:
+ 458 0018 8373      		andi r24,lo8(51)
+ 459 001a 282B      		or r18,r24
   87:./tmk_core/common/util.c ****     bits = (bits & 0b01010101)<<1 | (bits & 0b10101010)>>1;
- 461               		.loc 1 87 0
- 462 001c 30E0      		ldi r19,0
- 463               	.LVL60:
- 464 001e C901      		movw r24,r18
- 465 0020 880F      		lsl r24
- 466 0022 991F      		rol r25
- 467 0024 8A7A      		andi r24,lo8(-86)
- 468 0026 3595      		asr r19
- 469 0028 2795      		ror r18
- 470               	.LVL61:
- 471 002a 2575      		andi r18,lo8(85)
+ 460               		.loc 1 87 0
+ 461 001c 30E0      		ldi r19,0
+ 462               	.LVL59:
+ 463 001e C901      		movw r24,r18
+ 464 0020 880F      		lsl r24
+ 465 0022 991F      		rol r25
+ 466 0024 8A7A      		andi r24,lo8(-86)
+ 467 0026 3595      		asr r19
+ 468 0028 2795      		ror r18
+ 469               	.LVL60:
+ 470 002a 2575      		andi r18,lo8(85)
   88:./tmk_core/common/util.c ****     return bits;
   89:./tmk_core/common/util.c **** }
- 472               		.loc 1 89 0
- 473 002c 822B      		or r24,r18
+ 471               		.loc 1 89 0
+ 472 002c 822B      		or r24,r18
+ 473               	/* epilogue start */
  474 002e 0895      		ret
  475               		.cfi_endproc
  476               	.LFE6:
@@ -568,7 +568,7 @@
   92:./tmk_core/common/util.c **** {
  483               		.loc 1 92 0
  484               		.cfi_startproc
- 485               	.LVL62:
+ 485               	.LVL61:
  486 0000 CF93      		push r28
  487               	.LCFI8:
  488               		.cfi_def_cfa_offset 3
@@ -585,133 +585,126 @@
   93:./tmk_core/common/util.c ****     bits = bitrev(bits & 0x00ff)<<8 | bitrev((bits & 0xff00)>>8);
  499               		.loc 1 93 0
  500 0006 0E94 0000 		call bitrev
- 501               	.LVL63:
+ 501               	.LVL62:
  502 000a C82F      		mov r28,r24
  503 000c 8D2F      		mov r24,r29
  504 000e 0E94 0000 		call bitrev
- 505               	.LVL64:
- 506 0012 2C2F      		mov r18,r28
- 507 0014 30E0      		ldi r19,0
- 508 0016 322F      		mov r19,r18
- 509 0018 2227      		clr r18
+ 505               	.LVL63:
   94:./tmk_core/common/util.c ****     return bits;
   95:./tmk_core/common/util.c **** }
- 510               		.loc 1 95 0
- 511 001a A901      		movw r20,r18
- 512 001c 482B      		or r20,r24
- 513 001e CA01      		movw r24,r20
- 514               	.LVL65:
- 515               	/* epilogue start */
- 516 0020 DF91      		pop r29
- 517 0022 CF91      		pop r28
- 518 0024 0895      		ret
- 519               		.cfi_endproc
- 520               	.LFE7:
- 522               		.section	.text.bitrev32,"ax",@progbits
- 523               	.global	bitrev32
- 525               	bitrev32:
- 526               	.LFB8:
+ 506               		.loc 1 95 0
+ 507 0012 9C2F      		mov r25,r28
+ 508               	/* epilogue start */
+ 509 0014 DF91      		pop r29
+ 510 0016 CF91      		pop r28
+ 511               	.LVL64:
+ 512 0018 0895      		ret
+ 513               		.cfi_endproc
+ 514               	.LFE7:
+ 516               		.section	.text.bitrev32,"ax",@progbits
+ 517               	.global	bitrev32
+ 519               	bitrev32:
+ 520               	.LFB8:
   96:./tmk_core/common/util.c **** 
   97:./tmk_core/common/util.c **** uint32_t bitrev32(uint32_t bits)
   98:./tmk_core/common/util.c **** {
- 527               		.loc 1 98 0
- 528               		.cfi_startproc
- 529               	.LVL66:
- 530 0000 CF92      		push r12
- 531               	.LCFI10:
- 532               		.cfi_def_cfa_offset 3
- 533               		.cfi_offset 12, -2
- 534 0002 DF92      		push r13
- 535               	.LCFI11:
- 536               		.cfi_def_cfa_offset 4
- 537               		.cfi_offset 13, -3
- 538 0004 EF92      		push r14
- 539               	.LCFI12:
- 540               		.cfi_def_cfa_offset 5
- 541               		.cfi_offset 14, -4
- 542 0006 FF92      		push r15
- 543               	.LCFI13:
- 544               		.cfi_def_cfa_offset 6
- 545               		.cfi_offset 15, -5
- 546 0008 0F93      		push r16
- 547               	.LCFI14:
- 548               		.cfi_def_cfa_offset 7
- 549               		.cfi_offset 16, -6
- 550 000a 1F93      		push r17
- 551               	.LCFI15:
- 552               		.cfi_def_cfa_offset 8
- 553               		.cfi_offset 17, -7
- 554 000c CF93      		push r28
- 555               	.LCFI16:
- 556               		.cfi_def_cfa_offset 9
- 557               		.cfi_offset 28, -8
- 558 000e DF93      		push r29
- 559               	.LCFI17:
- 560               		.cfi_def_cfa_offset 10
- 561               		.cfi_offset 29, -9
- 562               	/* prologue: function */
- 563               	/* frame size = 0 */
- 564               	/* stack size = 8 */
- 565               	.L__stack_usage = 8
- 566 0010 6B01      		movw r12,r22
- 567 0012 7C01      		movw r14,r24
+ 521               		.loc 1 98 0
+ 522               		.cfi_startproc
+ 523               	.LVL65:
+ 524 0000 CF92      		push r12
+ 525               	.LCFI10:
+ 526               		.cfi_def_cfa_offset 3
+ 527               		.cfi_offset 12, -2
+ 528 0002 DF92      		push r13
+ 529               	.LCFI11:
+ 530               		.cfi_def_cfa_offset 4
+ 531               		.cfi_offset 13, -3
+ 532 0004 EF92      		push r14
+ 533               	.LCFI12:
+ 534               		.cfi_def_cfa_offset 5
+ 535               		.cfi_offset 14, -4
+ 536 0006 FF92      		push r15
+ 537               	.LCFI13:
+ 538               		.cfi_def_cfa_offset 6
+ 539               		.cfi_offset 15, -5
+ 540 0008 0F93      		push r16
+ 541               	.LCFI14:
+ 542               		.cfi_def_cfa_offset 7
+ 543               		.cfi_offset 16, -6
+ 544 000a 1F93      		push r17
+ 545               	.LCFI15:
+ 546               		.cfi_def_cfa_offset 8
+ 547               		.cfi_offset 17, -7
+ 548 000c CF93      		push r28
+ 549               	.LCFI16:
+ 550               		.cfi_def_cfa_offset 9
+ 551               		.cfi_offset 28, -8
+ 552 000e DF93      		push r29
+ 553               	.LCFI17:
+ 554               		.cfi_def_cfa_offset 10
+ 555               		.cfi_offset 29, -9
+ 556               	/* prologue: function */
+ 557               	/* frame size = 0 */
+ 558               	/* stack size = 8 */
+ 559               	.L__stack_usage = 8
+ 560 0010 7C01      		movw r14,r24
   99:./tmk_core/common/util.c ****     bits = (uint32_t)bitrev16(bits & 0x0000ffff)<<16 | bitrev16((bits & 0xffff0000)>>16);
- 568               		.loc 1 99 0
- 569 0014 CB01      		movw r24,r22
- 570 0016 0E94 0000 		call bitrev16
- 571               	.LVL67:
- 572 001a EC01      		movw r28,r24
- 573 001c C701      		movw r24,r14
- 574 001e 0E94 0000 		call bitrev16
- 575               	.LVL68:
- 576 0022 8C01      		movw r16,r24
- 577               	.LVL69:
- 578 0024 BE01      		movw r22,r28
- 579 0026 80E0      		ldi r24,0
- 580 0028 90E0      		ldi r25,0
- 581 002a CB01      		movw r24,r22
- 582 002c 7727      		clr r23
- 583 002e 6627      		clr r22
- 584 0030 20E0      		ldi r18,0
- 585 0032 30E0      		ldi r19,0
- 586 0034 602B      		or r22,r16
- 587 0036 712B      		or r23,r17
- 588 0038 822B      		or r24,r18
- 589 003a 932B      		or r25,r19
- 590               	/* epilogue start */
+ 561               		.loc 1 99 0
+ 562 0012 CB01      		movw r24,r22
+ 563 0014 0E94 0000 		call bitrev16
+ 564               	.LVL66:
+ 565 0018 EC01      		movw r28,r24
+ 566 001a C701      		movw r24,r14
+ 567 001c 0E94 0000 		call bitrev16
+ 568               	.LVL67:
+ 569 0020 8C01      		movw r16,r24
+ 570               	.LVL68:
+ 571 0022 BE01      		movw r22,r28
+ 572 0024 90E0      		ldi r25,0
+ 573 0026 80E0      		ldi r24,0
+ 574 0028 CB01      		movw r24,r22
+ 575 002a 7727      		clr r23
+ 576 002c 6627      		clr r22
+ 577 002e 30E0      		ldi r19,0
+ 578 0030 20E0      		ldi r18,0
+ 579 0032 602B      		or r22,r16
+ 580 0034 712B      		or r23,r17
+ 581 0036 822B      		or r24,r18
+ 582 0038 932B      		or r25,r19
+ 583               	/* epilogue start */
  100:./tmk_core/common/util.c ****     return bits;
  101:./tmk_core/common/util.c **** }
- 591               		.loc 1 101 0
- 592 003c DF91      		pop r29
- 593 003e CF91      		pop r28
- 594               	.LVL70:
- 595 0040 1F91      		pop r17
- 596 0042 0F91      		pop r16
- 597 0044 FF90      		pop r15
- 598 0046 EF90      		pop r14
- 599 0048 DF90      		pop r13
- 600 004a CF90      		pop r12
- 601 004c 0895      		ret
- 602               		.cfi_endproc
- 603               	.LFE8:
- 605               		.text
- 606               	.Letext0:
- 607               		.file 2 "/usr/avr/include/stdint.h"
+ 584               		.loc 1 101 0
+ 585 003a DF91      		pop r29
+ 586 003c CF91      		pop r28
+ 587               	.LVL69:
+ 588 003e 1F91      		pop r17
+ 589 0040 0F91      		pop r16
+ 590 0042 FF90      		pop r15
+ 591 0044 EF90      		pop r14
+ 592 0046 DF90      		pop r13
+ 593 0048 CF90      		pop r12
+ 594 004a 0895      		ret
+ 595               		.cfi_endproc
+ 596               	.LFE8:
+ 598               		.text
+ 599               	.Letext0:
+ 600               		.file 2 "/usr/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 util.c
-     /tmp/ccYCSgB6.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccYCSgB6.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccYCSgB6.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccYCSgB6.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccYCSgB6.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccYCSgB6.s:13     .text.bitpop:0000000000000000 bitpop
-     /tmp/ccYCSgB6.s:51     .text.bitpop16:0000000000000000 bitpop16
-     /tmp/ccYCSgB6.s:90     .text.bitpop32:0000000000000000 bitpop32
-     /tmp/ccYCSgB6.s:158    .text.biton:0000000000000000 biton
-     /tmp/ccYCSgB6.s:212    .text.biton16:0000000000000000 biton16
-     /tmp/ccYCSgB6.s:291    .text.biton32:0000000000000000 biton32
-     /tmp/ccYCSgB6.s:433    .text.bitrev:0000000000000000 bitrev
-     /tmp/ccYCSgB6.s:481    .text.bitrev16:0000000000000000 bitrev16
-     /tmp/ccYCSgB6.s:525    .text.bitrev32:0000000000000000 bitrev32
+     /tmp/ccsYv7py.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccsYv7py.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccsYv7py.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccsYv7py.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccsYv7py.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccsYv7py.s:13     .text.bitpop:0000000000000000 bitpop
+     /tmp/ccsYv7py.s:52     .text.bitpop16:0000000000000000 bitpop16
+     /tmp/ccsYv7py.s:93     .text.bitpop32:0000000000000000 bitpop32
+     /tmp/ccsYv7py.s:162    .text.biton:0000000000000000 biton
+     /tmp/ccsYv7py.s:215    .text.biton16:0000000000000000 biton16
+     /tmp/ccsYv7py.s:293    .text.biton32:0000000000000000 biton32
+     /tmp/ccsYv7py.s:432    .text.bitrev:0000000000000000 bitrev
+     /tmp/ccsYv7py.s:481    .text.bitrev16:0000000000000000 bitrev16
+     /tmp/ccsYv7py.s:519    .text.bitrev32:0000000000000000 bitrev32
 
 NO UNDEFINED SYMBOLS

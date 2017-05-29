@@ -287,13 +287,15 @@
   26 0006 81B3      		in r24,0x11
   27 0008 836F      		ori r24,lo8(-13)
   28 000a 81BB      		out 0x11,r24
-  29 000c 0895      		ret
-  30               		.cfi_endproc
-  31               	.LFE121:
-  33               		.section	.text.unselect_rows,"ax",@progbits
-  35               	unselect_rows:
-  36               	.LFB123:
+  29               	/* epilogue start */
  263:keyboards/split70/ez/matrix.c **** }
+  30               		.loc 1 263 0
+  31 000c 0895      		ret
+  32               		.cfi_endproc
+  33               	.LFE121:
+  35               		.section	.text.unselect_rows,"ax",@progbits
+  37               	unselect_rows:
+  38               	.LFB123:
  264:keyboards/split70/ez/matrix.c **** 
  265:keyboards/split70/ez/matrix.c **** static matrix_row_t read_cols(uint8_t row)
  266:keyboards/split70/ez/matrix.c **** {
@@ -330,366 +332,374 @@
  297:keyboards/split70/ez/matrix.c ****  * pin: B0  B1  B2  B3  D2  D3
  298:keyboards/split70/ez/matrix.c ****  *
  299:keyboards/split70/ez/matrix.c ****  * MCP23018
- 300:keyboards/split70/ez/matrix.c ****  * row: 0   1   2   3   4   5 
+ 300:keyboards/split70/ez/matrix.c ****  * row: 0   1   2   3   4   5
  301:keyboards/split70/ez/matrix.c ****  * pin: A0  A1  A2  A3  A4  A5
  302:keyboards/split70/ez/matrix.c ****  */
  303:keyboards/split70/ez/matrix.c **** static void unselect_rows(void)
  304:keyboards/split70/ez/matrix.c **** {
-  37               		.loc 1 304 0
-  38               		.cfi_startproc
-  39               	/* prologue: function */
-  40               	/* frame size = 0 */
-  41               	/* stack size = 0 */
-  42               	.L__stack_usage = 0
+  39               		.loc 1 304 0
+  40               		.cfi_startproc
+  41               	/* prologue: function */
+  42               	/* frame size = 0 */
+  43               	/* stack size = 0 */
+  44               	.L__stack_usage = 0
  305:keyboards/split70/ez/matrix.c ****     // unselect on mcp23018
  306:keyboards/split70/ez/matrix.c ****     if (mcp23018_status) { // if there was an error
-  43               		.loc 1 306 0
-  44 0000 8091 0000 		lds r24,mcp23018_status
-  45 0004 8111      		cpse r24,__zero_reg__
-  46 0006 00C0      		rjmp .L3
+  45               		.loc 1 306 0
+  46 0000 8091 0000 		lds r24,mcp23018_status
+  47 0004 8111      		cpse r24,__zero_reg__
+  48 0006 00C0      		rjmp .L3
  307:keyboards/split70/ez/matrix.c ****         // do nothing
  308:keyboards/split70/ez/matrix.c ****     } else {
  309:keyboards/split70/ez/matrix.c ****         // set all rows hi-Z : 1
  310:keyboards/split70/ez/matrix.c ****         mcp23018_status = i2c_start(I2C_ADDR_WRITE);    if (mcp23018_status) goto out;
-  47               		.loc 1 310 0
-  48 0008 80E4      		ldi r24,lo8(64)
-  49 000a 0E94 0000 		call i2c_start
-  50               	.LVL0:
-  51 000e 8093 0000 		sts mcp23018_status,r24
-  52 0012 8111      		cpse r24,__zero_reg__
-  53 0014 00C0      		rjmp .L5
+  49               		.loc 1 310 0
+  50 0008 80E4      		ldi r24,lo8(64)
+  51 000a 0E94 0000 		call i2c_start
+  52               	.LVL0:
+  53 000e 8093 0000 		sts mcp23018_status,r24
+  54 0012 8111      		cpse r24,__zero_reg__
+  55 0014 00C0      		rjmp .L5
  311:keyboards/split70/ez/matrix.c ****         mcp23018_status = i2c_write(GPIOA);             if (mcp23018_status) goto out;
-  54               		.loc 1 311 0
-  55 0016 82E1      		ldi r24,lo8(18)
-  56 0018 0E94 0000 		call i2c_write
-  57               	.LVL1:
-  58 001c 8093 0000 		sts mcp23018_status,r24
-  59 0020 8111      		cpse r24,__zero_reg__
-  60 0022 00C0      		rjmp .L5
+  56               		.loc 1 311 0
+  57 0016 82E1      		ldi r24,lo8(18)
+  58 0018 0E94 0000 		call i2c_write
+  59               	.LVL1:
+  60 001c 8093 0000 		sts mcp23018_status,r24
+  61 0020 8111      		cpse r24,__zero_reg__
+  62 0022 00C0      		rjmp .L5
  312:keyboards/split70/ez/matrix.c ****         mcp23018_status = i2c_write( 0xFF
-  61               		.loc 1 312 0
-  62 0024 8FEF      		ldi r24,lo8(-1)
-  63 0026 0E94 0000 		call i2c_write
-  64               	.LVL2:
-  65 002a 8093 0000 		sts mcp23018_status,r24
-  66               	.L5:
+  63               		.loc 1 312 0
+  64 0024 8FEF      		ldi r24,lo8(-1)
+  65 0026 0E94 0000 		call i2c_write
+  66               	.LVL2:
+  67 002a 8093 0000 		sts mcp23018_status,r24
+  68               	.L5:
  313:keyboards/split70/ez/matrix.c ****                               & ~(0<<7)
  314:keyboards/split70/ez/matrix.c ****                           );                            if (mcp23018_status) goto out;
  315:keyboards/split70/ez/matrix.c ****     out:
  316:keyboards/split70/ez/matrix.c ****         i2c_stop();
-  67               		.loc 1 316 0
-  68 002e 0E94 0000 		call i2c_stop
-  69               	.LVL3:
-  70               	.L3:
+  69               		.loc 1 316 0
+  70 002e 0E94 0000 		call i2c_stop
+  71               	.LVL3:
+  72               	.L3:
  317:keyboards/split70/ez/matrix.c ****     }
  318:keyboards/split70/ez/matrix.c **** 
  319:keyboards/split70/ez/matrix.c ****     // unselect on teensy
  320:keyboards/split70/ez/matrix.c ****     // Hi-Z(DDR:0, PORT:0) to unselect
  321:keyboards/split70/ez/matrix.c ****     DDRB  &= ~0x0F;
-  71               		.loc 1 321 0
-  72 0032 84B1      		in r24,0x4
-  73 0034 807F      		andi r24,lo8(-16)
-  74 0036 84B9      		out 0x4,r24
+  73               		.loc 1 321 0
+  74 0032 84B1      		in r24,0x4
+  75 0034 807F      		andi r24,lo8(-16)
+  76 0036 84B9      		out 0x4,r24
  322:keyboards/split70/ez/matrix.c ****     PORTB &= ~0x0F;
-  75               		.loc 1 322 0
-  76 0038 85B1      		in r24,0x5
-  77 003a 807F      		andi r24,lo8(-16)
-  78 003c 85B9      		out 0x5,r24
+  77               		.loc 1 322 0
+  78 0038 85B1      		in r24,0x5
+  79 003a 807F      		andi r24,lo8(-16)
+  80 003c 85B9      		out 0x5,r24
  323:keyboards/split70/ez/matrix.c ****     DDRD  &= ~0x0C;
-  79               		.loc 1 323 0
-  80 003e 8AB1      		in r24,0xa
-  81 0040 837F      		andi r24,lo8(-13)
-  82 0042 8AB9      		out 0xa,r24
+  81               		.loc 1 323 0
+  82 003e 8AB1      		in r24,0xa
+  83 0040 837F      		andi r24,lo8(-13)
+  84 0042 8AB9      		out 0xa,r24
  324:keyboards/split70/ez/matrix.c ****     PORTD &= ~0x0C;
-  83               		.loc 1 324 0
-  84 0044 8BB1      		in r24,0xb
-  85 0046 837F      		andi r24,lo8(-13)
-  86 0048 8BB9      		out 0xb,r24
-  87 004a 0895      		ret
-  88               		.cfi_endproc
-  89               	.LFE123:
-  91               		.section	.text.matrix_scan_user,"ax",@progbits
-  92               		.weak	matrix_scan_user
-  94               	matrix_scan_user:
-  95               	.LFB108:
-  79:keyboards/split70/ez/matrix.c **** 
-  96               		.loc 1 79 0
-  97               		.cfi_startproc
-  98               	/* prologue: function */
-  99               	/* frame size = 0 */
- 100               	/* stack size = 0 */
- 101               	.L__stack_usage = 0
- 102 0000 0895      		ret
- 103               		.cfi_endproc
- 104               	.LFE108:
- 106               		.set	matrix_scan_user.localalias.0,matrix_scan_user
- 107               		.section	.text.matrix_init_user,"ax",@progbits
- 108               		.weak	matrix_init_user
- 110               	matrix_init_user:
- 111               	.LFB126:
- 112               		.cfi_startproc
- 113               	/* prologue: function */
- 114               	/* frame size = 0 */
- 115               	/* stack size = 0 */
- 116               	.L__stack_usage = 0
- 117 0000 0C94 0000 		jmp matrix_scan_user.localalias.0
- 118               		.cfi_endproc
- 119               	.LFE126:
- 121               		.section	.text.matrix_init_kb,"ax",@progbits
- 122               		.weak	matrix_init_kb
- 124               	matrix_init_kb:
- 125               	.LFB109:
-  82:keyboards/split70/ez/matrix.c ****   matrix_init_user();
- 126               		.loc 1 82 0
- 127               		.cfi_startproc
- 128               	/* prologue: function */
- 129               	/* frame size = 0 */
- 130               	/* stack size = 0 */
- 131               	.L__stack_usage = 0
-  83:keyboards/split70/ez/matrix.c **** }
- 132               		.loc 1 83 0
- 133 0000 0C94 0000 		jmp matrix_init_user
- 134               	.LVL4:
- 135               		.cfi_endproc
- 136               	.LFE109:
- 138               		.section	.text.matrix_scan_kb,"ax",@progbits
- 139               		.weak	matrix_scan_kb
- 141               	matrix_scan_kb:
- 142               	.LFB110:
-  87:keyboards/split70/ez/matrix.c ****   matrix_scan_user();
- 143               		.loc 1 87 0
- 144               		.cfi_startproc
- 145               	/* prologue: function */
- 146               	/* frame size = 0 */
- 147               	/* stack size = 0 */
- 148               	.L__stack_usage = 0
-  88:keyboards/split70/ez/matrix.c **** }
- 149               		.loc 1 88 0
- 150 0000 0C94 0000 		jmp matrix_scan_user
- 151               	.LVL5:
- 152               		.cfi_endproc
- 153               	.LFE110:
- 155               		.section	.text.matrix_rows,"ax",@progbits
- 156               	.global	matrix_rows
- 158               	matrix_rows:
- 159               	.LFB111:
-  93:keyboards/split70/ez/matrix.c ****     return MATRIX_ROWS;
- 160               		.loc 1 93 0
- 161               		.cfi_startproc
- 162               	/* prologue: function */
- 163               	/* frame size = 0 */
- 164               	/* stack size = 0 */
- 165               	.L__stack_usage = 0
-  95:keyboards/split70/ez/matrix.c **** 
- 166               		.loc 1 95 0
- 167 0000 8CE0      		ldi r24,lo8(12)
- 168 0002 0895      		ret
- 169               		.cfi_endproc
- 170               	.LFE111:
- 172               		.section	.text.matrix_cols,"ax",@progbits
- 173               	.global	matrix_cols
- 175               	matrix_cols:
- 176               	.LFB112:
-  99:keyboards/split70/ez/matrix.c ****     return MATRIX_COLS;
- 177               		.loc 1 99 0
- 178               		.cfi_startproc
- 179               	/* prologue: function */
- 180               	/* frame size = 0 */
- 181               	/* stack size = 0 */
- 182               	.L__stack_usage = 0
- 101:keyboards/split70/ez/matrix.c **** 
- 183               		.loc 1 101 0
- 184 0000 86E0      		ldi r24,lo8(6)
- 185 0002 0895      		ret
- 186               		.cfi_endproc
- 187               	.LFE112:
- 189               		.section	.text.matrix_init,"ax",@progbits
- 190               	.global	matrix_init
- 192               	matrix_init:
- 193               	.LFB113:
- 104:keyboards/split70/ez/matrix.c ****     // initialize row and col
- 194               		.loc 1 104 0
- 195               		.cfi_startproc
- 196               	/* prologue: function */
- 197               	/* frame size = 0 */
- 198               	/* stack size = 0 */
- 199               	.L__stack_usage = 0
- 107:keyboards/split70/ez/matrix.c **** 
- 200               		.loc 1 107 0
- 201 0000 0E94 0000 		call init_mcp23018
- 202               	.LVL6:
- 203 0004 8093 0000 		sts mcp23018_status,r24
- 110:keyboards/split70/ez/matrix.c ****     init_cols();
- 204               		.loc 1 110 0
- 205 0008 0E94 0000 		call unselect_rows
- 206               	.LVL7:
- 111:keyboards/split70/ez/matrix.c **** 
- 207               		.loc 1 111 0
- 208 000c 0E94 0000 		call init_cols
- 209               	.LVL8:
- 210 0010 E0E0      		ldi r30,lo8(matrix)
- 211 0012 F0E0      		ldi r31,hi8(matrix)
- 212 0014 A0E0      		ldi r26,lo8(matrix_debouncing)
- 213 0016 B0E0      		ldi r27,hi8(matrix_debouncing)
- 214               	.LVL9:
- 215               	.L14:
- 216               	.LBB9:
- 115:keyboards/split70/ez/matrix.c ****         matrix_debouncing[i] = 0;
- 217               		.loc 1 115 0 discriminator 3
- 218 0018 1192      		st Z+,__zero_reg__
- 219               	.LVL10:
- 116:keyboards/split70/ez/matrix.c ****     }
- 220               		.loc 1 116 0 discriminator 3
- 221 001a 1D92      		st X+,__zero_reg__
- 222               	.LVL11:
- 114:keyboards/split70/ez/matrix.c ****         matrix[i] = 0;
- 223               		.loc 1 114 0 discriminator 3
- 224 001c 80E0      		ldi r24,hi8(matrix+12)
- 225 001e E030      		cpi r30,lo8(matrix+12)
- 226 0020 F807      		cpc r31,r24
- 227 0022 01F4      		brne .L14
- 228               	.LBE9:
- 124:keyboards/split70/ez/matrix.c **** 
- 229               		.loc 1 124 0
- 230 0024 0C94 0000 		jmp matrix_init_quantum
- 231               	.LVL12:
- 232               		.cfi_endproc
- 233               	.LFE113:
- 235               		.section	.text.matrix_power_up,"ax",@progbits
- 236               	.global	matrix_power_up
- 238               	matrix_power_up:
- 239               	.LFB114:
- 128:keyboards/split70/ez/matrix.c ****     mcp23018_status = init_mcp23018();
- 240               		.loc 1 128 0
- 241               		.cfi_startproc
- 242               	/* prologue: function */
- 243               	/* frame size = 0 */
- 244               	/* stack size = 0 */
- 245               	.L__stack_usage = 0
- 129:keyboards/split70/ez/matrix.c **** 
- 246               		.loc 1 129 0
- 247 0000 0E94 0000 		call init_mcp23018
- 248               	.LVL13:
- 249 0004 8093 0000 		sts mcp23018_status,r24
- 131:keyboards/split70/ez/matrix.c ****     init_cols();
- 250               		.loc 1 131 0
- 251 0008 0E94 0000 		call unselect_rows
- 252               	.LVL14:
- 132:keyboards/split70/ez/matrix.c **** 
- 253               		.loc 1 132 0
- 254 000c 0E94 0000 		call init_cols
- 255               	.LVL15:
- 256 0010 E0E0      		ldi r30,lo8(matrix)
- 257 0012 F0E0      		ldi r31,hi8(matrix)
- 258 0014 A0E0      		ldi r26,lo8(matrix_debouncing)
- 259 0016 B0E0      		ldi r27,hi8(matrix_debouncing)
- 260               	.LVL16:
- 261               	.L17:
- 262               	.LBB10:
- 136:keyboards/split70/ez/matrix.c ****         matrix_debouncing[i] = 0;
- 263               		.loc 1 136 0 discriminator 3
- 264 0018 1192      		st Z+,__zero_reg__
- 265               	.LVL17:
- 137:keyboards/split70/ez/matrix.c ****     }
- 266               		.loc 1 137 0 discriminator 3
- 267 001a 1D92      		st X+,__zero_reg__
- 268               	.LVL18:
- 135:keyboards/split70/ez/matrix.c ****         matrix[i] = 0;
- 269               		.loc 1 135 0 discriminator 3
- 270 001c 80E0      		ldi r24,hi8(matrix+12)
- 271 001e E030      		cpi r30,lo8(matrix+12)
- 272 0020 F807      		cpc r31,r24
- 273 0022 01F4      		brne .L17
- 274               	/* epilogue start */
- 275               	.LBE10:
- 145:keyboards/split70/ez/matrix.c **** 
- 276               		.loc 1 145 0
- 277 0024 0895      		ret
- 278               		.cfi_endproc
- 279               	.LFE114:
- 281               		.section	.text.matrix_scan,"ax",@progbits
- 282               	.global	matrix_scan
- 284               	matrix_scan:
- 285               	.LFB115:
- 148:keyboards/split70/ez/matrix.c ****     if (mcp23018_status) { // if there was an error
- 286               		.loc 1 148 0
- 287               		.cfi_startproc
- 288 0000 AF92      		push r10
- 289               	.LCFI0:
- 290               		.cfi_def_cfa_offset 3
- 291               		.cfi_offset 10, -2
- 292 0002 BF92      		push r11
- 293               	.LCFI1:
- 294               		.cfi_def_cfa_offset 4
- 295               		.cfi_offset 11, -3
- 296 0004 CF92      		push r12
- 297               	.LCFI2:
- 298               		.cfi_def_cfa_offset 5
- 299               		.cfi_offset 12, -4
- 300 0006 DF92      		push r13
- 301               	.LCFI3:
- 302               		.cfi_def_cfa_offset 6
- 303               		.cfi_offset 13, -5
- 304 0008 EF92      		push r14
- 305               	.LCFI4:
- 306               		.cfi_def_cfa_offset 7
- 307               		.cfi_offset 14, -6
- 308 000a FF92      		push r15
- 309               	.LCFI5:
- 310               		.cfi_def_cfa_offset 8
- 311               		.cfi_offset 15, -7
- 312 000c 0F93      		push r16
- 313               	.LCFI6:
- 314               		.cfi_def_cfa_offset 9
- 315               		.cfi_offset 16, -8
- 316 000e 1F93      		push r17
- 317               	.LCFI7:
- 318               		.cfi_def_cfa_offset 10
- 319               		.cfi_offset 17, -9
- 320 0010 CF93      		push r28
- 321               	.LCFI8:
- 322               		.cfi_def_cfa_offset 11
- 323               		.cfi_offset 28, -10
- 324 0012 DF93      		push r29
- 325               	.LCFI9:
- 326               		.cfi_def_cfa_offset 12
- 327               		.cfi_offset 29, -11
- 328               	/* prologue: function */
- 329               	/* frame size = 0 */
- 330               	/* stack size = 10 */
- 331               	.L__stack_usage = 10
- 149:keyboards/split70/ez/matrix.c ****         if (++mcp23018_reset_loop == 0) {
- 332               		.loc 1 149 0
- 333 0014 8091 0000 		lds r24,mcp23018_status
- 334 0018 8823      		tst r24
- 335 001a 01F0      		breq .L21
- 150:keyboards/split70/ez/matrix.c ****             // since mcp23018_reset_loop is 8 bit - we'll try to reset once in 255 matrix scans
- 336               		.loc 1 150 0
- 337 001c 8091 0000 		lds r24,mcp23018_reset_loop
- 338 0020 8F5F      		subi r24,lo8(-(1))
- 339 0022 8093 0000 		sts mcp23018_reset_loop,r24
- 340 0026 8111      		cpse r24,__zero_reg__
- 341 0028 00C0      		rjmp .L21
- 154:keyboards/split70/ez/matrix.c ****             if (mcp23018_status) {
- 342               		.loc 1 154 0
- 343 002a 0E94 0000 		call init_mcp23018
- 344               	.LVL19:
- 345 002e 8093 0000 		sts mcp23018_status,r24
- 346               	.L21:
- 347 0032 80E0      		ldi r24,lo8(matrix_debouncing)
- 348 0034 C82E      		mov r12,r24
- 349 0036 80E0      		ldi r24,hi8(matrix_debouncing)
- 350 0038 D82E      		mov r13,r24
- 148:keyboards/split70/ez/matrix.c ****     if (mcp23018_status) { // if there was an error
- 351               		.loc 1 148 0
- 352 003a 7601      		movw r14,r12
- 353 003c 00E0      		ldi r16,0
- 354 003e 10E0      		ldi r17,0
- 355               	.LBB23:
- 356               	.LBB24:
- 357               	.LBB25:
- 358               	.LBB26:
+  85               		.loc 1 324 0
+  86 0044 8BB1      		in r24,0xb
+  87 0046 837F      		andi r24,lo8(-13)
+  88 0048 8BB9      		out 0xb,r24
+  89               	/* epilogue start */
  325:keyboards/split70/ez/matrix.c **** }
+  90               		.loc 1 325 0
+  91 004a 0895      		ret
+  92               		.cfi_endproc
+  93               	.LFE123:
+  95               		.section	.text.matrix_init_user,"ax",@progbits
+  96               		.weak	matrix_init_user
+  98               	matrix_init_user:
+  99               	.LFB107:
+  76:keyboards/split70/ez/matrix.c **** 
+ 100               		.loc 1 76 0
+ 101               		.cfi_startproc
+ 102               	/* prologue: function */
+ 103               	/* frame size = 0 */
+ 104               	/* stack size = 0 */
+ 105               	.L__stack_usage = 0
+ 106               	/* epilogue start */
+  76:keyboards/split70/ez/matrix.c **** 
+ 107               		.loc 1 76 0
+ 108 0000 0895      		ret
+ 109               		.cfi_endproc
+ 110               	.LFE107:
+ 112               		.set	matrix_init_user.localalias.0,matrix_init_user
+ 113               		.section	.text.matrix_scan_user,"ax",@progbits
+ 114               		.weak	matrix_scan_user
+ 116               	matrix_scan_user:
+ 117               	.LFB126:
+ 118               		.cfi_startproc
+ 119               	/* prologue: function */
+ 120               	/* frame size = 0 */
+ 121               	/* stack size = 0 */
+ 122               	.L__stack_usage = 0
+ 123               	/* epilogue start */
+ 124 0000 0895      		ret
+ 125               		.cfi_endproc
+ 126               	.LFE126:
+ 128               		.section	.text.matrix_init_kb,"ax",@progbits
+ 129               		.weak	matrix_init_kb
+ 131               	matrix_init_kb:
+ 132               	.LFB109:
+  82:keyboards/split70/ez/matrix.c ****   matrix_init_user();
+ 133               		.loc 1 82 0
+ 134               		.cfi_startproc
+ 135               	/* prologue: function */
+ 136               	/* frame size = 0 */
+ 137               	/* stack size = 0 */
+ 138               	.L__stack_usage = 0
+  83:keyboards/split70/ez/matrix.c **** }
+ 139               		.loc 1 83 0
+ 140 0000 0C94 0000 		jmp matrix_init_user
+ 141               	.LVL4:
+ 142               		.cfi_endproc
+ 143               	.LFE109:
+ 145               		.section	.text.matrix_scan_kb,"ax",@progbits
+ 146               		.weak	matrix_scan_kb
+ 148               	matrix_scan_kb:
+ 149               	.LFB110:
+  87:keyboards/split70/ez/matrix.c ****   matrix_scan_user();
+ 150               		.loc 1 87 0
+ 151               		.cfi_startproc
+ 152               	/* prologue: function */
+ 153               	/* frame size = 0 */
+ 154               	/* stack size = 0 */
+ 155               	.L__stack_usage = 0
+  88:keyboards/split70/ez/matrix.c **** }
+ 156               		.loc 1 88 0
+ 157 0000 0C94 0000 		jmp matrix_scan_user
+ 158               	.LVL5:
+ 159               		.cfi_endproc
+ 160               	.LFE110:
+ 162               		.section	.text.matrix_rows,"ax",@progbits
+ 163               	.global	matrix_rows
+ 165               	matrix_rows:
+ 166               	.LFB111:
+  93:keyboards/split70/ez/matrix.c ****     return MATRIX_ROWS;
+ 167               		.loc 1 93 0
+ 168               		.cfi_startproc
+ 169               	/* prologue: function */
+ 170               	/* frame size = 0 */
+ 171               	/* stack size = 0 */
+ 172               	.L__stack_usage = 0
+  95:keyboards/split70/ez/matrix.c **** 
+ 173               		.loc 1 95 0
+ 174 0000 8CE0      		ldi r24,lo8(12)
+ 175               	/* epilogue start */
+ 176 0002 0895      		ret
+ 177               		.cfi_endproc
+ 178               	.LFE111:
+ 180               		.section	.text.matrix_cols,"ax",@progbits
+ 181               	.global	matrix_cols
+ 183               	matrix_cols:
+ 184               	.LFB112:
+  99:keyboards/split70/ez/matrix.c ****     return MATRIX_COLS;
+ 185               		.loc 1 99 0
+ 186               		.cfi_startproc
+ 187               	/* prologue: function */
+ 188               	/* frame size = 0 */
+ 189               	/* stack size = 0 */
+ 190               	.L__stack_usage = 0
+ 101:keyboards/split70/ez/matrix.c **** 
+ 191               		.loc 1 101 0
+ 192 0000 86E0      		ldi r24,lo8(6)
+ 193               	/* epilogue start */
+ 194 0002 0895      		ret
+ 195               		.cfi_endproc
+ 196               	.LFE112:
+ 198               		.section	.text.matrix_init,"ax",@progbits
+ 199               	.global	matrix_init
+ 201               	matrix_init:
+ 202               	.LFB113:
+ 104:keyboards/split70/ez/matrix.c ****     // initialize row and col
+ 203               		.loc 1 104 0
+ 204               		.cfi_startproc
+ 205               	/* prologue: function */
+ 206               	/* frame size = 0 */
+ 207               	/* stack size = 0 */
+ 208               	.L__stack_usage = 0
+ 107:keyboards/split70/ez/matrix.c **** 
+ 209               		.loc 1 107 0
+ 210 0000 0E94 0000 		call init_mcp23018
+ 211               	.LVL6:
+ 212 0004 8093 0000 		sts mcp23018_status,r24
+ 110:keyboards/split70/ez/matrix.c ****     init_cols();
+ 213               		.loc 1 110 0
+ 214 0008 0E94 0000 		call unselect_rows
+ 215               	.LVL7:
+ 111:keyboards/split70/ez/matrix.c **** 
+ 216               		.loc 1 111 0
+ 217 000c 0E94 0000 		call init_cols
+ 218               	.LVL8:
+ 219 0010 E0E0      		ldi r30,lo8(matrix)
+ 220 0012 F0E0      		ldi r31,hi8(matrix)
+ 221 0014 A0E0      		ldi r26,lo8(matrix_debouncing)
+ 222 0016 B0E0      		ldi r27,hi8(matrix_debouncing)
+ 223               	.LVL9:
+ 224               	.L14:
+ 225               	.LBB9:
+ 115:keyboards/split70/ez/matrix.c ****         matrix_debouncing[i] = 0;
+ 226               		.loc 1 115 0 discriminator 3
+ 227 0018 1192      		st Z+,__zero_reg__
+ 228               	.LVL10:
+ 116:keyboards/split70/ez/matrix.c ****     }
+ 229               		.loc 1 116 0 discriminator 3
+ 230 001a 1D92      		st X+,__zero_reg__
+ 231               	.LVL11:
+ 114:keyboards/split70/ez/matrix.c ****         matrix[i] = 0;
+ 232               		.loc 1 114 0 discriminator 3
+ 233 001c 80E0      		ldi r24,hi8(matrix+12)
+ 234 001e E030      		cpi r30,lo8(matrix+12)
+ 235 0020 F807      		cpc r31,r24
+ 236 0022 01F4      		brne .L14
+ 237               	.LBE9:
+ 124:keyboards/split70/ez/matrix.c **** 
+ 238               		.loc 1 124 0
+ 239 0024 0C94 0000 		jmp matrix_init_quantum
+ 240               	.LVL12:
+ 241               		.cfi_endproc
+ 242               	.LFE113:
+ 244               		.section	.text.matrix_power_up,"ax",@progbits
+ 245               	.global	matrix_power_up
+ 247               	matrix_power_up:
+ 248               	.LFB114:
+ 128:keyboards/split70/ez/matrix.c ****     mcp23018_status = init_mcp23018();
+ 249               		.loc 1 128 0
+ 250               		.cfi_startproc
+ 251               	/* prologue: function */
+ 252               	/* frame size = 0 */
+ 253               	/* stack size = 0 */
+ 254               	.L__stack_usage = 0
+ 129:keyboards/split70/ez/matrix.c **** 
+ 255               		.loc 1 129 0
+ 256 0000 0E94 0000 		call init_mcp23018
+ 257               	.LVL13:
+ 258 0004 8093 0000 		sts mcp23018_status,r24
+ 131:keyboards/split70/ez/matrix.c ****     init_cols();
+ 259               		.loc 1 131 0
+ 260 0008 0E94 0000 		call unselect_rows
+ 261               	.LVL14:
+ 132:keyboards/split70/ez/matrix.c **** 
+ 262               		.loc 1 132 0
+ 263 000c 0E94 0000 		call init_cols
+ 264               	.LVL15:
+ 265 0010 E0E0      		ldi r30,lo8(matrix)
+ 266 0012 F0E0      		ldi r31,hi8(matrix)
+ 267 0014 A0E0      		ldi r26,lo8(matrix_debouncing)
+ 268 0016 B0E0      		ldi r27,hi8(matrix_debouncing)
+ 269               	.LVL16:
+ 270               	.L17:
+ 271               	.LBB10:
+ 136:keyboards/split70/ez/matrix.c ****         matrix_debouncing[i] = 0;
+ 272               		.loc 1 136 0 discriminator 3
+ 273 0018 1192      		st Z+,__zero_reg__
+ 274               	.LVL17:
+ 137:keyboards/split70/ez/matrix.c ****     }
+ 275               		.loc 1 137 0 discriminator 3
+ 276 001a 1D92      		st X+,__zero_reg__
+ 277               	.LVL18:
+ 135:keyboards/split70/ez/matrix.c ****         matrix[i] = 0;
+ 278               		.loc 1 135 0 discriminator 3
+ 279 001c 80E0      		ldi r24,hi8(matrix+12)
+ 280 001e E030      		cpi r30,lo8(matrix+12)
+ 281 0020 F807      		cpc r31,r24
+ 282 0022 01F4      		brne .L17
+ 283               	/* epilogue start */
+ 284               	.LBE10:
+ 145:keyboards/split70/ez/matrix.c **** 
+ 285               		.loc 1 145 0
+ 286 0024 0895      		ret
+ 287               		.cfi_endproc
+ 288               	.LFE114:
+ 290               		.section	.text.matrix_scan,"ax",@progbits
+ 291               	.global	matrix_scan
+ 293               	matrix_scan:
+ 294               	.LFB115:
+ 148:keyboards/split70/ez/matrix.c ****     if (mcp23018_status) { // if there was an error
+ 295               		.loc 1 148 0
+ 296               		.cfi_startproc
+ 297 0000 AF92      		push r10
+ 298               	.LCFI0:
+ 299               		.cfi_def_cfa_offset 3
+ 300               		.cfi_offset 10, -2
+ 301 0002 BF92      		push r11
+ 302               	.LCFI1:
+ 303               		.cfi_def_cfa_offset 4
+ 304               		.cfi_offset 11, -3
+ 305 0004 CF92      		push r12
+ 306               	.LCFI2:
+ 307               		.cfi_def_cfa_offset 5
+ 308               		.cfi_offset 12, -4
+ 309 0006 DF92      		push r13
+ 310               	.LCFI3:
+ 311               		.cfi_def_cfa_offset 6
+ 312               		.cfi_offset 13, -5
+ 313 0008 EF92      		push r14
+ 314               	.LCFI4:
+ 315               		.cfi_def_cfa_offset 7
+ 316               		.cfi_offset 14, -6
+ 317 000a FF92      		push r15
+ 318               	.LCFI5:
+ 319               		.cfi_def_cfa_offset 8
+ 320               		.cfi_offset 15, -7
+ 321 000c 0F93      		push r16
+ 322               	.LCFI6:
+ 323               		.cfi_def_cfa_offset 9
+ 324               		.cfi_offset 16, -8
+ 325 000e 1F93      		push r17
+ 326               	.LCFI7:
+ 327               		.cfi_def_cfa_offset 10
+ 328               		.cfi_offset 17, -9
+ 329 0010 CF93      		push r28
+ 330               	.LCFI8:
+ 331               		.cfi_def_cfa_offset 11
+ 332               		.cfi_offset 28, -10
+ 333 0012 DF93      		push r29
+ 334               	.LCFI9:
+ 335               		.cfi_def_cfa_offset 12
+ 336               		.cfi_offset 29, -11
+ 337               	/* prologue: function */
+ 338               	/* frame size = 0 */
+ 339               	/* stack size = 10 */
+ 340               	.L__stack_usage = 10
+ 149:keyboards/split70/ez/matrix.c ****         if (++mcp23018_reset_loop == 0) {
+ 341               		.loc 1 149 0
+ 342 0014 8091 0000 		lds r24,mcp23018_status
+ 343 0018 8823      		tst r24
+ 344 001a 01F0      		breq .L21
+ 150:keyboards/split70/ez/matrix.c ****             // since mcp23018_reset_loop is 8 bit - we'll try to reset once in 255 matrix scans
+ 345               		.loc 1 150 0
+ 346 001c 8091 0000 		lds r24,mcp23018_reset_loop
+ 347 0020 8F5F      		subi r24,lo8(-(1))
+ 348 0022 8093 0000 		sts mcp23018_reset_loop,r24
+ 349 0026 8111      		cpse r24,__zero_reg__
+ 350 0028 00C0      		rjmp .L21
+ 154:keyboards/split70/ez/matrix.c ****             if (mcp23018_status) {
+ 351               		.loc 1 154 0
+ 352 002a 0E94 0000 		call init_mcp23018
+ 353               	.LVL19:
+ 354 002e 8093 0000 		sts mcp23018_status,r24
+ 355               	.L21:
+ 356 0032 80E0      		ldi r24,lo8(matrix_debouncing)
+ 357 0034 E82E      		mov r14,r24
+ 358 0036 80E0      		ldi r24,hi8(matrix_debouncing)
+ 359 0038 F82E      		mov r15,r24
+ 148:keyboards/split70/ez/matrix.c ****     if (mcp23018_status) { // if there was an error
+ 360               		.loc 1 148 0
+ 361 003a 6701      		movw r12,r14
+ 362 003c 10E0      		ldi r17,0
+ 363 003e 00E0      		ldi r16,0
+ 364               	.LBB23:
+ 365               	.LBB24:
+ 366               	.LBB25:
+ 367               	.LBB26:
  326:keyboards/split70/ez/matrix.c **** 
  327:keyboards/split70/ez/matrix.c **** static void select_row(uint8_t row)
  328:keyboards/split70/ez/matrix.c **** {
@@ -703,73 +713,73 @@
  336:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_start(I2C_ADDR_WRITE);        if (mcp23018_status) goto out;
  337:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_write(GPIOA);                 if (mcp23018_status) goto out;
  338:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_write( 0xFF & ~(1<<row)
- 359               		.loc 1 338 0
- 360 0040 AA24      		clr r10
- 361 0042 A394      		inc r10
- 362 0044 B12C      		mov r11,__zero_reg__
- 363               	.LBE26:
- 364               	.LBE25:
+ 368               		.loc 1 338 0
+ 369 0040 AA24      		clr r10
+ 370 0042 A394      		inc r10
+ 371 0044 B12C      		mov r11,__zero_reg__
+ 372               	.LBE26:
+ 373               	.LBE25:
  186:keyboards/split70/ez/matrix.c ****         }
- 365               		.loc 1 186 0
- 366 0046 D5E0      		ldi r29,lo8(5)
- 367               	.L46:
- 368 0048 C02F      		mov r28,r16
- 369               	.LVL20:
- 370               	.LBB29:
- 371               	.LBB27:
+ 374               		.loc 1 186 0
+ 375 0046 D5E0      		ldi r29,lo8(5)
+ 376               	.L46:
+ 377 0048 C02F      		mov r28,r16
+ 378               	.LVL20:
+ 379               	.LBB29:
+ 380               	.LBB27:
  329:keyboards/split70/ez/matrix.c ****         // select on mcp23018
- 372               		.loc 1 329 0
- 373 004a 0630      		cpi r16,lo8(6)
- 374 004c 00F0      		brlo .+2
- 375 004e 00C0      		rjmp .L23
+ 381               		.loc 1 329 0
+ 382 004a 0630      		cpi r16,lo8(6)
+ 383 004c 00F0      		brlo .+2
+ 384 004e 00C0      		rjmp .L23
  331:keyboards/split70/ez/matrix.c ****             // do nothing
- 376               		.loc 1 331 0
- 377 0050 8091 0000 		lds r24,mcp23018_status
- 378 0054 8111      		cpse r24,__zero_reg__
- 379 0056 00C0      		rjmp .L24
+ 385               		.loc 1 331 0
+ 386 0050 8091 0000 		lds r24,mcp23018_status
+ 387 0054 8111      		cpse r24,__zero_reg__
+ 388 0056 00C0      		rjmp .L24
  336:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_write(GPIOA);                 if (mcp23018_status) goto out;
- 380               		.loc 1 336 0
- 381 0058 80E4      		ldi r24,lo8(64)
- 382 005a 0E94 0000 		call i2c_start
- 383               	.LVL21:
- 384 005e 8093 0000 		sts mcp23018_status,r24
- 385 0062 8111      		cpse r24,__zero_reg__
- 386 0064 00C0      		rjmp .L26
+ 389               		.loc 1 336 0
+ 390 0058 80E4      		ldi r24,lo8(64)
+ 391 005a 0E94 0000 		call i2c_start
+ 392               	.LVL21:
+ 393 005e 8093 0000 		sts mcp23018_status,r24
+ 394 0062 8111      		cpse r24,__zero_reg__
+ 395 0064 00C0      		rjmp .L26
  337:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_write( 0xFF & ~(1<<row)
- 387               		.loc 1 337 0
- 388 0066 82E1      		ldi r24,lo8(18)
- 389 0068 0E94 0000 		call i2c_write
- 390               	.LVL22:
- 391 006c 8093 0000 		sts mcp23018_status,r24
- 392 0070 8111      		cpse r24,__zero_reg__
- 393 0072 00C0      		rjmp .L26
- 394               		.loc 1 338 0
- 395 0074 C501      		movw r24,r10
- 396 0076 002E      		mov r0,r16
- 397 0078 00C0      		rjmp 2f
- 398               		1:
- 399 007a 880F      		lsl r24
- 400               		2:
- 401 007c 0A94      		dec r0
- 402 007e 02F4      		brpl 1b
- 403 0080 8095      		com r24
- 404 0082 0E94 0000 		call i2c_write
- 405               	.LVL23:
- 406 0086 8093 0000 		sts mcp23018_status,r24
- 407               	.L26:
+ 396               		.loc 1 337 0
+ 397 0066 82E1      		ldi r24,lo8(18)
+ 398 0068 0E94 0000 		call i2c_write
+ 399               	.LVL22:
+ 400 006c 8093 0000 		sts mcp23018_status,r24
+ 401 0070 8111      		cpse r24,__zero_reg__
+ 402 0072 00C0      		rjmp .L26
+ 403               		.loc 1 338 0
+ 404 0074 C501      		movw r24,r10
+ 405 0076 002E      		mov r0,r16
+ 406 0078 00C0      		rjmp 2f
+ 407               		1:
+ 408 007a 880F      		lsl r24
+ 409               		2:
+ 410 007c 0A94      		dec r0
+ 411 007e 02F4      		brpl 1b
+ 412 0080 8095      		com r24
+ 413 0082 0E94 0000 		call i2c_write
+ 414               	.LVL23:
+ 415 0086 8093 0000 		sts mcp23018_status,r24
+ 416               	.L26:
  339:keyboards/split70/ez/matrix.c ****                                   & ~(0<<6)
  340:keyboards/split70/ez/matrix.c ****                               );                                if (mcp23018_status) goto out;
  341:keyboards/split70/ez/matrix.c ****         out:
  342:keyboards/split70/ez/matrix.c ****             i2c_stop();
- 408               		.loc 1 342 0
- 409 008a 0E94 0000 		call i2c_stop
- 410               	.LVL24:
- 411               	.L24:
- 412               	.LBE27:
- 413               	.LBE29:
- 414               	.LBB30:
- 415               	.LBB31:
- 416               		.file 2 "/usr/avr/include/util/delay.h"
+ 417               		.loc 1 342 0
+ 418 008a 0E94 0000 		call i2c_stop
+ 419               	.LVL24:
+ 420               	.L24:
+ 421               	.LBE27:
+ 422               	.LBE29:
+ 423               	.LBB30:
+ 424               	.LBB31:
+ 425               		.file 2 "/usr/avr/include/util/delay.h"
    1:/usr/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
    3:/usr/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
@@ -1046,179 +1056,179 @@
  274:/usr/avr/include/util/delay.h **** 	#endif
  275:/usr/avr/include/util/delay.h **** 
  276:/usr/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 417               		.loc 2 276 0
- 418 008e 80EA      		ldi r24,lo8(-96)
- 419 0090 8A95      	1:	dec r24
- 420 0092 01F4      		brne 1b
- 421               	.LVL25:
- 422               	.LBE31:
- 423               	.LBE30:
- 424               	.LBB32:
- 425               	.LBB33:
+ 426               		.loc 2 276 0
+ 427 008e 80EA      		ldi r24,lo8(-96)
+ 428 0090 8A95      	1:	dec r24
+ 429 0092 01F4      		brne 1b
+ 430               	.LVL25:
+ 431               	.LBE31:
+ 432               	.LBE30:
+ 433               	.LBB32:
+ 434               	.LBB33:
  267:keyboards/split70/ez/matrix.c ****         if (mcp23018_status) { // if there was an error
- 426               		.loc 1 267 0
- 427 0094 C730      		cpi r28,lo8(7)
- 428 0096 00F0      		brlo .+2
- 429 0098 00C0      		rjmp .L35
+ 435               		.loc 1 267 0
+ 436 0094 C730      		cpi r28,lo8(7)
+ 437 0096 00F0      		brlo .+2
+ 438 0098 00C0      		rjmp .L35
  268:keyboards/split70/ez/matrix.c ****             return 0;
- 430               		.loc 1 268 0
- 431 009a C091 0000 		lds r28,mcp23018_status
- 432 009e C111      		cpse r28,__zero_reg__
- 433 00a0 00C0      		rjmp .L52
- 434               	.LVL26:
- 435               	.LBB34:
+ 439               		.loc 1 268 0
+ 440 009a C091 0000 		lds r28,mcp23018_status
+ 441 009e C111      		cpse r28,__zero_reg__
+ 442 00a0 00C0      		rjmp .L51
+ 443               	.LVL26:
+ 444               	.LBB34:
  272:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_write(GPIOB);             if (mcp23018_status) goto out;
- 436               		.loc 1 272 0
- 437 00a2 80E4      		ldi r24,lo8(64)
- 438 00a4 0E94 0000 		call i2c_start
- 439               	.LVL27:
- 440 00a8 8093 0000 		sts mcp23018_status,r24
- 441 00ac 8111      		cpse r24,__zero_reg__
- 442 00ae 00C0      		rjmp .L38
+ 445               		.loc 1 272 0
+ 446 00a2 80E4      		ldi r24,lo8(64)
+ 447 00a4 0E94 0000 		call i2c_start
+ 448               	.LVL27:
+ 449 00a8 8093 0000 		sts mcp23018_status,r24
+ 450 00ac 8111      		cpse r24,__zero_reg__
+ 451 00ae 00C0      		rjmp .L38
  273:keyboards/split70/ez/matrix.c ****             mcp23018_status = i2c_start(I2C_ADDR_READ);     if (mcp23018_status) goto out;
- 443               		.loc 1 273 0
- 444 00b0 83E1      		ldi r24,lo8(19)
- 445 00b2 0E94 0000 		call i2c_write
- 446               	.LVL28:
- 447 00b6 8093 0000 		sts mcp23018_status,r24
- 448 00ba 8111      		cpse r24,__zero_reg__
- 449 00bc 00C0      		rjmp .L38
+ 452               		.loc 1 273 0
+ 453 00b0 83E1      		ldi r24,lo8(19)
+ 454 00b2 0E94 0000 		call i2c_write
+ 455               	.LVL28:
+ 456 00b6 8093 0000 		sts mcp23018_status,r24
+ 457 00ba 8111      		cpse r24,__zero_reg__
+ 458 00bc 00C0      		rjmp .L38
  274:keyboards/split70/ez/matrix.c ****             data = i2c_readNak();
- 450               		.loc 1 274 0
- 451 00be 81E4      		ldi r24,lo8(65)
- 452 00c0 0E94 0000 		call i2c_start
- 453               	.LVL29:
- 454 00c4 8093 0000 		sts mcp23018_status,r24
- 455 00c8 8111      		cpse r24,__zero_reg__
- 456 00ca 00C0      		rjmp .L38
+ 459               		.loc 1 274 0
+ 460 00be 81E4      		ldi r24,lo8(65)
+ 461 00c0 0E94 0000 		call i2c_start
+ 462               	.LVL29:
+ 463 00c4 8093 0000 		sts mcp23018_status,r24
+ 464 00c8 8111      		cpse r24,__zero_reg__
+ 465 00ca 00C0      		rjmp .L38
  275:keyboards/split70/ez/matrix.c ****             data = ~data;
- 457               		.loc 1 275 0
- 458 00cc 0E94 0000 		call i2c_readNak
- 459               	.LVL30:
+ 466               		.loc 1 275 0
+ 467 00cc 0E94 0000 		call i2c_readNak
+ 468               	.LVL30:
  276:keyboards/split70/ez/matrix.c ****         out:
- 460               		.loc 1 276 0
- 461 00d0 C82F      		mov r28,r24
- 462 00d2 C095      		com r28
- 463               	.LVL31:
- 464               	.L38:
+ 469               		.loc 1 276 0
+ 470 00d0 C82F      		mov r28,r24
+ 471 00d2 C095      		com r28
+ 472               	.LVL31:
+ 473               	.L38:
  278:keyboards/split70/ez/matrix.c ****             return data;
- 465               		.loc 1 278 0
- 466 00d4 0E94 0000 		call i2c_stop
- 467               	.LVL32:
- 468               	.L36:
- 469               	.LBE34:
- 470               	.LBE33:
- 471               	.LBE32:
+ 474               		.loc 1 278 0
+ 475 00d4 0E94 0000 		call i2c_stop
+ 476               	.LVL32:
+ 477               	.L36:
+ 478               	.LBE34:
+ 479               	.LBE33:
+ 480               	.LBE32:
  181:keyboards/split70/ez/matrix.c ****             matrix_debouncing[i] = cols;
- 472               		.loc 1 181 0
- 473 00d8 D701      		movw r26,r14
- 474 00da 8C91      		ld r24,X
- 475 00dc 8C17      		cp r24,r28
- 476 00de 01F0      		breq .L45
+ 481               		.loc 1 181 0
+ 482 00d8 D601      		movw r26,r12
+ 483 00da 8D91      		ld r24,X+
+ 484 00dc 6D01      		movw r12,r26
+ 485 00de 8C17      		cp r24,r28
+ 486 00e0 01F0      		breq .L45
  182:keyboards/split70/ez/matrix.c ****             if (debouncing) {
- 477               		.loc 1 182 0
- 478 00e0 CC93      		st X,r28
+ 487               		.loc 1 182 0
+ 488 00e2 FD01      		movw r30,r26
+ 489 00e4 3197      		sbiw r30,1
+ 490 00e6 C083      		st Z,r28
  186:keyboards/split70/ez/matrix.c ****         }
- 479               		.loc 1 186 0
- 480 00e2 D093 0000 		sts debouncing,r29
- 481               	.L45:
+ 491               		.loc 1 186 0
+ 492 00e8 D093 0000 		sts debouncing,r29
+ 493               	.L45:
  188:keyboards/split70/ez/matrix.c ****     }
- 482               		.loc 1 188 0 discriminator 2
- 483 00e6 0E94 0000 		call unselect_rows
- 484               	.LVL33:
- 485 00ea 0F5F      		subi r16,-1
- 486 00ec 1F4F      		sbci r17,-1
- 487               	.LVL34:
- 488 00ee BFEF      		ldi r27,-1
- 489 00f0 EB1A      		sub r14,r27
- 490 00f2 FB0A      		sbc r15,r27
- 491               	.LBE24:
+ 494               		.loc 1 188 0 discriminator 2
+ 495 00ec 0E94 0000 		call unselect_rows
+ 496               	.LVL33:
+ 497 00f0 0F5F      		subi r16,-1
+ 498 00f2 1F4F      		sbci r17,-1
+ 499               	.LVL34:
+ 500               	.LBE24:
  177:keyboards/split70/ez/matrix.c ****         select_row(i);
- 492               		.loc 1 177 0 discriminator 2
- 493 00f4 0C30      		cpi r16,12
- 494 00f6 1105      		cpc r17,__zero_reg__
- 495 00f8 01F0      		breq .+2
- 496 00fa 00C0      		rjmp .L46
- 497               	.LBE23:
+ 501               		.loc 1 177 0 discriminator 2
+ 502 00f4 0C30      		cpi r16,12
+ 503 00f6 1105      		cpc r17,__zero_reg__
+ 504 00f8 01F0      		breq .+2
+ 505 00fa 00C0      		rjmp .L46
+ 506               	.LBE23:
  191:keyboards/split70/ez/matrix.c ****         if (--debouncing) {
- 498               		.loc 1 191 0
- 499 00fc 8091 0000 		lds r24,debouncing
- 500 0100 8823      		tst r24
- 501 0102 01F0      		breq .L48
+ 507               		.loc 1 191 0
+ 508 00fc 8091 0000 		lds r24,debouncing
+ 509 0100 8823      		tst r24
+ 510 0102 01F0      		breq .L49
  192:keyboards/split70/ez/matrix.c ****             wait_us(1);
- 502               		.loc 1 192 0
- 503 0104 8150      		subi r24,lo8(-(-1))
- 504 0106 8093 0000 		sts debouncing,r24
- 505 010a 8823      		tst r24
- 506 010c 01F4      		brne .+2
- 507 010e 00C0      		rjmp .L49
- 508               	.LVL35:
- 509               	.LBB39:
- 510               	.LBB40:
- 511               		.loc 2 276 0
- 512 0110 E5E0      		ldi r30,lo8(5)
- 513 0112 EA95      	1:	dec r30
- 514 0114 01F4      		brne 1b
- 515 0116 0000      		nop
- 516               	.LVL36:
- 517               	.L48:
- 518               	.LBE40:
- 519               	.LBE39:
+ 511               		.loc 1 192 0
+ 512 0104 8150      		subi r24,lo8(-(-1))
+ 513 0106 8093 0000 		sts debouncing,r24
+ 514 010a 8823      		tst r24
+ 515 010c 01F4      		brne .+2
+ 516 010e 00C0      		rjmp .L48
+ 517               	.LVL35:
+ 518               	.LBB39:
+ 519               	.LBB40:
+ 520               		.loc 2 276 0
+ 521 0110 B5E0      		ldi r27,lo8(5)
+ 522 0112 BA95      	1:	dec r27
+ 523 0114 01F4      		brne 1b
+ 524 0116 0000      		nop
+ 525               	.LVL36:
+ 526               	.L49:
+ 527               	.LBE40:
+ 528               	.LBE39:
  202:keyboards/split70/ez/matrix.c **** 
- 520               		.loc 1 202 0
- 521 0118 0E94 0000 		call matrix_scan_quantum
- 522               	.LVL37:
+ 529               		.loc 1 202 0
+ 530 0118 0E94 0000 		call matrix_scan_quantum
+ 531               	.LVL37:
  205:keyboards/split70/ez/matrix.c **** 
- 523               		.loc 1 205 0
- 524 011c 81E0      		ldi r24,lo8(1)
- 525               	/* epilogue start */
- 526 011e DF91      		pop r29
- 527 0120 CF91      		pop r28
- 528 0122 1F91      		pop r17
- 529 0124 0F91      		pop r16
- 530               	.LVL38:
- 531 0126 FF90      		pop r15
- 532 0128 EF90      		pop r14
- 533 012a DF90      		pop r13
- 534 012c CF90      		pop r12
- 535 012e BF90      		pop r11
- 536 0130 AF90      		pop r10
- 537 0132 0895      		ret
- 538               	.LVL39:
- 539               	.L23:
- 540               	.LBB41:
- 541               	.LBB38:
- 542               	.LBB36:
- 543               	.LBB28:
+ 532               		.loc 1 205 0
+ 533 011c 81E0      		ldi r24,lo8(1)
+ 534               	/* epilogue start */
+ 535 011e DF91      		pop r29
+ 536 0120 CF91      		pop r28
+ 537 0122 1F91      		pop r17
+ 538 0124 0F91      		pop r16
+ 539               	.LVL38:
+ 540 0126 FF90      		pop r15
+ 541 0128 EF90      		pop r14
+ 542 012a DF90      		pop r13
+ 543 012c CF90      		pop r12
+ 544 012e BF90      		pop r11
+ 545 0130 AF90      		pop r10
+ 546 0132 0895      		ret
+ 547               	.LVL39:
+ 548               	.L23:
+ 549               	.LBB41:
+ 550               	.LBB38:
+ 551               	.LBB36:
+ 552               	.LBB28:
  343:keyboards/split70/ez/matrix.c ****         }
  344:keyboards/split70/ez/matrix.c ****     } else {
  345:keyboards/split70/ez/matrix.c ****         // select on teensy
  346:keyboards/split70/ez/matrix.c ****         // Output low(DDR:1, PORT:0) to select
  347:keyboards/split70/ez/matrix.c ****         switch (row) {
- 544               		.loc 1 347 0
- 545 0134 0930      		cpi r16,lo8(9)
- 546 0136 01F0      		breq .L29
- 547 0138 00F4      		brsh .L30
- 548 013a 0730      		cpi r16,lo8(7)
- 549 013c 01F0      		breq .L31
- 550 013e 0830      		cpi r16,lo8(8)
- 551 0140 01F0      		breq .L32
- 552               	.L28:
+ 553               		.loc 1 347 0
+ 554 0134 0930      		cpi r16,lo8(9)
+ 555 0136 01F0      		breq .L29
+ 556 0138 00F4      		brsh .L30
+ 557 013a 0730      		cpi r16,lo8(7)
+ 558 013c 01F0      		breq .L31
+ 559 013e 0830      		cpi r16,lo8(8)
+ 560 0140 01F0      		breq .L32
+ 561               	.L28:
  348:keyboards/split70/ez/matrix.c ****             case 6:
  349:keyboards/split70/ez/matrix.c ****                 DDRB  |= (1<<0);
- 553               		.loc 1 349 0
- 554 0142 209A      		sbi 0x4,0
+ 562               		.loc 1 349 0
+ 563 0142 209A      		sbi 0x4,0
  350:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<0);
- 555               		.loc 1 350 0
- 556 0144 2898      		cbi 0x5,0
- 557 0146 00C0      		rjmp .L24
- 558               	.L30:
+ 564               		.loc 1 350 0
+ 565 0144 2898      		cbi 0x5,0
+ 566 0146 00C0      		rjmp .L24
+ 567               	.L30:
  347:keyboards/split70/ez/matrix.c ****             case 6:
- 559               		.loc 1 347 0
- 560 0148 0A30      		cpi r16,lo8(10)
- 561 014a 01F0      		breq .L33
- 562 014c 0B30      		cpi r16,lo8(11)
- 563 014e 01F4      		brne .L28
+ 568               		.loc 1 347 0
+ 569 0148 0A30      		cpi r16,lo8(10)
+ 570 014a 01F0      		breq .L33
+ 571 014c 0B30      		cpi r16,lo8(11)
+ 572 014e 01F4      		brne .L28
  351:keyboards/split70/ez/matrix.c ****                 break;
  352:keyboards/split70/ez/matrix.c ****             case 7:
  353:keyboards/split70/ez/matrix.c ****                 DDRB  |= (1<<1);
@@ -1234,388 +1244,393 @@
  363:keyboards/split70/ez/matrix.c ****                 break;
  364:keyboards/split70/ez/matrix.c ****             case 10:
  365:keyboards/split70/ez/matrix.c ****                 DDRD  |= (1<<2);
- 366:keyboards/split70/ez/matrix.c ****                 PORTD &= ~(1<<3);
+ 366:keyboards/split70/ez/matrix.c ****                 PORTD &= ~(1<<2);
  367:keyboards/split70/ez/matrix.c ****                 break;
  368:keyboards/split70/ez/matrix.c ****             case 11:
  369:keyboards/split70/ez/matrix.c ****                 DDRD  |= (1<<3);
- 564               		.loc 1 369 0
- 565 0150 539A      		sbi 0xa,3
- 566 0152 00C0      		rjmp .L60
- 567               	.L31:
- 353:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<1);
- 568               		.loc 1 353 0
- 569 0154 219A      		sbi 0x4,1
- 354:keyboards/split70/ez/matrix.c ****                 break;
- 570               		.loc 1 354 0
- 571 0156 2998      		cbi 0x5,1
- 572 0158 00C0      		rjmp .L24
- 573               	.L32:
- 357:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<2);
- 574               		.loc 1 357 0
- 575 015a 229A      		sbi 0x4,2
- 358:keyboards/split70/ez/matrix.c ****                 break;
- 576               		.loc 1 358 0
- 577 015c 2A98      		cbi 0x5,2
- 578 015e 00C0      		rjmp .L24
- 579               	.L29:
- 361:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<3);
- 580               		.loc 1 361 0
- 581 0160 239A      		sbi 0x4,3
- 362:keyboards/split70/ez/matrix.c ****                 break;
- 582               		.loc 1 362 0
- 583 0162 2B98      		cbi 0x5,3
- 584 0164 00C0      		rjmp .L24
- 585               	.L33:
- 365:keyboards/split70/ez/matrix.c ****                 PORTD &= ~(1<<3);
- 586               		.loc 1 365 0
- 587 0166 529A      		sbi 0xa,2
- 588               	.L60:
+ 573               		.loc 1 369 0
+ 574 0150 539A      		sbi 0xa,3
  370:keyboards/split70/ez/matrix.c ****                 PORTD &= ~(1<<3);
- 589               		.loc 1 370 0
- 590 0168 5B98      		cbi 0xb,3
- 591 016a 00C0      		rjmp .L24
- 592               	.LVL40:
- 593               	.L35:
- 594               	.LBE28:
- 595               	.LBE36:
- 596               	.LBB37:
- 597               	.LBB35:
+ 575               		.loc 1 370 0
+ 576 0152 5B98      		cbi 0xb,3
+ 577 0154 00C0      		rjmp .L24
+ 578               	.L31:
+ 353:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<1);
+ 579               		.loc 1 353 0
+ 580 0156 219A      		sbi 0x4,1
+ 354:keyboards/split70/ez/matrix.c ****                 break;
+ 581               		.loc 1 354 0
+ 582 0158 2998      		cbi 0x5,1
+ 583 015a 00C0      		rjmp .L24
+ 584               	.L32:
+ 357:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<2);
+ 585               		.loc 1 357 0
+ 586 015c 229A      		sbi 0x4,2
+ 358:keyboards/split70/ez/matrix.c ****                 break;
+ 587               		.loc 1 358 0
+ 588 015e 2A98      		cbi 0x5,2
+ 589 0160 00C0      		rjmp .L24
+ 590               	.L29:
+ 361:keyboards/split70/ez/matrix.c ****                 PORTB &= ~(1<<3);
+ 591               		.loc 1 361 0
+ 592 0162 239A      		sbi 0x4,3
+ 362:keyboards/split70/ez/matrix.c ****                 break;
+ 593               		.loc 1 362 0
+ 594 0164 2B98      		cbi 0x5,3
+ 595 0166 00C0      		rjmp .L24
+ 596               	.L33:
+ 365:keyboards/split70/ez/matrix.c ****                 PORTD &= ~(1<<2);
+ 597               		.loc 1 365 0
+ 598 0168 529A      		sbi 0xa,2
+ 366:keyboards/split70/ez/matrix.c ****                 break;
+ 599               		.loc 1 366 0
+ 600 016a 5A98      		cbi 0xb,2
+ 601 016c 00C0      		rjmp .L24
+ 602               	.LVL40:
+ 603               	.L35:
+ 604               	.LBE28:
+ 605               	.LBE36:
+ 606               	.LBB37:
+ 607               	.LBB35:
  284:keyboards/split70/ez/matrix.c ****             (PINF&(1<<1) ? 0 : (1<<1)) |
- 598               		.loc 1 284 0
- 599 016c CFB1      		in r28,0xf
- 600 016e C095      		com r28
- 601 0170 C170      		andi r28,lo8(1)
- 602 0172 799B      		sbis 0xf,1
- 603 0174 00C0      		rjmp .L53
- 604 0176 80E0      		ldi r24,0
- 605               	.L40:
- 606 0178 C82B      		or r28,r24
+ 608               		.loc 1 284 0
+ 609 016e CFB1      		in r28,0xf
+ 610 0170 C095      		com r28
+ 611 0172 C170      		andi r28,lo8(1)
+ 612 0174 799B      		sbis 0xf,1
+ 613 0176 00C0      		rjmp .L52
+ 614 0178 80E0      		ldi r24,0
+ 615               	.L40:
+ 616 017a C82B      		or r28,r24
  285:keyboards/split70/ez/matrix.c ****             (PINF&(1<<4) ? 0 : (1<<2)) |
- 607               		.loc 1 285 0
- 608 017a 7C9B      		sbis 0xf,4
- 609 017c 00C0      		rjmp .L54
- 610 017e 80E0      		ldi r24,0
- 611               	.L41:
- 612 0180 C82B      		or r28,r24
+ 617               		.loc 1 285 0
+ 618 017c 7C9B      		sbis 0xf,4
+ 619 017e 00C0      		rjmp .L53
+ 620 0180 80E0      		ldi r24,0
+ 621               	.L41:
+ 622 0182 C82B      		or r28,r24
  286:keyboards/split70/ez/matrix.c ****             (PINF&(1<<5) ? 0 : (1<<3)) |
- 613               		.loc 1 286 0
- 614 0182 7D9B      		sbis 0xf,5
- 615 0184 00C0      		rjmp .L55
- 616 0186 80E0      		ldi r24,0
- 617               	.L42:
- 618 0188 C82B      		or r28,r24
+ 623               		.loc 1 286 0
+ 624 0184 7D9B      		sbis 0xf,5
+ 625 0186 00C0      		rjmp .L54
+ 626 0188 80E0      		ldi r24,0
+ 627               	.L42:
+ 628 018a C82B      		or r28,r24
  287:keyboards/split70/ez/matrix.c ****             (PINF&(1<<6) ? 0 : (1<<4)) |
- 619               		.loc 1 287 0
- 620 018a 7E9B      		sbis 0xf,6
- 621 018c 00C0      		rjmp .L56
- 622 018e 80E0      		ldi r24,0
- 623               	.L43:
- 624 0190 C82B      		or r28,r24
- 289:keyboards/split70/ez/matrix.c ****     }
- 625               		.loc 1 289 0
- 626 0192 8FB1      		in r24,0xf
+ 629               		.loc 1 287 0
+ 630 018c 7E9B      		sbis 0xf,6
+ 631 018e 00C0      		rjmp .L55
+ 632 0190 80E0      		ldi r24,0
+ 633               	.L43:
+ 634 0192 C82B      		or r28,r24
  288:keyboards/split70/ez/matrix.c ****             (PINF&(1<<7) ? 0 : (1<<5)) ;
- 627               		.loc 1 288 0
- 628 0194 8095      		com r24
- 629 0196 881F      		rol r24
- 630 0198 8827      		clr r24
- 631 019a 881F      		rol r24
- 632 019c 8295      		swap r24
- 633 019e 880F      		lsl r24
- 634 01a0 807E      		andi r24,lo8(-32)
- 635 01a2 C82B      		or r28,r24
- 636 01a4 00C0      		rjmp .L36
- 637               	.L53:
+ 635               		.loc 1 288 0
+ 636 0194 7F9B      		sbis 0xf,7
+ 637 0196 00C0      		rjmp .L56
+ 638 0198 80E0      		ldi r24,0
+ 639               	.L44:
+ 640 019a C82B      		or r28,r24
+ 641 019c 00C0      		rjmp .L36
+ 642               	.L52:
  284:keyboards/split70/ez/matrix.c ****             (PINF&(1<<1) ? 0 : (1<<1)) |
- 638               		.loc 1 284 0
- 639 01a6 82E0      		ldi r24,lo8(2)
- 640 01a8 00C0      		rjmp .L40
- 641               	.L54:
+ 643               		.loc 1 284 0
+ 644 019e 82E0      		ldi r24,lo8(2)
+ 645 01a0 00C0      		rjmp .L40
+ 646               	.L53:
  285:keyboards/split70/ez/matrix.c ****             (PINF&(1<<4) ? 0 : (1<<2)) |
- 642               		.loc 1 285 0
- 643 01aa 84E0      		ldi r24,lo8(4)
- 644 01ac 00C0      		rjmp .L41
- 645               	.L55:
+ 647               		.loc 1 285 0
+ 648 01a2 84E0      		ldi r24,lo8(4)
+ 649 01a4 00C0      		rjmp .L41
+ 650               	.L54:
  286:keyboards/split70/ez/matrix.c ****             (PINF&(1<<5) ? 0 : (1<<3)) |
- 646               		.loc 1 286 0
- 647 01ae 88E0      		ldi r24,lo8(8)
- 648 01b0 00C0      		rjmp .L42
- 649               	.L56:
+ 651               		.loc 1 286 0
+ 652 01a6 88E0      		ldi r24,lo8(8)
+ 653 01a8 00C0      		rjmp .L42
+ 654               	.L55:
  287:keyboards/split70/ez/matrix.c ****             (PINF&(1<<6) ? 0 : (1<<4)) |
- 650               		.loc 1 287 0
- 651 01b2 80E1      		ldi r24,lo8(16)
- 652 01b4 00C0      		rjmp .L43
- 653               	.L52:
+ 655               		.loc 1 287 0
+ 656 01aa 80E1      		ldi r24,lo8(16)
+ 657 01ac 00C0      		rjmp .L43
+ 658               	.L56:
+ 288:keyboards/split70/ez/matrix.c ****             (PINF&(1<<7) ? 0 : (1<<5)) ;
+ 659               		.loc 1 288 0
+ 660 01ae 80E2      		ldi r24,lo8(32)
+ 661 01b0 00C0      		rjmp .L44
+ 662               	.L51:
  269:keyboards/split70/ez/matrix.c ****         } else {
- 654               		.loc 1 269 0
- 655 01b6 C0E0      		ldi r28,0
- 656 01b8 00C0      		rjmp .L36
- 657               	.LVL41:
- 658               	.L49:
- 659 01ba E0E0      		ldi r30,lo8(matrix)
- 660 01bc F0E0      		ldi r31,hi8(matrix)
- 661               	.L50:
- 662               	.LVL42:
- 663               	.LBE35:
- 664               	.LBE37:
- 665               	.LBE38:
- 666               	.LBE41:
- 667               	.LBB42:
+ 663               		.loc 1 269 0
+ 664 01b2 C0E0      		ldi r28,0
+ 665 01b4 00C0      		rjmp .L36
+ 666               	.LVL41:
+ 667               	.L48:
+ 668 01b6 E0E0      		ldi r30,lo8(matrix)
+ 669 01b8 F0E0      		ldi r31,hi8(matrix)
+ 670 01ba 80E0      		ldi r24,lo8(matrix_debouncing+12)
+ 671 01bc 90E0      		ldi r25,hi8(matrix_debouncing+12)
+ 672               	.L50:
+ 673               	.LVL42:
+ 674               	.LBE35:
+ 675               	.LBE37:
+ 676               	.LBE38:
+ 677               	.LBE41:
+ 678               	.LBB42:
  197:keyboards/split70/ez/matrix.c ****             }
- 668               		.loc 1 197 0 discriminator 3
- 669 01be D601      		movw r26,r12
- 670 01c0 8D91      		ld r24,X+
- 671 01c2 6D01      		movw r12,r26
- 672               	.LVL43:
- 673 01c4 8193      		st Z+,r24
- 674               	.LVL44:
+ 679               		.loc 1 197 0 discriminator 3
+ 680 01be D701      		movw r26,r14
+ 681 01c0 2D91      		ld r18,X+
+ 682 01c2 7D01      		movw r14,r26
+ 683               	.LVL43:
+ 684 01c4 2193      		st Z+,r18
+ 685               	.LVL44:
  196:keyboards/split70/ez/matrix.c ****                 matrix[i] = matrix_debouncing[i];
- 675               		.loc 1 196 0 discriminator 3
- 676 01c6 B0E0      		ldi r27,lo8(matrix_debouncing+12)
- 677 01c8 CB16      		cp r12,r27
- 678 01ca B0E0      		ldi r27,hi8(matrix_debouncing+12)
- 679 01cc DB06      		cpc r13,r27
- 680 01ce 01F4      		brne .L50
- 681 01d0 00C0      		rjmp .L48
- 682               	.LBE42:
- 683               		.cfi_endproc
- 684               	.LFE115:
- 686               		.section	.text.matrix_is_modified,"ax",@progbits
- 687               	.global	matrix_is_modified
- 689               	matrix_is_modified:
- 690               	.LFB116:
+ 686               		.loc 1 196 0 discriminator 3
+ 687 01c6 8A17      		cp r24,r26
+ 688 01c8 9B07      		cpc r25,r27
+ 689 01ca 01F4      		brne .L50
+ 690 01cc 00C0      		rjmp .L49
+ 691               	.LBE42:
+ 692               		.cfi_endproc
+ 693               	.LFE115:
+ 695               		.section	.text.matrix_is_modified,"ax",@progbits
+ 696               	.global	matrix_is_modified
+ 698               	matrix_is_modified:
+ 699               	.LFB116:
  208:keyboards/split70/ez/matrix.c ****     if (debouncing) return false;
- 691               		.loc 1 208 0
- 692               		.cfi_startproc
- 693               	/* prologue: function */
- 694               	/* frame size = 0 */
- 695               	/* stack size = 0 */
- 696               	.L__stack_usage = 0
+ 700               		.loc 1 208 0
+ 701               		.cfi_startproc
+ 702               	/* prologue: function */
+ 703               	/* frame size = 0 */
+ 704               	/* stack size = 0 */
+ 705               	.L__stack_usage = 0
  209:keyboards/split70/ez/matrix.c ****     return true;
- 697               		.loc 1 209 0
- 698 0000 81E0      		ldi r24,lo8(1)
- 699 0002 9091 0000 		lds r25,debouncing
- 700 0006 9111      		cpse r25,__zero_reg__
- 701 0008 80E0      		ldi r24,0
- 702               	.L62:
+ 706               		.loc 1 209 0
+ 707 0000 81E0      		ldi r24,lo8(1)
+ 708 0002 9091 0000 		lds r25,debouncing
+ 709 0006 9111      		cpse r25,__zero_reg__
+ 710 0008 80E0      		ldi r24,0
+ 711               	.L63:
+ 712               	/* epilogue start */
  211:keyboards/split70/ez/matrix.c **** 
- 703               		.loc 1 211 0
- 704 000a 0895      		ret
- 705               		.cfi_endproc
- 706               	.LFE116:
- 708               		.section	.text.matrix_is_on,"ax",@progbits
- 709               	.global	matrix_is_on
- 711               	matrix_is_on:
- 712               	.LFB117:
+ 713               		.loc 1 211 0
+ 714 000a 0895      		ret
+ 715               		.cfi_endproc
+ 716               	.LFE116:
+ 718               		.section	.text.matrix_is_on,"ax",@progbits
+ 719               	.global	matrix_is_on
+ 721               	matrix_is_on:
+ 722               	.LFB117:
  215:keyboards/split70/ez/matrix.c ****     return (matrix[row] & ((matrix_row_t)1<<col));
- 713               		.loc 1 215 0
- 714               		.cfi_startproc
- 715               	.LVL45:
- 716               	/* prologue: function */
- 717               	/* frame size = 0 */
- 718               	/* stack size = 0 */
- 719               	.L__stack_usage = 0
+ 723               		.loc 1 215 0
+ 724               		.cfi_startproc
+ 725               	.LVL45:
+ 726               	/* prologue: function */
+ 727               	/* frame size = 0 */
+ 728               	/* stack size = 0 */
+ 729               	.L__stack_usage = 0
  216:keyboards/split70/ez/matrix.c **** }
- 720               		.loc 1 216 0
- 721 0000 E82F      		mov r30,r24
- 722 0002 F0E0      		ldi r31,0
- 723 0004 E050      		subi r30,lo8(-(matrix))
- 724 0006 F040      		sbci r31,hi8(-(matrix))
- 725 0008 2081      		ld r18,Z
- 726 000a 30E0      		ldi r19,0
- 727 000c 81E0      		ldi r24,lo8(1)
- 728 000e 90E0      		ldi r25,0
- 729               	.LVL46:
- 730 0010 00C0      		rjmp 2f
- 731               		1:
- 732 0012 880F      		lsl r24
- 733 0014 991F      		rol r25
- 734               		2:
- 735 0016 6A95      		dec r22
- 736 0018 02F4      		brpl 1b
- 737 001a 2823      		and r18,r24
- 738 001c 3923      		and r19,r25
- 739 001e 81E0      		ldi r24,lo8(1)
- 740 0020 232B      		or r18,r19
- 741 0022 01F4      		brne .L67
- 742 0024 80E0      		ldi r24,0
- 743               	.L67:
+ 730               		.loc 1 216 0
+ 731 0000 E82F      		mov r30,r24
+ 732 0002 F0E0      		ldi r31,0
+ 733 0004 E050      		subi r30,lo8(-(matrix))
+ 734 0006 F040      		sbci r31,hi8(-(matrix))
+ 735 0008 2081      		ld r18,Z
+ 736 000a 30E0      		ldi r19,0
+ 737 000c 81E0      		ldi r24,lo8(1)
+ 738 000e 90E0      		ldi r25,0
+ 739               	.LVL46:
+ 740 0010 00C0      		rjmp 2f
+ 741               		1:
+ 742 0012 880F      		lsl r24
+ 743 0014 991F      		rol r25
+ 744               		2:
+ 745 0016 6A95      		dec r22
+ 746 0018 02F4      		brpl 1b
+ 747 001a 2823      		and r18,r24
+ 748 001c 3923      		and r19,r25
+ 749 001e 81E0      		ldi r24,lo8(1)
+ 750 0020 232B      		or r18,r19
+ 751 0022 01F4      		brne .L68
+ 752 0024 80E0      		ldi r24,0
+ 753               	.L68:
+ 754               	/* epilogue start */
  217:keyboards/split70/ez/matrix.c **** 
- 744               		.loc 1 217 0
- 745 0026 0895      		ret
- 746               		.cfi_endproc
- 747               	.LFE117:
- 749               		.section	.text.matrix_get_row,"ax",@progbits
- 750               	.global	matrix_get_row
- 752               	matrix_get_row:
- 753               	.LFB118:
+ 755               		.loc 1 217 0
+ 756 0026 0895      		ret
+ 757               		.cfi_endproc
+ 758               	.LFE117:
+ 760               		.section	.text.matrix_get_row,"ax",@progbits
+ 761               	.global	matrix_get_row
+ 763               	matrix_get_row:
+ 764               	.LFB118:
  221:keyboards/split70/ez/matrix.c ****     return matrix[row];
- 754               		.loc 1 221 0
- 755               		.cfi_startproc
- 756               	.LVL47:
- 757               	/* prologue: function */
- 758               	/* frame size = 0 */
- 759               	/* stack size = 0 */
- 760               	.L__stack_usage = 0
+ 765               		.loc 1 221 0
+ 766               		.cfi_startproc
+ 767               	.LVL47:
+ 768               	/* prologue: function */
+ 769               	/* frame size = 0 */
+ 770               	/* stack size = 0 */
+ 771               	.L__stack_usage = 0
  222:keyboards/split70/ez/matrix.c **** }
- 761               		.loc 1 222 0
- 762 0000 E82F      		mov r30,r24
- 763 0002 F0E0      		ldi r31,0
- 764 0004 E050      		subi r30,lo8(-(matrix))
- 765 0006 F040      		sbci r31,hi8(-(matrix))
+ 772               		.loc 1 222 0
+ 773 0000 E82F      		mov r30,r24
+ 774 0002 F0E0      		ldi r31,0
+ 775 0004 E050      		subi r30,lo8(-(matrix))
+ 776 0006 F040      		sbci r31,hi8(-(matrix))
  223:keyboards/split70/ez/matrix.c **** 
- 766               		.loc 1 223 0
- 767 0008 8081      		ld r24,Z
- 768               	.LVL48:
- 769 000a 0895      		ret
- 770               		.cfi_endproc
- 771               	.LFE118:
- 773               		.section	.text.matrix_print,"ax",@progbits
- 774               	.global	matrix_print
- 776               	matrix_print:
- 777               	.LFB119:
+ 777               		.loc 1 223 0
+ 778 0008 8081      		ld r24,Z
+ 779               	.LVL48:
+ 780               	/* epilogue start */
+ 781 000a 0895      		ret
+ 782               		.cfi_endproc
+ 783               	.LFE118:
+ 785               		.section	.text.matrix_print,"ax",@progbits
+ 786               	.global	matrix_print
+ 788               	matrix_print:
+ 789               	.LFB119:
  226:keyboards/split70/ez/matrix.c ****     print("\nr/c 0123456789ABCDEF\n");
- 778               		.loc 1 226 0
- 779               		.cfi_startproc
- 780               	/* prologue: function */
- 781               	/* frame size = 0 */
- 782               	/* stack size = 0 */
- 783               	.L__stack_usage = 0
- 784               	.LVL49:
- 785 0000 0895      		ret
- 786               		.cfi_endproc
- 787               	.LFE119:
- 789               		.section	.text.matrix_key_count,"ax",@progbits
- 790               	.global	matrix_key_count
- 792               	matrix_key_count:
- 793               	.LFB120:
+ 790               		.loc 1 226 0
+ 791               		.cfi_startproc
+ 792               	/* prologue: function */
+ 793               	/* frame size = 0 */
+ 794               	/* stack size = 0 */
+ 795               	.L__stack_usage = 0
+ 796               	.LVL49:
+ 797               	/* epilogue start */
+ 233:keyboards/split70/ez/matrix.c **** 
+ 798               		.loc 1 233 0
+ 799 0000 0895      		ret
+ 800               		.cfi_endproc
+ 801               	.LFE119:
+ 803               		.section	.text.matrix_key_count,"ax",@progbits
+ 804               	.global	matrix_key_count
+ 806               	matrix_key_count:
+ 807               	.LFB120:
  236:keyboards/split70/ez/matrix.c ****     uint8_t count = 0;
- 794               		.loc 1 236 0
- 795               		.cfi_startproc
- 236:keyboards/split70/ez/matrix.c ****     uint8_t count = 0;
- 796               		.loc 1 236 0
- 797 0000 0F93      		push r16
- 798               	.LCFI10:
- 799               		.cfi_def_cfa_offset 3
- 800               		.cfi_offset 16, -2
- 801 0002 1F93      		push r17
- 802               	.LCFI11:
- 803               		.cfi_def_cfa_offset 4
- 804               		.cfi_offset 17, -3
- 805 0004 CF93      		push r28
- 806               	.LCFI12:
- 807               		.cfi_def_cfa_offset 5
- 808               		.cfi_offset 28, -4
- 809               	/* prologue: function */
- 810               	/* frame size = 0 */
- 811               	/* stack size = 3 */
- 812               	.L__stack_usage = 3
- 813               	.LVL50:
- 814 0006 00E0      		ldi r16,lo8(matrix)
- 815 0008 10E0      		ldi r17,hi8(matrix)
+ 808               		.loc 1 236 0
+ 809               		.cfi_startproc
+ 810 0000 0F93      		push r16
+ 811               	.LCFI10:
+ 812               		.cfi_def_cfa_offset 3
+ 813               		.cfi_offset 16, -2
+ 814 0002 1F93      		push r17
+ 815               	.LCFI11:
+ 816               		.cfi_def_cfa_offset 4
+ 817               		.cfi_offset 17, -3
+ 818 0004 CF93      		push r28
+ 819               	.LCFI12:
+ 820               		.cfi_def_cfa_offset 5
+ 821               		.cfi_offset 28, -4
+ 822               	/* prologue: function */
+ 823               	/* frame size = 0 */
+ 824               	/* stack size = 3 */
+ 825               	.L__stack_usage = 3
+ 826               	.LVL50:
+ 827 0006 00E0      		ldi r16,lo8(matrix)
+ 828 0008 10E0      		ldi r17,hi8(matrix)
  237:keyboards/split70/ez/matrix.c ****     for (uint8_t i = 0; i < MATRIX_ROWS; i++) {
- 816               		.loc 1 237 0
- 817 000a C0E0      		ldi r28,0
- 818               	.LVL51:
- 819               	.L71:
- 820               	.LBB43:
+ 829               		.loc 1 237 0
+ 830 000a C0E0      		ldi r28,0
+ 831               	.LVL51:
+ 832               	.L72:
+ 833               	.LBB43:
  239:keyboards/split70/ez/matrix.c ****     }
- 821               		.loc 1 239 0 discriminator 3
- 822 000c F801      		movw r30,r16
- 823 000e 8191      		ld r24,Z+
- 824 0010 8F01      		movw r16,r30
- 825               	.LVL52:
- 826 0012 90E0      		ldi r25,0
- 827 0014 0E94 0000 		call bitpop16
- 828               	.LVL53:
- 829 0018 C80F      		add r28,r24
- 830               	.LVL54:
+ 834               		.loc 1 239 0 discriminator 3
+ 835 000c F801      		movw r30,r16
+ 836 000e 8191      		ld r24,Z+
+ 837 0010 8F01      		movw r16,r30
+ 838               	.LVL52:
+ 839 0012 90E0      		ldi r25,0
+ 840 0014 0E94 0000 		call bitpop16
+ 841               	.LVL53:
+ 842 0018 C80F      		add r28,r24
+ 843               	.LVL54:
  238:keyboards/split70/ez/matrix.c ****         count += bitpop16(matrix[i]);
- 831               		.loc 1 238 0 discriminator 3
- 832 001a F0E0      		ldi r31,hi8(matrix+12)
- 833 001c 0030      		cpi r16,lo8(matrix+12)
- 834 001e 1F07      		cpc r17,r31
- 835 0020 01F4      		brne .L71
- 836               	.LBE43:
+ 844               		.loc 1 238 0 discriminator 3
+ 845 001a F0E0      		ldi r31,hi8(matrix+12)
+ 846 001c 0030      		cpi r16,lo8(matrix+12)
+ 847 001e 1F07      		cpc r17,r31
+ 848 0020 01F4      		brne .L72
+ 849               	.LBE43:
  242:keyboards/split70/ez/matrix.c **** 
- 837               		.loc 1 242 0
- 838 0022 8C2F      		mov r24,r28
- 839               	/* epilogue start */
- 840 0024 CF91      		pop r28
- 841               	.LVL55:
- 842 0026 1F91      		pop r17
- 843 0028 0F91      		pop r16
- 844               	.LVL56:
- 845 002a 0895      		ret
- 846               		.cfi_endproc
- 847               	.LFE120:
- 849               		.section	.bss.mcp23018_reset_loop,"aw",@nobits
- 852               	mcp23018_reset_loop:
- 853 0000 00        		.zero	1
- 854               		.section	.bss.matrix_debouncing,"aw",@nobits
- 857               	matrix_debouncing:
- 858 0000 0000 0000 		.zero	12
- 858      0000 0000 
- 858      0000 0000 
- 859               		.section	.bss.matrix,"aw",@nobits
- 862               	matrix:
- 863 0000 0000 0000 		.zero	12
- 863      0000 0000 
- 863      0000 0000 
- 864               		.section	.data.debouncing,"aw",@progbits
- 867               	debouncing:
- 868 0000 05        		.byte	5
- 869               		.text
- 870               	.Letext0:
- 871               		.file 3 "/usr/avr/include/stdint.h"
- 872               		.file 4 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
- 873               		.file 5 "./tmk_core/common/action_layer.h"
- 874               		.file 6 "./tmk_core/common/debug.h"
- 875               		.file 7 "./tmk_core/common/matrix.h"
- 876               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
- 877               		.file 9 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 878               		.file 10 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
- 879               		.file 11 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
- 880               		.file 12 "/usr/avr/include/stdio.h"
- 881               		.file 13 "./tmk_core/common/report.h"
- 882               		.file 14 "./tmk_core/common/host.h"
- 883               		.file 15 "./quantum/keycode_config.h"
- 884               		.file 16 "./quantum/keymap.h"
- 885               		.file 17 "./tmk_core/common/timer.h"
- 886               		.file 18 "./tmk_core/common/action_util.h"
- 887               		.file 19 "/usr/avr/include/stdlib.h"
- 888               		.file 20 "keyboards/split70/ez/ez.h"
- 889               		.file 21 "./quantum/process_keycode/process_unicode_common.h"
- 890               		.file 22 "keyboards/split70/ez/i2cmaster.h"
- 891               		.file 23 "./tmk_core/common/util.h"
+ 850               		.loc 1 242 0
+ 851 0022 8C2F      		mov r24,r28
+ 852               	/* epilogue start */
+ 853 0024 CF91      		pop r28
+ 854               	.LVL55:
+ 855 0026 1F91      		pop r17
+ 856 0028 0F91      		pop r16
+ 857               	.LVL56:
+ 858 002a 0895      		ret
+ 859               		.cfi_endproc
+ 860               	.LFE120:
+ 862               		.section	.bss.mcp23018_reset_loop,"aw",@nobits
+ 865               	mcp23018_reset_loop:
+ 866 0000 00        		.zero	1
+ 867               		.section	.bss.matrix_debouncing,"aw",@nobits
+ 870               	matrix_debouncing:
+ 871 0000 0000 0000 		.zero	12
+ 871      0000 0000 
+ 871      0000 0000 
+ 872               		.section	.bss.matrix,"aw",@nobits
+ 875               	matrix:
+ 876 0000 0000 0000 		.zero	12
+ 876      0000 0000 
+ 876      0000 0000 
+ 877               		.section	.data.debouncing,"aw",@progbits
+ 880               	debouncing:
+ 881 0000 05        		.byte	5
+ 882               		.text
+ 883               	.Letext0:
+ 884               		.file 3 "/usr/avr/include/stdint.h"
+ 885               		.file 4 "/usr/lib/gcc/avr/7.1.0/include/stddef.h"
+ 886               		.file 5 "./tmk_core/common/action_layer.h"
+ 887               		.file 6 "./tmk_core/common/debug.h"
+ 888               		.file 7 "./tmk_core/common/matrix.h"
+ 889               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 890               		.file 9 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 891               		.file 10 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+ 892               		.file 11 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 893               		.file 12 "/usr/avr/include/stdio.h"
+ 894               		.file 13 "./tmk_core/common/report.h"
+ 895               		.file 14 "./tmk_core/common/host.h"
+ 896               		.file 15 "./quantum/keycode_config.h"
+ 897               		.file 16 "./quantum/keymap.h"
+ 898               		.file 17 "./tmk_core/common/timer.h"
+ 899               		.file 18 "./tmk_core/common/action_util.h"
+ 900               		.file 19 "/usr/avr/include/stdlib.h"
+ 901               		.file 20 "keyboards/split70/ez/ez.h"
+ 902               		.file 21 "./quantum/process_keycode/process_unicode_common.h"
+ 903               		.file 22 "keyboards/split70/ez/i2cmaster.h"
+ 904               		.file 23 "./tmk_core/common/util.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 matrix.c
-     /tmp/ccvVLZtC.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccvVLZtC.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccvVLZtC.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccvVLZtC.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccvVLZtC.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccvVLZtC.s:12     .text.init_cols:0000000000000000 init_cols
-     /tmp/ccvVLZtC.s:35     .text.unselect_rows:0000000000000000 unselect_rows
-     /tmp/ccvVLZtC.s:94     .text.matrix_scan_user:0000000000000000 matrix_scan_user
-     /tmp/ccvVLZtC.s:94     .text.matrix_scan_user:0000000000000000 matrix_scan_user.localalias.0
-     /tmp/ccvVLZtC.s:110    .text.matrix_init_user:0000000000000000 matrix_init_user
-     /tmp/ccvVLZtC.s:124    .text.matrix_init_kb:0000000000000000 matrix_init_kb
-     /tmp/ccvVLZtC.s:141    .text.matrix_scan_kb:0000000000000000 matrix_scan_kb
-     /tmp/ccvVLZtC.s:158    .text.matrix_rows:0000000000000000 matrix_rows
-     /tmp/ccvVLZtC.s:175    .text.matrix_cols:0000000000000000 matrix_cols
-     /tmp/ccvVLZtC.s:192    .text.matrix_init:0000000000000000 matrix_init
-     /tmp/ccvVLZtC.s:862    .bss.matrix:0000000000000000 matrix
-     /tmp/ccvVLZtC.s:857    .bss.matrix_debouncing:0000000000000000 matrix_debouncing
-     /tmp/ccvVLZtC.s:238    .text.matrix_power_up:0000000000000000 matrix_power_up
-     /tmp/ccvVLZtC.s:284    .text.matrix_scan:0000000000000000 matrix_scan
-     /tmp/ccvVLZtC.s:852    .bss.mcp23018_reset_loop:0000000000000000 mcp23018_reset_loop
-     /tmp/ccvVLZtC.s:867    .data.debouncing:0000000000000000 debouncing
-     /tmp/ccvVLZtC.s:689    .text.matrix_is_modified:0000000000000000 matrix_is_modified
-     /tmp/ccvVLZtC.s:711    .text.matrix_is_on:0000000000000000 matrix_is_on
-     /tmp/ccvVLZtC.s:752    .text.matrix_get_row:0000000000000000 matrix_get_row
-     /tmp/ccvVLZtC.s:776    .text.matrix_print:0000000000000000 matrix_print
-     /tmp/ccvVLZtC.s:792    .text.matrix_key_count:0000000000000000 matrix_key_count
+     /tmp/ccYuHddA.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccYuHddA.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccYuHddA.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccYuHddA.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccYuHddA.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccYuHddA.s:12     .text.init_cols:0000000000000000 init_cols
+     /tmp/ccYuHddA.s:37     .text.unselect_rows:0000000000000000 unselect_rows
+     /tmp/ccYuHddA.s:98     .text.matrix_init_user:0000000000000000 matrix_init_user
+     /tmp/ccYuHddA.s:98     .text.matrix_init_user:0000000000000000 matrix_init_user.localalias.0
+     /tmp/ccYuHddA.s:116    .text.matrix_scan_user:0000000000000000 matrix_scan_user
+     /tmp/ccYuHddA.s:131    .text.matrix_init_kb:0000000000000000 matrix_init_kb
+     /tmp/ccYuHddA.s:148    .text.matrix_scan_kb:0000000000000000 matrix_scan_kb
+     /tmp/ccYuHddA.s:165    .text.matrix_rows:0000000000000000 matrix_rows
+     /tmp/ccYuHddA.s:183    .text.matrix_cols:0000000000000000 matrix_cols
+     /tmp/ccYuHddA.s:201    .text.matrix_init:0000000000000000 matrix_init
+     /tmp/ccYuHddA.s:875    .bss.matrix:0000000000000000 matrix
+     /tmp/ccYuHddA.s:870    .bss.matrix_debouncing:0000000000000000 matrix_debouncing
+     /tmp/ccYuHddA.s:247    .text.matrix_power_up:0000000000000000 matrix_power_up
+     /tmp/ccYuHddA.s:293    .text.matrix_scan:0000000000000000 matrix_scan
+     /tmp/ccYuHddA.s:865    .bss.mcp23018_reset_loop:0000000000000000 mcp23018_reset_loop
+     /tmp/ccYuHddA.s:880    .data.debouncing:0000000000000000 debouncing
+     /tmp/ccYuHddA.s:698    .text.matrix_is_modified:0000000000000000 matrix_is_modified
+     /tmp/ccYuHddA.s:721    .text.matrix_is_on:0000000000000000 matrix_is_on
+     /tmp/ccYuHddA.s:763    .text.matrix_get_row:0000000000000000 matrix_get_row
+     /tmp/ccYuHddA.s:788    .text.matrix_print:0000000000000000 matrix_print
+     /tmp/ccYuHddA.s:806    .text.matrix_key_count:0000000000000000 matrix_key_count
 
 UNDEFINED SYMBOLS
 mcp23018_status

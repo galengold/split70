@@ -297,7 +297,7 @@ static matrix_row_t read_cols(uint8_t row)
  * pin: B0  B1  B2  B3  D2  D3
  *
  * MCP23018
- * row: 0   1   2   3   4   5 
+ * row: 0   1   2   3   4   5
  * pin: A0  A1  A2  A3  A4  A5
  */
 static void unselect_rows(void)
@@ -363,7 +363,7 @@ static void select_row(uint8_t row)
                 break;
             case 10:
                 DDRD  |= (1<<2);
-                PORTD &= ~(1<<3);
+                PORTD &= ~(1<<2);
                 break;
             case 11:
                 DDRD  |= (1<<3);

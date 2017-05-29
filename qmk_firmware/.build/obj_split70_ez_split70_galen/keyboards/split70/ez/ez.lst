@@ -399,50 +399,51 @@
   64:keyboards/split70/ez/ez.c **** }
  152               		.loc 1 64 0
  153 0098 8091 0000 		lds r24,mcp23018_status
- 154 009c 0895      		ret
- 155               		.cfi_endproc
- 156               	.LFE108:
- 158               	.global	mcp23018_status
- 159               		.section	.data.mcp23018_status,"aw",@progbits
- 162               	mcp23018_status:
- 163 0000 20        		.byte	32
- 164               	.global	i2c_initialized
- 165               		.section	.bss.i2c_initialized,"aw",@nobits
- 168               	i2c_initialized:
- 169 0000 00        		.zero	1
- 170               		.text
- 171               	.Letext0:
- 172               		.file 3 "/usr/avr/include/stdint.h"
- 173               		.file 4 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
- 174               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
- 175               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 176               		.file 7 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
- 177               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
- 178               		.file 9 "/usr/avr/include/stdio.h"
- 179               		.file 10 "./tmk_core/common/report.h"
- 180               		.file 11 "./tmk_core/common/host.h"
- 181               		.file 12 "./tmk_core/common/debug.h"
- 182               		.file 13 "./quantum/keycode_config.h"
- 183               		.file 14 "./quantum/keymap.h"
- 184               		.file 15 "./tmk_core/common/action_layer.h"
- 185               		.file 16 "./tmk_core/common/timer.h"
- 186               		.file 17 "./tmk_core/common/action_util.h"
- 187               		.file 18 "/usr/avr/include/stdlib.h"
- 188               		.file 19 "keyboards/split70/ez/ez.h"
- 189               		.file 20 "./quantum/process_keycode/process_unicode_common.h"
- 190               		.file 21 "keyboards/split70/ez/i2cmaster.h"
- 191               		.file 22 "./quantum/quantum.h"
+ 154               	/* epilogue start */
+ 155 009c 0895      		ret
+ 156               		.cfi_endproc
+ 157               	.LFE108:
+ 159               	.global	mcp23018_status
+ 160               		.section	.data.mcp23018_status,"aw",@progbits
+ 163               	mcp23018_status:
+ 164 0000 20        		.byte	32
+ 165               	.global	i2c_initialized
+ 166               		.section	.bss.i2c_initialized,"aw",@nobits
+ 169               	i2c_initialized:
+ 170 0000 00        		.zero	1
+ 171               		.text
+ 172               	.Letext0:
+ 173               		.file 3 "/usr/avr/include/stdint.h"
+ 174               		.file 4 "/usr/lib/gcc/avr/7.1.0/include/stddef.h"
+ 175               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 176               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 177               		.file 7 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+ 178               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 179               		.file 9 "/usr/avr/include/stdio.h"
+ 180               		.file 10 "./tmk_core/common/report.h"
+ 181               		.file 11 "./tmk_core/common/host.h"
+ 182               		.file 12 "./tmk_core/common/debug.h"
+ 183               		.file 13 "./quantum/keycode_config.h"
+ 184               		.file 14 "./quantum/keymap.h"
+ 185               		.file 15 "./tmk_core/common/action_layer.h"
+ 186               		.file 16 "./tmk_core/common/timer.h"
+ 187               		.file 17 "./tmk_core/common/action_util.h"
+ 188               		.file 18 "/usr/avr/include/stdlib.h"
+ 189               		.file 19 "keyboards/split70/ez/ez.h"
+ 190               		.file 20 "./quantum/process_keycode/process_unicode_common.h"
+ 191               		.file 21 "keyboards/split70/ez/i2cmaster.h"
+ 192               		.file 22 "./quantum/quantum.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ez.c
-     /tmp/ccWI0AcG.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccWI0AcG.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccWI0AcG.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccWI0AcG.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccWI0AcG.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccWI0AcG.s:13     .text.matrix_init_kb:0000000000000000 matrix_init_kb
-     /tmp/ccWI0AcG.s:55     .text.init_mcp23018:0000000000000000 init_mcp23018
-     /tmp/ccWI0AcG.s:162    .data.mcp23018_status:0000000000000000 mcp23018_status
-     /tmp/ccWI0AcG.s:168    .bss.i2c_initialized:0000000000000000 i2c_initialized
+     /tmp/ccGZAJnV.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccGZAJnV.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccGZAJnV.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccGZAJnV.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccGZAJnV.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccGZAJnV.s:13     .text.matrix_init_kb:0000000000000000 matrix_init_kb
+     /tmp/ccGZAJnV.s:55     .text.init_mcp23018:0000000000000000 init_mcp23018
+     /tmp/ccGZAJnV.s:163    .data.mcp23018_status:0000000000000000 mcp23018_status
+     /tmp/ccGZAJnV.s:169    .bss.i2c_initialized:0000000000000000 i2c_initialized
 
 UNDEFINED SYMBOLS
 matrix_init_user

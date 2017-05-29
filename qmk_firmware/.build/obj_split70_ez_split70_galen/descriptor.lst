@@ -915,53 +915,10 @@
   36 0016 01F0      		breq .L6
   37               	.LVL1:
   38               	.L15:
-  39 0018 80E0      		ldi r24,0
-  40 001a 90E0      		ldi r25,0
-  41 001c 20E0      		ldi r18,0
-  42 001e 30E0      		ldi r19,0
-  43 0020 00C0      		rjmp .L2
-  44               	.LVL2:
-  45               	.L4:
-  46 0022 2132      		cpi r18,33
-  47 0024 3105      		cpc r19,__zero_reg__
-  48 0026 01F0      		breq .L7
-  49 0028 2232      		cpi r18,34
-  50 002a 3105      		cpc r19,__zero_reg__
-  51 002c 01F4      		brne .L15
-  52 002e 6430      		cpi r22,lo8(4)
-  53 0030 00F4      		brsh .L15
-  54 0032 70E0      		ldi r23,0
-  55 0034 FB01      		movw r30,r22
-  56 0036 EE0F      		lsl r30
-  57 0038 FF1F      		rol r31
-  58               	.LVL3:
-  59 003a E050      		subi r30,lo8(-(CSWTCH.2))
-  60 003c F040      		sbci r31,hi8(-(CSWTCH.2))
-  61 003e 2081      		ld r18,Z
-  62 0040 3181      		ldd r19,Z+1
-  63 0042 6050      		subi r22,lo8(-(CSWTCH.3))
-  64 0044 7040      		sbci r23,hi8(-(CSWTCH.3))
-  65               	.LVL4:
-  66 0046 FB01      		movw r30,r22
-  67 0048 8081      		ld r24,Z
-  68 004a 90E0      		ldi r25,0
-  69 004c 00C0      		rjmp .L2
-  70               	.LVL5:
-  71               	.L5:
  881:./tmk_core/protocol/lufa/descriptor.c ****     {
  882:./tmk_core/protocol/lufa/descriptor.c ****         case DTYPE_Device:
  883:./tmk_core/protocol/lufa/descriptor.c ****             Address = &DeviceDescriptor;
  884:./tmk_core/protocol/lufa/descriptor.c ****             Size    = sizeof(USB_Descriptor_Device_t);
-  72               		.loc 1 884 0
-  73 004e 82E1      		ldi r24,lo8(18)
-  74 0050 90E0      		ldi r25,0
-  75               	.LVL6:
- 883:./tmk_core/protocol/lufa/descriptor.c ****             Size    = sizeof(USB_Descriptor_Device_t);
-  76               		.loc 1 883 0
-  77 0052 20E0      		ldi r18,lo8(DeviceDescriptor)
-  78 0054 30E0      		ldi r19,hi8(DeviceDescriptor)
-  79               	.LVL7:
-  80               	.L2:
  885:./tmk_core/protocol/lufa/descriptor.c ****             break;
  886:./tmk_core/protocol/lufa/descriptor.c ****         case DTYPE_Configuration:
  887:./tmk_core/protocol/lufa/descriptor.c ****             Address = &ConfigurationDescriptor;
@@ -1023,6 +980,53 @@
  943:./tmk_core/protocol/lufa/descriptor.c ****             }
  944:./tmk_core/protocol/lufa/descriptor.c ****             break;
  945:./tmk_core/protocol/lufa/descriptor.c ****         case HID_DTYPE_Report:
+  39               		.loc 1 945 0
+  40 0018 90E0      		ldi r25,0
+  41 001a 80E0      		ldi r24,0
+  42 001c 30E0      		ldi r19,0
+  43 001e 20E0      		ldi r18,0
+  44 0020 00C0      		rjmp .L2
+  45               	.LVL2:
+  46               	.L4:
+ 880:./tmk_core/protocol/lufa/descriptor.c ****     {
+  47               		.loc 1 880 0
+  48 0022 2132      		cpi r18,33
+  49 0024 3105      		cpc r19,__zero_reg__
+  50 0026 01F0      		breq .L7
+  51 0028 2232      		cpi r18,34
+  52 002a 3105      		cpc r19,__zero_reg__
+  53 002c 01F4      		brne .L15
+  54 002e 6430      		cpi r22,lo8(4)
+  55 0030 00F4      		brsh .L15
+  56 0032 70E0      		ldi r23,0
+  57 0034 FB01      		movw r30,r22
+  58 0036 EE0F      		lsl r30
+  59 0038 FF1F      		rol r31
+  60               	.LVL3:
+  61 003a E050      		subi r30,lo8(-(CSWTCH.2))
+  62 003c F040      		sbci r31,hi8(-(CSWTCH.2))
+  63 003e 2081      		ld r18,Z
+  64 0040 3181      		ldd r19,Z+1
+  65 0042 6050      		subi r22,lo8(-(CSWTCH.3))
+  66 0044 7040      		sbci r23,hi8(-(CSWTCH.3))
+  67               	.LVL4:
+  68 0046 FB01      		movw r30,r22
+  69 0048 8081      		ld r24,Z
+  70 004a 90E0      		ldi r25,0
+  71 004c 00C0      		rjmp .L2
+  72               	.LVL5:
+  73               	.L5:
+ 884:./tmk_core/protocol/lufa/descriptor.c ****             break;
+  74               		.loc 1 884 0
+  75 004e 82E1      		ldi r24,lo8(18)
+  76 0050 90E0      		ldi r25,0
+  77               	.LVL6:
+ 883:./tmk_core/protocol/lufa/descriptor.c ****             Size    = sizeof(USB_Descriptor_Device_t);
+  78               		.loc 1 883 0
+  79 0052 20E0      		ldi r18,lo8(DeviceDescriptor)
+  80 0054 30E0      		ldi r19,hi8(DeviceDescriptor)
+  81               	.LVL7:
+  82               	.L2:
  946:./tmk_core/protocol/lufa/descriptor.c ****             switch (wIndex) {
  947:./tmk_core/protocol/lufa/descriptor.c ****             case KEYBOARD_INTERFACE:
  948:./tmk_core/protocol/lufa/descriptor.c ****                 Address = &KeyboardReport;
@@ -1063,566 +1067,569 @@
  983:./tmk_core/protocol/lufa/descriptor.c ****     }
  984:./tmk_core/protocol/lufa/descriptor.c **** 
  985:./tmk_core/protocol/lufa/descriptor.c ****     *DescriptorAddress = Address;
-  81               		.loc 1 985 0
-  82 0056 FA01      		movw r30,r20
-  83 0058 3183      		std Z+1,r19
-  84 005a 2083      		st Z,r18
+  83               		.loc 1 985 0
+  84 0056 FA01      		movw r30,r20
+  85 0058 3183      		std Z+1,r19
+  86 005a 2083      		st Z,r18
+  87               	/* epilogue start */
  986:./tmk_core/protocol/lufa/descriptor.c ****     return Size;
  987:./tmk_core/protocol/lufa/descriptor.c **** }
-  85               		.loc 1 987 0
-  86 005c 0895      		ret
-  87               	.LVL8:
-  88               	.L6:
+  88               		.loc 1 987 0
+  89 005c 0895      		ret
+  90               	.LVL8:
+  91               	.L6:
  888:./tmk_core/protocol/lufa/descriptor.c ****             break;
-  89               		.loc 1 888 0
-  90 005e 8DE6      		ldi r24,lo8(109)
-  91 0060 90E0      		ldi r25,0
-  92               	.LVL9:
+  92               		.loc 1 888 0
+  93 005e 8DE6      		ldi r24,lo8(109)
+  94 0060 90E0      		ldi r25,0
+  95               	.LVL9:
  887:./tmk_core/protocol/lufa/descriptor.c ****             Size    = sizeof(USB_Descriptor_Configuration_t);
-  93               		.loc 1 887 0
-  94 0062 20E0      		ldi r18,lo8(ConfigurationDescriptor)
-  95 0064 30E0      		ldi r19,hi8(ConfigurationDescriptor)
+  96               		.loc 1 887 0
+  97 0062 20E0      		ldi r18,lo8(ConfigurationDescriptor)
+  98 0064 30E0      		ldi r19,hi8(ConfigurationDescriptor)
  889:./tmk_core/protocol/lufa/descriptor.c ****         case DTYPE_String:
-  96               		.loc 1 889 0
-  97 0066 00C0      		rjmp .L2
-  98               	.LVL10:
-  99               	.L3:
+  99               		.loc 1 889 0
+ 100 0066 00C0      		rjmp .L2
+ 101               	.LVL10:
+ 102               	.L3:
  891:./tmk_core/protocol/lufa/descriptor.c ****             {
- 100               		.loc 1 891 0
- 101 0068 9927      		clr r25
- 102               	.LVL11:
- 103 006a 8130      		cpi r24,1
- 104 006c 9105      		cpc r25,__zero_reg__
- 105 006e 01F0      		breq .L9
- 106 0070 00F0      		brlo .L10
- 107 0072 0297      		sbiw r24,2
- 108 0074 01F4      		brne .L15
- 109               	.LVL12:
- 110               	.LBB2:
+ 103               		.loc 1 891 0
+ 104 0068 9927      		clr r25
+ 105               	.LVL11:
+ 106 006a 8130      		cpi r24,1
+ 107 006c 9105      		cpc r25,__zero_reg__
+ 108 006e 01F0      		breq .L9
+ 109 0070 00F0      		brlo .L10
+ 110 0072 0297      		sbiw r24,2
+ 111 0074 01F4      		brne .L15
+ 112               	.LVL12:
+ 113               	.LBB2:
  903:./tmk_core/protocol/lufa/descriptor.c ****                     break;
- 111               		.loc 1 903 0
- 112 0076 E0E0      		ldi r30,lo8(ProductString)
- 113 0078 F0E0      		ldi r31,hi8(ProductString)
- 114 007a 00C0      		rjmp .L17
- 115               	.LVL13:
- 116               	.L10:
- 117               	.LBE2:
- 118               	.LBB3:
+ 114               		.loc 1 903 0
+ 115 0076 E0E0      		ldi r30,lo8(ProductString)
+ 116 0078 F0E0      		ldi r31,hi8(ProductString)
+ 117 007a 00C0      		rjmp .L17
+ 118               	.LVL13:
+ 119               	.L10:
+ 120               	.LBE2:
+ 121               	.LBB3:
  895:./tmk_core/protocol/lufa/descriptor.c ****                     break;
- 119               		.loc 1 895 0
- 120 007c E0E0      		ldi r30,lo8(LanguageString)
- 121 007e F0E0      		ldi r31,hi8(LanguageString)
- 122               	.LVL14:
- 123               	.L17:
- 124               	.LBE3:
- 125               	.LBB4:
+ 122               		.loc 1 895 0
+ 123 007c E0E0      		ldi r30,lo8(LanguageString)
+ 124 007e F0E0      		ldi r31,hi8(LanguageString)
+ 125               	.LVL14:
+ 126               	.L17:
+ 127               	.LBE3:
+ 128               	.LBB4:
  903:./tmk_core/protocol/lufa/descriptor.c ****                     break;
- 126               		.loc 1 903 0
- 127               	/* #APP */
- 128               	 ;  903 "./tmk_core/protocol/lufa/descriptor.c" 1
- 129 0080 8491      		lpm r24, Z
- 130               		
- 131               	 ;  0 "" 2
- 132               	.LVL15:
- 133               	/* #NOAPP */
- 134               	.LBE4:
- 135 0082 90E0      		ldi r25,0
- 136               	.LVL16:
+ 129               		.loc 1 903 0
+ 130               	/* #APP */
+ 131               	 ;  903 "./tmk_core/protocol/lufa/descriptor.c" 1
+ 132 0080 8491      		lpm r24, Z
+ 133               		
+ 134               	 ;  0 "" 2
+ 135               	.LVL15:
+ 136               	/* #NOAPP */
+ 137               	.LBE4:
+ 138 0082 90E0      		ldi r25,0
+ 139               	.LVL16:
  902:./tmk_core/protocol/lufa/descriptor.c ****                     Size    = pgm_read_byte(&ProductString.Header.Size);
- 137               		.loc 1 902 0
- 138 0084 9F01      		movw r18,r30
+ 140               		.loc 1 902 0
+ 141 0084 9F01      		movw r18,r30
  904:./tmk_core/protocol/lufa/descriptor.c ****             }
- 139               		.loc 1 904 0
- 140 0086 00C0      		rjmp .L2
- 141               	.LVL17:
- 142               	.L9:
- 143               	.LBB5:
+ 142               		.loc 1 904 0
+ 143 0086 00C0      		rjmp .L2
+ 144               	.LVL17:
+ 145               	.L9:
+ 146               	.LBB5:
  899:./tmk_core/protocol/lufa/descriptor.c ****                     break;
- 144               		.loc 1 899 0
- 145 0088 E0E0      		ldi r30,lo8(ManufacturerString)
- 146 008a F0E0      		ldi r31,hi8(ManufacturerString)
- 147 008c 00C0      		rjmp .L17
- 148               	.LVL18:
- 149               	.L7:
- 150 008e 6430      		cpi r22,lo8(4)
- 151 0090 00F0      		brlo .+2
- 152 0092 00C0      		rjmp .L15
- 153 0094 E62F      		mov r30,r22
- 154 0096 F0E0      		ldi r31,0
- 155 0098 EE0F      		lsl r30
- 156 009a FF1F      		rol r31
- 157 009c E050      		subi r30,lo8(-(CSWTCH.1))
- 158 009e F040      		sbci r31,hi8(-(CSWTCH.1))
- 159 00a0 2081      		ld r18,Z
- 160 00a2 3181      		ldd r19,Z+1
- 161               	.LBE5:
- 162 00a4 89E0      		ldi r24,lo8(9)
- 163 00a6 90E0      		ldi r25,0
- 164               	.LVL19:
- 165 00a8 00C0      		rjmp .L2
- 166               		.cfi_endproc
- 167               	.LFE100:
- 169               		.section	.rodata.CSWTCH.3,"a",@progbits
- 172               	CSWTCH.3:
- 173 0000 40        		.byte	64
- 174 0001 4D        		.byte	77
- 175 0002 36        		.byte	54
- 176 0003 39        		.byte	57
- 177               		.section	.rodata.CSWTCH.2,"a",@progbits
- 180               	CSWTCH.2:
- 181 0000 0000      		.word	KeyboardReport
- 182 0002 0000      		.word	MouseReport
- 183 0004 0000      		.word	ExtrakeyReport
- 184 0006 0000      		.word	NKROReport
- 185               		.section	.rodata.CSWTCH.1,"a",@progbits
- 188               	CSWTCH.1:
- 189 0000 0000      		.word	ConfigurationDescriptor+18
- 190 0002 0000      		.word	ConfigurationDescriptor+43
- 191 0004 0000      		.word	ConfigurationDescriptor+68
- 192 0006 0000      		.word	ConfigurationDescriptor+93
- 193               	.global	ProductString
- 194               		.section	.progmem.data.ProductString,"a",@progbits
- 197               	ProductString:
- 198 0000 10        		.byte	16
- 199 0001 03        		.byte	3
- 200 0002 5300      		.string	"S"
- 201 0004 7000      		.string	"p"
- 202 0006 6C00      		.string	"l"
- 203 0008 6900      		.string	"i"
- 204 000a 7400      		.string	"t"
- 205 000c 3700      		.string	"7"
- 206 000e 3000      		.string	"0"
- 207 0010 00        		.string	""
- 208 0011 00        		.string	""
- 209               	.global	ManufacturerString
- 210               		.section	.progmem.data.ManufacturerString,"a",@progbits
- 213               	ManufacturerString:
- 214 0000 0A        		.byte	10
- 215 0001 03        		.byte	3
- 216 0002 4700      		.string	"G"
- 217 0004 6F00      		.string	"o"
- 218 0006 6C00      		.string	"l"
- 219 0008 6400      		.string	"d"
- 220 000a 00        		.string	""
- 221 000b 00        		.string	""
- 222               	.global	LanguageString
- 223               		.section	.progmem.data.LanguageString,"a",@progbits
- 226               	LanguageString:
- 227 0000 04        		.byte	4
- 228 0001 03        		.byte	3
- 229 0002 0904      		.word	1033
- 230               	.global	ConfigurationDescriptor
- 231               		.section	.progmem.data.ConfigurationDescriptor,"a",@progbits
- 234               	ConfigurationDescriptor:
- 235 0000 09        		.byte	9
- 236 0001 02        		.byte	2
- 237 0002 6D00      		.word	109
- 238 0004 04        		.byte	4
- 239 0005 01        		.byte	1
- 240 0006 00        		.byte	0
- 241 0007 A0        		.byte	-96
- 242 0008 FA        		.byte	-6
- 243 0009 09        		.byte	9
- 244 000a 04        		.byte	4
- 245 000b 00        		.byte	0
- 246 000c 00        		.byte	0
- 247 000d 01        		.byte	1
- 248 000e 03        		.byte	3
- 249 000f 01        		.byte	1
- 250 0010 01        		.byte	1
- 251 0011 00        		.byte	0
- 252 0012 09        		.byte	9
- 253 0013 21        		.byte	33
- 254 0014 1101      		.word	273
- 255 0016 00        		.byte	0
- 256 0017 01        		.byte	1
- 257 0018 22        		.byte	34
- 258 0019 4000      		.word	64
- 259 001b 07        		.byte	7
- 260 001c 05        		.byte	5
- 261 001d 81        		.byte	-127
- 262 001e 03        		.byte	3
- 263 001f 0800      		.word	8
- 264 0021 0A        		.byte	10
- 265 0022 09        		.byte	9
- 266 0023 04        		.byte	4
- 267 0024 01        		.byte	1
- 268 0025 00        		.byte	0
- 269 0026 01        		.byte	1
- 270 0027 03        		.byte	3
- 271 0028 01        		.byte	1
- 272 0029 02        		.byte	2
- 273 002a 00        		.byte	0
- 274 002b 09        		.byte	9
- 275 002c 21        		.byte	33
- 276 002d 1101      		.word	273
- 277 002f 00        		.byte	0
- 278 0030 01        		.byte	1
- 279 0031 22        		.byte	34
- 280 0032 4D00      		.word	77
- 281 0034 07        		.byte	7
- 282 0035 05        		.byte	5
- 283 0036 82        		.byte	-126
- 284 0037 03        		.byte	3
- 285 0038 0800      		.word	8
- 286 003a 0A        		.byte	10
- 287 003b 09        		.byte	9
- 288 003c 04        		.byte	4
- 289 003d 02        		.byte	2
- 290 003e 00        		.byte	0
- 291 003f 01        		.byte	1
- 292 0040 03        		.byte	3
- 293 0041 00        		.byte	0
- 294 0042 00        		.byte	0
- 295 0043 00        		.byte	0
- 296 0044 09        		.byte	9
- 297 0045 21        		.byte	33
- 298 0046 1101      		.word	273
- 299 0048 00        		.byte	0
- 300 0049 01        		.byte	1
- 301 004a 22        		.byte	34
- 302 004b 3600      		.word	54
- 303 004d 07        		.byte	7
- 304 004e 05        		.byte	5
- 305 004f 83        		.byte	-125
- 306 0050 03        		.byte	3
- 307 0051 0800      		.word	8
- 308 0053 0A        		.byte	10
- 309 0054 09        		.byte	9
- 310 0055 04        		.byte	4
- 311 0056 03        		.byte	3
- 312 0057 00        		.byte	0
- 313 0058 01        		.byte	1
- 314 0059 03        		.byte	3
- 315 005a 00        		.byte	0
- 316 005b 00        		.byte	0
- 317 005c 00        		.byte	0
- 318 005d 09        		.byte	9
- 319 005e 21        		.byte	33
- 320 005f 1101      		.word	273
- 321 0061 00        		.byte	0
- 322 0062 01        		.byte	1
- 323 0063 22        		.byte	34
- 324 0064 3900      		.word	57
- 325 0066 07        		.byte	7
- 326 0067 05        		.byte	5
- 327 0068 84        		.byte	-124
- 328 0069 03        		.byte	3
- 329 006a 2000      		.word	32
- 330 006c 01        		.byte	1
- 331               	.global	DeviceDescriptor
- 332               		.section	.progmem.data.DeviceDescriptor,"a",@progbits
- 335               	DeviceDescriptor:
- 336 0000 12        		.byte	18
- 337 0001 01        		.byte	1
- 338 0002 1001      		.word	272
- 339 0004 00        		.byte	0
- 340 0005 00        		.byte	0
- 341 0006 00        		.byte	0
- 342 0007 08        		.byte	8
- 343 0008 EDFE      		.word	-275
- 344 000a 0713      		.word	4871
- 345 000c 0100      		.word	1
- 346 000e 01        		.byte	1
- 347 000f 02        		.byte	2
- 348 0010 00        		.byte	0
- 349 0011 01        		.byte	1
- 350               	.global	NKROReport
- 351               		.section	.progmem.data.NKROReport,"a",@progbits
- 354               	NKROReport:
- 355 0000 05        		.byte	5
- 356 0001 01        		.byte	1
- 357 0002 09        		.byte	9
- 358 0003 06        		.byte	6
- 359 0004 A1        		.byte	-95
- 360 0005 01        		.byte	1
- 361 0006 05        		.byte	5
- 362 0007 07        		.byte	7
- 363 0008 19        		.byte	25
- 364 0009 E0        		.byte	-32
- 365 000a 29        		.byte	41
- 366 000b E7        		.byte	-25
- 367 000c 15        		.byte	21
- 368 000d 00        		.byte	0
- 369 000e 25        		.byte	37
- 370 000f 01        		.byte	1
- 371 0010 95        		.byte	-107
- 372 0011 08        		.byte	8
- 373 0012 75        		.byte	117
- 374 0013 01        		.byte	1
- 375 0014 81        		.byte	-127
- 376 0015 02        		.byte	2
- 377 0016 05        		.byte	5
- 378 0017 08        		.byte	8
- 379 0018 19        		.byte	25
- 380 0019 01        		.byte	1
- 381 001a 29        		.byte	41
- 382 001b 05        		.byte	5
- 383 001c 95        		.byte	-107
- 384 001d 05        		.byte	5
- 385 001e 75        		.byte	117
- 386 001f 01        		.byte	1
- 387 0020 91        		.byte	-111
- 388 0021 02        		.byte	2
- 389 0022 95        		.byte	-107
- 390 0023 01        		.byte	1
- 391 0024 75        		.byte	117
- 392 0025 03        		.byte	3
- 393 0026 91        		.byte	-111
- 394 0027 01        		.byte	1
- 395 0028 05        		.byte	5
- 396 0029 07        		.byte	7
- 397 002a 19        		.byte	25
- 398 002b 00        		.byte	0
- 399 002c 29        		.byte	41
- 400 002d F7        		.byte	-9
- 401 002e 15        		.byte	21
- 402 002f 00        		.byte	0
- 403 0030 25        		.byte	37
- 404 0031 01        		.byte	1
- 405 0032 95        		.byte	-107
- 406 0033 F8        		.byte	-8
- 407 0034 75        		.byte	117
- 408 0035 01        		.byte	1
- 409 0036 81        		.byte	-127
- 410 0037 02        		.byte	2
- 411 0038 C0        		.byte	-64
- 412               	.global	ExtrakeyReport
- 413               		.section	.progmem.data.ExtrakeyReport,"a",@progbits
- 416               	ExtrakeyReport:
- 417 0000 05        		.byte	5
- 418 0001 01        		.byte	1
- 419 0002 09        		.byte	9
- 420 0003 80        		.byte	-128
- 421 0004 A1        		.byte	-95
- 422 0005 01        		.byte	1
- 423 0006 85        		.byte	-123
- 424 0007 02        		.byte	2
- 425 0008 16        		.byte	22
- 426 0009 01        		.byte	1
- 427 000a 00        		.byte	0
- 428 000b 26        		.byte	38
- 429 000c 03        		.byte	3
- 430 000d 00        		.byte	0
- 431 000e 1A        		.byte	26
- 432 000f 81        		.byte	-127
- 433 0010 00        		.byte	0
- 434 0011 2A        		.byte	42
- 435 0012 83        		.byte	-125
- 436 0013 00        		.byte	0
- 437 0014 75        		.byte	117
- 438 0015 10        		.byte	16
- 439 0016 95        		.byte	-107
- 440 0017 01        		.byte	1
- 441 0018 81        		.byte	-127
- 442 0019 00        		.byte	0
- 443 001a C0        		.byte	-64
- 444 001b 05        		.byte	5
- 445 001c 0C        		.byte	12
- 446 001d 09        		.byte	9
- 447 001e 01        		.byte	1
- 448 001f A1        		.byte	-95
- 449 0020 01        		.byte	1
- 450 0021 85        		.byte	-123
- 451 0022 03        		.byte	3
- 452 0023 16        		.byte	22
- 453 0024 01        		.byte	1
- 454 0025 00        		.byte	0
- 455 0026 26        		.byte	38
- 456 0027 9C        		.byte	-100
- 457 0028 02        		.byte	2
- 458 0029 1A        		.byte	26
- 459 002a 01        		.byte	1
- 460 002b 00        		.byte	0
- 461 002c 2A        		.byte	42
- 462 002d 9C        		.byte	-100
- 463 002e 02        		.byte	2
- 464 002f 75        		.byte	117
- 465 0030 10        		.byte	16
- 466 0031 95        		.byte	-107
- 467 0032 01        		.byte	1
- 468 0033 81        		.byte	-127
- 469 0034 00        		.byte	0
- 470 0035 C0        		.byte	-64
- 471               	.global	MouseReport
- 472               		.section	.progmem.data.MouseReport,"a",@progbits
- 475               	MouseReport:
- 476 0000 05        		.byte	5
- 477 0001 01        		.byte	1
- 478 0002 09        		.byte	9
- 479 0003 02        		.byte	2
- 480 0004 A1        		.byte	-95
- 481 0005 01        		.byte	1
- 482 0006 09        		.byte	9
- 483 0007 01        		.byte	1
- 484 0008 A1        		.byte	-95
- 485 0009 00        		.byte	0
- 486 000a 05        		.byte	5
- 487 000b 09        		.byte	9
- 488 000c 19        		.byte	25
- 489 000d 01        		.byte	1
- 490 000e 29        		.byte	41
- 491 000f 05        		.byte	5
- 492 0010 15        		.byte	21
- 493 0011 00        		.byte	0
- 494 0012 25        		.byte	37
- 495 0013 01        		.byte	1
- 496 0014 95        		.byte	-107
- 497 0015 05        		.byte	5
- 498 0016 75        		.byte	117
- 499 0017 01        		.byte	1
- 500 0018 81        		.byte	-127
- 501 0019 02        		.byte	2
- 502 001a 95        		.byte	-107
- 503 001b 01        		.byte	1
- 504 001c 75        		.byte	117
- 505 001d 03        		.byte	3
- 506 001e 81        		.byte	-127
- 507 001f 01        		.byte	1
- 508 0020 05        		.byte	5
- 509 0021 01        		.byte	1
- 510 0022 09        		.byte	9
- 511 0023 30        		.byte	48
- 512 0024 09        		.byte	9
- 513 0025 31        		.byte	49
- 514 0026 15        		.byte	21
- 515 0027 81        		.byte	-127
- 516 0028 25        		.byte	37
- 517 0029 7F        		.byte	127
- 518 002a 95        		.byte	-107
- 519 002b 02        		.byte	2
- 520 002c 75        		.byte	117
- 521 002d 08        		.byte	8
- 522 002e 81        		.byte	-127
- 523 002f 06        		.byte	6
- 524 0030 09        		.byte	9
- 525 0031 38        		.byte	56
- 526 0032 15        		.byte	21
- 527 0033 81        		.byte	-127
- 528 0034 25        		.byte	37
- 529 0035 7F        		.byte	127
- 530 0036 95        		.byte	-107
- 531 0037 01        		.byte	1
- 532 0038 75        		.byte	117
- 533 0039 08        		.byte	8
- 534 003a 81        		.byte	-127
- 535 003b 06        		.byte	6
- 536 003c 05        		.byte	5
- 537 003d 0C        		.byte	12
- 538 003e 0A        		.byte	10
- 539 003f 38        		.byte	56
- 540 0040 02        		.byte	2
- 541 0041 15        		.byte	21
- 542 0042 81        		.byte	-127
- 543 0043 25        		.byte	37
- 544 0044 7F        		.byte	127
- 545 0045 95        		.byte	-107
- 546 0046 01        		.byte	1
- 547 0047 75        		.byte	117
- 548 0048 08        		.byte	8
- 549 0049 81        		.byte	-127
- 550 004a 06        		.byte	6
- 551 004b C0        		.byte	-64
- 552 004c C0        		.byte	-64
- 553               	.global	KeyboardReport
- 554               		.section	.progmem.data.KeyboardReport,"a",@progbits
- 557               	KeyboardReport:
- 558 0000 05        		.byte	5
- 559 0001 01        		.byte	1
- 560 0002 09        		.byte	9
- 561 0003 06        		.byte	6
- 562 0004 A1        		.byte	-95
- 563 0005 01        		.byte	1
- 564 0006 05        		.byte	5
- 565 0007 07        		.byte	7
- 566 0008 19        		.byte	25
- 567 0009 E0        		.byte	-32
- 568 000a 29        		.byte	41
- 569 000b E7        		.byte	-25
- 570 000c 15        		.byte	21
- 571 000d 00        		.byte	0
- 572 000e 25        		.byte	37
- 573 000f 01        		.byte	1
- 574 0010 95        		.byte	-107
- 575 0011 08        		.byte	8
- 576 0012 75        		.byte	117
- 577 0013 01        		.byte	1
- 578 0014 81        		.byte	-127
- 579 0015 02        		.byte	2
- 580 0016 95        		.byte	-107
- 581 0017 01        		.byte	1
- 582 0018 75        		.byte	117
- 583 0019 08        		.byte	8
- 584 001a 81        		.byte	-127
- 585 001b 01        		.byte	1
- 586 001c 05        		.byte	5
- 587 001d 08        		.byte	8
- 588 001e 19        		.byte	25
- 589 001f 01        		.byte	1
- 590 0020 29        		.byte	41
- 591 0021 05        		.byte	5
- 592 0022 95        		.byte	-107
- 593 0023 05        		.byte	5
- 594 0024 75        		.byte	117
- 595 0025 01        		.byte	1
- 596 0026 91        		.byte	-111
- 597 0027 02        		.byte	2
- 598 0028 95        		.byte	-107
- 599 0029 01        		.byte	1
- 600 002a 75        		.byte	117
- 601 002b 03        		.byte	3
- 602 002c 91        		.byte	-111
- 603 002d 01        		.byte	1
- 604 002e 05        		.byte	5
- 605 002f 07        		.byte	7
- 606 0030 19        		.byte	25
- 607 0031 00        		.byte	0
- 608 0032 29        		.byte	41
- 609 0033 FF        		.byte	-1
- 610 0034 15        		.byte	21
- 611 0035 00        		.byte	0
- 612 0036 26        		.byte	38
- 613 0037 FF        		.byte	-1
- 614 0038 00        		.byte	0
- 615 0039 95        		.byte	-107
- 616 003a 06        		.byte	6
- 617 003b 75        		.byte	117
- 618 003c 08        		.byte	8
- 619 003d 81        		.byte	-127
- 620 003e 00        		.byte	0
- 621 003f C0        		.byte	-64
- 622               		.text
- 623               	.Letext0:
- 624               		.file 2 "/usr/avr/include/stdint.h"
- 625               		.file 3 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
- 626               		.file 4 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdDescriptors.h"
- 627               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
- 628               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 629               		.file 7 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
- 630               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
- 631               		.file 9 "/usr/avr/include/stdio.h"
- 632               		.file 10 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Class/Device/../Common/HIDClassCommon
- 633               		.file 11 "./tmk_core/protocol/lufa/descriptor.h"
+ 147               		.loc 1 899 0
+ 148 0088 E0E0      		ldi r30,lo8(ManufacturerString)
+ 149 008a F0E0      		ldi r31,hi8(ManufacturerString)
+ 150 008c 00C0      		rjmp .L17
+ 151               	.LVL18:
+ 152               	.L7:
+ 153 008e 6430      		cpi r22,lo8(4)
+ 154 0090 00F0      		brlo .+2
+ 155 0092 00C0      		rjmp .L15
+ 156 0094 E62F      		mov r30,r22
+ 157 0096 F0E0      		ldi r31,0
+ 158 0098 EE0F      		lsl r30
+ 159 009a FF1F      		rol r31
+ 160 009c E050      		subi r30,lo8(-(CSWTCH.1))
+ 161 009e F040      		sbci r31,hi8(-(CSWTCH.1))
+ 162 00a0 2081      		ld r18,Z
+ 163 00a2 3181      		ldd r19,Z+1
+ 164               	.LBE5:
+ 907:./tmk_core/protocol/lufa/descriptor.c ****             switch (wIndex) {
+ 165               		.loc 1 907 0
+ 166 00a4 89E0      		ldi r24,lo8(9)
+ 167 00a6 90E0      		ldi r25,0
+ 168               	.LVL19:
+ 169 00a8 00C0      		rjmp .L2
+ 170               		.cfi_endproc
+ 171               	.LFE100:
+ 173               		.section	.rodata.CSWTCH.3,"a",@progbits
+ 176               	CSWTCH.3:
+ 177 0000 40        		.byte	64
+ 178 0001 4D        		.byte	77
+ 179 0002 36        		.byte	54
+ 180 0003 39        		.byte	57
+ 181               		.section	.rodata.CSWTCH.2,"a",@progbits
+ 184               	CSWTCH.2:
+ 185 0000 0000      		.word	KeyboardReport
+ 186 0002 0000      		.word	MouseReport
+ 187 0004 0000      		.word	ExtrakeyReport
+ 188 0006 0000      		.word	NKROReport
+ 189               		.section	.rodata.CSWTCH.1,"a",@progbits
+ 192               	CSWTCH.1:
+ 193 0000 0000      		.word	ConfigurationDescriptor+18
+ 194 0002 0000      		.word	ConfigurationDescriptor+43
+ 195 0004 0000      		.word	ConfigurationDescriptor+68
+ 196 0006 0000      		.word	ConfigurationDescriptor+93
+ 197               	.global	ProductString
+ 198               		.section	.progmem.data.ProductString,"a",@progbits
+ 201               	ProductString:
+ 202 0000 10        		.byte	16
+ 203 0001 03        		.byte	3
+ 204 0002 5300      		.string	"S"
+ 205 0004 7000      		.string	"p"
+ 206 0006 6C00      		.string	"l"
+ 207 0008 6900      		.string	"i"
+ 208 000a 7400      		.string	"t"
+ 209 000c 3700      		.string	"7"
+ 210 000e 3000      		.string	"0"
+ 211 0010 00        		.string	""
+ 212 0011 00        		.string	""
+ 213               	.global	ManufacturerString
+ 214               		.section	.progmem.data.ManufacturerString,"a",@progbits
+ 217               	ManufacturerString:
+ 218 0000 0A        		.byte	10
+ 219 0001 03        		.byte	3
+ 220 0002 4700      		.string	"G"
+ 221 0004 6F00      		.string	"o"
+ 222 0006 6C00      		.string	"l"
+ 223 0008 6400      		.string	"d"
+ 224 000a 00        		.string	""
+ 225 000b 00        		.string	""
+ 226               	.global	LanguageString
+ 227               		.section	.progmem.data.LanguageString,"a",@progbits
+ 230               	LanguageString:
+ 231 0000 04        		.byte	4
+ 232 0001 03        		.byte	3
+ 233 0002 0904      		.word	1033
+ 234               	.global	ConfigurationDescriptor
+ 235               		.section	.progmem.data.ConfigurationDescriptor,"a",@progbits
+ 238               	ConfigurationDescriptor:
+ 239 0000 09        		.byte	9
+ 240 0001 02        		.byte	2
+ 241 0002 6D00      		.word	109
+ 242 0004 04        		.byte	4
+ 243 0005 01        		.byte	1
+ 244 0006 00        		.byte	0
+ 245 0007 A0        		.byte	-96
+ 246 0008 FA        		.byte	-6
+ 247 0009 09        		.byte	9
+ 248 000a 04        		.byte	4
+ 249 000b 00        		.byte	0
+ 250 000c 00        		.byte	0
+ 251 000d 01        		.byte	1
+ 252 000e 03        		.byte	3
+ 253 000f 01        		.byte	1
+ 254 0010 01        		.byte	1
+ 255 0011 00        		.byte	0
+ 256 0012 09        		.byte	9
+ 257 0013 21        		.byte	33
+ 258 0014 1101      		.word	273
+ 259 0016 00        		.byte	0
+ 260 0017 01        		.byte	1
+ 261 0018 22        		.byte	34
+ 262 0019 4000      		.word	64
+ 263 001b 07        		.byte	7
+ 264 001c 05        		.byte	5
+ 265 001d 81        		.byte	-127
+ 266 001e 03        		.byte	3
+ 267 001f 0800      		.word	8
+ 268 0021 0A        		.byte	10
+ 269 0022 09        		.byte	9
+ 270 0023 04        		.byte	4
+ 271 0024 01        		.byte	1
+ 272 0025 00        		.byte	0
+ 273 0026 01        		.byte	1
+ 274 0027 03        		.byte	3
+ 275 0028 01        		.byte	1
+ 276 0029 02        		.byte	2
+ 277 002a 00        		.byte	0
+ 278 002b 09        		.byte	9
+ 279 002c 21        		.byte	33
+ 280 002d 1101      		.word	273
+ 281 002f 00        		.byte	0
+ 282 0030 01        		.byte	1
+ 283 0031 22        		.byte	34
+ 284 0032 4D00      		.word	77
+ 285 0034 07        		.byte	7
+ 286 0035 05        		.byte	5
+ 287 0036 82        		.byte	-126
+ 288 0037 03        		.byte	3
+ 289 0038 0800      		.word	8
+ 290 003a 0A        		.byte	10
+ 291 003b 09        		.byte	9
+ 292 003c 04        		.byte	4
+ 293 003d 02        		.byte	2
+ 294 003e 00        		.byte	0
+ 295 003f 01        		.byte	1
+ 296 0040 03        		.byte	3
+ 297 0041 00        		.byte	0
+ 298 0042 00        		.byte	0
+ 299 0043 00        		.byte	0
+ 300 0044 09        		.byte	9
+ 301 0045 21        		.byte	33
+ 302 0046 1101      		.word	273
+ 303 0048 00        		.byte	0
+ 304 0049 01        		.byte	1
+ 305 004a 22        		.byte	34
+ 306 004b 3600      		.word	54
+ 307 004d 07        		.byte	7
+ 308 004e 05        		.byte	5
+ 309 004f 83        		.byte	-125
+ 310 0050 03        		.byte	3
+ 311 0051 0800      		.word	8
+ 312 0053 0A        		.byte	10
+ 313 0054 09        		.byte	9
+ 314 0055 04        		.byte	4
+ 315 0056 03        		.byte	3
+ 316 0057 00        		.byte	0
+ 317 0058 01        		.byte	1
+ 318 0059 03        		.byte	3
+ 319 005a 00        		.byte	0
+ 320 005b 00        		.byte	0
+ 321 005c 00        		.byte	0
+ 322 005d 09        		.byte	9
+ 323 005e 21        		.byte	33
+ 324 005f 1101      		.word	273
+ 325 0061 00        		.byte	0
+ 326 0062 01        		.byte	1
+ 327 0063 22        		.byte	34
+ 328 0064 3900      		.word	57
+ 329 0066 07        		.byte	7
+ 330 0067 05        		.byte	5
+ 331 0068 84        		.byte	-124
+ 332 0069 03        		.byte	3
+ 333 006a 2000      		.word	32
+ 334 006c 01        		.byte	1
+ 335               	.global	DeviceDescriptor
+ 336               		.section	.progmem.data.DeviceDescriptor,"a",@progbits
+ 339               	DeviceDescriptor:
+ 340 0000 12        		.byte	18
+ 341 0001 01        		.byte	1
+ 342 0002 1001      		.word	272
+ 343 0004 00        		.byte	0
+ 344 0005 00        		.byte	0
+ 345 0006 00        		.byte	0
+ 346 0007 08        		.byte	8
+ 347 0008 EDFE      		.word	-275
+ 348 000a 0713      		.word	4871
+ 349 000c 0100      		.word	1
+ 350 000e 01        		.byte	1
+ 351 000f 02        		.byte	2
+ 352 0010 00        		.byte	0
+ 353 0011 01        		.byte	1
+ 354               	.global	NKROReport
+ 355               		.section	.progmem.data.NKROReport,"a",@progbits
+ 358               	NKROReport:
+ 359 0000 05        		.byte	5
+ 360 0001 01        		.byte	1
+ 361 0002 09        		.byte	9
+ 362 0003 06        		.byte	6
+ 363 0004 A1        		.byte	-95
+ 364 0005 01        		.byte	1
+ 365 0006 05        		.byte	5
+ 366 0007 07        		.byte	7
+ 367 0008 19        		.byte	25
+ 368 0009 E0        		.byte	-32
+ 369 000a 29        		.byte	41
+ 370 000b E7        		.byte	-25
+ 371 000c 15        		.byte	21
+ 372 000d 00        		.byte	0
+ 373 000e 25        		.byte	37
+ 374 000f 01        		.byte	1
+ 375 0010 95        		.byte	-107
+ 376 0011 08        		.byte	8
+ 377 0012 75        		.byte	117
+ 378 0013 01        		.byte	1
+ 379 0014 81        		.byte	-127
+ 380 0015 02        		.byte	2
+ 381 0016 05        		.byte	5
+ 382 0017 08        		.byte	8
+ 383 0018 19        		.byte	25
+ 384 0019 01        		.byte	1
+ 385 001a 29        		.byte	41
+ 386 001b 05        		.byte	5
+ 387 001c 95        		.byte	-107
+ 388 001d 05        		.byte	5
+ 389 001e 75        		.byte	117
+ 390 001f 01        		.byte	1
+ 391 0020 91        		.byte	-111
+ 392 0021 02        		.byte	2
+ 393 0022 95        		.byte	-107
+ 394 0023 01        		.byte	1
+ 395 0024 75        		.byte	117
+ 396 0025 03        		.byte	3
+ 397 0026 91        		.byte	-111
+ 398 0027 01        		.byte	1
+ 399 0028 05        		.byte	5
+ 400 0029 07        		.byte	7
+ 401 002a 19        		.byte	25
+ 402 002b 00        		.byte	0
+ 403 002c 29        		.byte	41
+ 404 002d F7        		.byte	-9
+ 405 002e 15        		.byte	21
+ 406 002f 00        		.byte	0
+ 407 0030 25        		.byte	37
+ 408 0031 01        		.byte	1
+ 409 0032 95        		.byte	-107
+ 410 0033 F8        		.byte	-8
+ 411 0034 75        		.byte	117
+ 412 0035 01        		.byte	1
+ 413 0036 81        		.byte	-127
+ 414 0037 02        		.byte	2
+ 415 0038 C0        		.byte	-64
+ 416               	.global	ExtrakeyReport
+ 417               		.section	.progmem.data.ExtrakeyReport,"a",@progbits
+ 420               	ExtrakeyReport:
+ 421 0000 05        		.byte	5
+ 422 0001 01        		.byte	1
+ 423 0002 09        		.byte	9
+ 424 0003 80        		.byte	-128
+ 425 0004 A1        		.byte	-95
+ 426 0005 01        		.byte	1
+ 427 0006 85        		.byte	-123
+ 428 0007 02        		.byte	2
+ 429 0008 16        		.byte	22
+ 430 0009 01        		.byte	1
+ 431 000a 00        		.byte	0
+ 432 000b 26        		.byte	38
+ 433 000c 03        		.byte	3
+ 434 000d 00        		.byte	0
+ 435 000e 1A        		.byte	26
+ 436 000f 81        		.byte	-127
+ 437 0010 00        		.byte	0
+ 438 0011 2A        		.byte	42
+ 439 0012 83        		.byte	-125
+ 440 0013 00        		.byte	0
+ 441 0014 75        		.byte	117
+ 442 0015 10        		.byte	16
+ 443 0016 95        		.byte	-107
+ 444 0017 01        		.byte	1
+ 445 0018 81        		.byte	-127
+ 446 0019 00        		.byte	0
+ 447 001a C0        		.byte	-64
+ 448 001b 05        		.byte	5
+ 449 001c 0C        		.byte	12
+ 450 001d 09        		.byte	9
+ 451 001e 01        		.byte	1
+ 452 001f A1        		.byte	-95
+ 453 0020 01        		.byte	1
+ 454 0021 85        		.byte	-123
+ 455 0022 03        		.byte	3
+ 456 0023 16        		.byte	22
+ 457 0024 01        		.byte	1
+ 458 0025 00        		.byte	0
+ 459 0026 26        		.byte	38
+ 460 0027 9C        		.byte	-100
+ 461 0028 02        		.byte	2
+ 462 0029 1A        		.byte	26
+ 463 002a 01        		.byte	1
+ 464 002b 00        		.byte	0
+ 465 002c 2A        		.byte	42
+ 466 002d 9C        		.byte	-100
+ 467 002e 02        		.byte	2
+ 468 002f 75        		.byte	117
+ 469 0030 10        		.byte	16
+ 470 0031 95        		.byte	-107
+ 471 0032 01        		.byte	1
+ 472 0033 81        		.byte	-127
+ 473 0034 00        		.byte	0
+ 474 0035 C0        		.byte	-64
+ 475               	.global	MouseReport
+ 476               		.section	.progmem.data.MouseReport,"a",@progbits
+ 479               	MouseReport:
+ 480 0000 05        		.byte	5
+ 481 0001 01        		.byte	1
+ 482 0002 09        		.byte	9
+ 483 0003 02        		.byte	2
+ 484 0004 A1        		.byte	-95
+ 485 0005 01        		.byte	1
+ 486 0006 09        		.byte	9
+ 487 0007 01        		.byte	1
+ 488 0008 A1        		.byte	-95
+ 489 0009 00        		.byte	0
+ 490 000a 05        		.byte	5
+ 491 000b 09        		.byte	9
+ 492 000c 19        		.byte	25
+ 493 000d 01        		.byte	1
+ 494 000e 29        		.byte	41
+ 495 000f 05        		.byte	5
+ 496 0010 15        		.byte	21
+ 497 0011 00        		.byte	0
+ 498 0012 25        		.byte	37
+ 499 0013 01        		.byte	1
+ 500 0014 95        		.byte	-107
+ 501 0015 05        		.byte	5
+ 502 0016 75        		.byte	117
+ 503 0017 01        		.byte	1
+ 504 0018 81        		.byte	-127
+ 505 0019 02        		.byte	2
+ 506 001a 95        		.byte	-107
+ 507 001b 01        		.byte	1
+ 508 001c 75        		.byte	117
+ 509 001d 03        		.byte	3
+ 510 001e 81        		.byte	-127
+ 511 001f 01        		.byte	1
+ 512 0020 05        		.byte	5
+ 513 0021 01        		.byte	1
+ 514 0022 09        		.byte	9
+ 515 0023 30        		.byte	48
+ 516 0024 09        		.byte	9
+ 517 0025 31        		.byte	49
+ 518 0026 15        		.byte	21
+ 519 0027 81        		.byte	-127
+ 520 0028 25        		.byte	37
+ 521 0029 7F        		.byte	127
+ 522 002a 95        		.byte	-107
+ 523 002b 02        		.byte	2
+ 524 002c 75        		.byte	117
+ 525 002d 08        		.byte	8
+ 526 002e 81        		.byte	-127
+ 527 002f 06        		.byte	6
+ 528 0030 09        		.byte	9
+ 529 0031 38        		.byte	56
+ 530 0032 15        		.byte	21
+ 531 0033 81        		.byte	-127
+ 532 0034 25        		.byte	37
+ 533 0035 7F        		.byte	127
+ 534 0036 95        		.byte	-107
+ 535 0037 01        		.byte	1
+ 536 0038 75        		.byte	117
+ 537 0039 08        		.byte	8
+ 538 003a 81        		.byte	-127
+ 539 003b 06        		.byte	6
+ 540 003c 05        		.byte	5
+ 541 003d 0C        		.byte	12
+ 542 003e 0A        		.byte	10
+ 543 003f 38        		.byte	56
+ 544 0040 02        		.byte	2
+ 545 0041 15        		.byte	21
+ 546 0042 81        		.byte	-127
+ 547 0043 25        		.byte	37
+ 548 0044 7F        		.byte	127
+ 549 0045 95        		.byte	-107
+ 550 0046 01        		.byte	1
+ 551 0047 75        		.byte	117
+ 552 0048 08        		.byte	8
+ 553 0049 81        		.byte	-127
+ 554 004a 06        		.byte	6
+ 555 004b C0        		.byte	-64
+ 556 004c C0        		.byte	-64
+ 557               	.global	KeyboardReport
+ 558               		.section	.progmem.data.KeyboardReport,"a",@progbits
+ 561               	KeyboardReport:
+ 562 0000 05        		.byte	5
+ 563 0001 01        		.byte	1
+ 564 0002 09        		.byte	9
+ 565 0003 06        		.byte	6
+ 566 0004 A1        		.byte	-95
+ 567 0005 01        		.byte	1
+ 568 0006 05        		.byte	5
+ 569 0007 07        		.byte	7
+ 570 0008 19        		.byte	25
+ 571 0009 E0        		.byte	-32
+ 572 000a 29        		.byte	41
+ 573 000b E7        		.byte	-25
+ 574 000c 15        		.byte	21
+ 575 000d 00        		.byte	0
+ 576 000e 25        		.byte	37
+ 577 000f 01        		.byte	1
+ 578 0010 95        		.byte	-107
+ 579 0011 08        		.byte	8
+ 580 0012 75        		.byte	117
+ 581 0013 01        		.byte	1
+ 582 0014 81        		.byte	-127
+ 583 0015 02        		.byte	2
+ 584 0016 95        		.byte	-107
+ 585 0017 01        		.byte	1
+ 586 0018 75        		.byte	117
+ 587 0019 08        		.byte	8
+ 588 001a 81        		.byte	-127
+ 589 001b 01        		.byte	1
+ 590 001c 05        		.byte	5
+ 591 001d 08        		.byte	8
+ 592 001e 19        		.byte	25
+ 593 001f 01        		.byte	1
+ 594 0020 29        		.byte	41
+ 595 0021 05        		.byte	5
+ 596 0022 95        		.byte	-107
+ 597 0023 05        		.byte	5
+ 598 0024 75        		.byte	117
+ 599 0025 01        		.byte	1
+ 600 0026 91        		.byte	-111
+ 601 0027 02        		.byte	2
+ 602 0028 95        		.byte	-107
+ 603 0029 01        		.byte	1
+ 604 002a 75        		.byte	117
+ 605 002b 03        		.byte	3
+ 606 002c 91        		.byte	-111
+ 607 002d 01        		.byte	1
+ 608 002e 05        		.byte	5
+ 609 002f 07        		.byte	7
+ 610 0030 19        		.byte	25
+ 611 0031 00        		.byte	0
+ 612 0032 29        		.byte	41
+ 613 0033 FF        		.byte	-1
+ 614 0034 15        		.byte	21
+ 615 0035 00        		.byte	0
+ 616 0036 26        		.byte	38
+ 617 0037 FF        		.byte	-1
+ 618 0038 00        		.byte	0
+ 619 0039 95        		.byte	-107
+ 620 003a 06        		.byte	6
+ 621 003b 75        		.byte	117
+ 622 003c 08        		.byte	8
+ 623 003d 81        		.byte	-127
+ 624 003e 00        		.byte	0
+ 625 003f C0        		.byte	-64
+ 626               		.text
+ 627               	.Letext0:
+ 628               		.file 2 "/usr/avr/include/stdint.h"
+ 629               		.file 3 "/usr/lib/gcc/avr/7.1.0/include/stddef.h"
+ 630               		.file 4 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdDescriptors.h"
+ 631               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 632               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 633               		.file 7 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+ 634               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 635               		.file 9 "/usr/avr/include/stdio.h"
+ 636               		.file 10 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Class/Device/../Common/HIDClassCommon
+ 637               		.file 11 "./tmk_core/protocol/lufa/descriptor.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 descriptor.c
-     /tmp/ccWph9c5.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccWph9c5.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccWph9c5.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccWph9c5.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccWph9c5.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccWph9c5.s:13     .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
-     /tmp/ccWph9c5.s:180    .rodata.CSWTCH.2:0000000000000000 CSWTCH.2
-     /tmp/ccWph9c5.s:172    .rodata.CSWTCH.3:0000000000000000 CSWTCH.3
-     /tmp/ccWph9c5.s:335    .progmem.data.DeviceDescriptor:0000000000000000 DeviceDescriptor
-     /tmp/ccWph9c5.s:234    .progmem.data.ConfigurationDescriptor:0000000000000000 ConfigurationDescriptor
-     /tmp/ccWph9c5.s:197    .progmem.data.ProductString:0000000000000000 ProductString
-     /tmp/ccWph9c5.s:226    .progmem.data.LanguageString:0000000000000000 LanguageString
-     /tmp/ccWph9c5.s:213    .progmem.data.ManufacturerString:0000000000000000 ManufacturerString
-     /tmp/ccWph9c5.s:188    .rodata.CSWTCH.1:0000000000000000 CSWTCH.1
-     /tmp/ccWph9c5.s:557    .progmem.data.KeyboardReport:0000000000000000 KeyboardReport
-     /tmp/ccWph9c5.s:475    .progmem.data.MouseReport:0000000000000000 MouseReport
-     /tmp/ccWph9c5.s:416    .progmem.data.ExtrakeyReport:0000000000000000 ExtrakeyReport
-     /tmp/ccWph9c5.s:354    .progmem.data.NKROReport:0000000000000000 NKROReport
+     /tmp/ccJwpoF6.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccJwpoF6.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccJwpoF6.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccJwpoF6.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccJwpoF6.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccJwpoF6.s:13     .text.CALLBACK_USB_GetDescriptor:0000000000000000 CALLBACK_USB_GetDescriptor
+     /tmp/ccJwpoF6.s:184    .rodata.CSWTCH.2:0000000000000000 CSWTCH.2
+     /tmp/ccJwpoF6.s:176    .rodata.CSWTCH.3:0000000000000000 CSWTCH.3
+     /tmp/ccJwpoF6.s:339    .progmem.data.DeviceDescriptor:0000000000000000 DeviceDescriptor
+     /tmp/ccJwpoF6.s:238    .progmem.data.ConfigurationDescriptor:0000000000000000 ConfigurationDescriptor
+     /tmp/ccJwpoF6.s:201    .progmem.data.ProductString:0000000000000000 ProductString
+     /tmp/ccJwpoF6.s:230    .progmem.data.LanguageString:0000000000000000 LanguageString
+     /tmp/ccJwpoF6.s:217    .progmem.data.ManufacturerString:0000000000000000 ManufacturerString
+     /tmp/ccJwpoF6.s:192    .rodata.CSWTCH.1:0000000000000000 CSWTCH.1
+     /tmp/ccJwpoF6.s:561    .progmem.data.KeyboardReport:0000000000000000 KeyboardReport
+     /tmp/ccJwpoF6.s:479    .progmem.data.MouseReport:0000000000000000 MouseReport
+     /tmp/ccJwpoF6.s:420    .progmem.data.ExtrakeyReport:0000000000000000 ExtrakeyReport
+     /tmp/ccJwpoF6.s:358    .progmem.data.NKROReport:0000000000000000 NKROReport
 
 UNDEFINED SYMBOLS
 __do_copy_data

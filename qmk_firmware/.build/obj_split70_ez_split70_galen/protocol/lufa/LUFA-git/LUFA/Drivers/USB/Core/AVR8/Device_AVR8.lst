@@ -506,11 +506,11 @@
   66               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../AVR8/../AVR8/../USBTask.h
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Device_AVR8.c
-     /tmp/ccn4TBos.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccn4TBos.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccn4TBos.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccn4TBos.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccn4TBos.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccn4TBos.s:13     .text.USB_Device_SendRemoteWakeup:0000000000000000 USB_Device_SendRemoteWakeup
+     /tmp/ccFdWBzj.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccFdWBzj.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccFdWBzj.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccFdWBzj.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccFdWBzj.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccFdWBzj.s:13     .text.USB_Device_SendRemoteWakeup:0000000000000000 USB_Device_SendRemoteWakeup
 
 NO UNDEFINED SYMBOLS

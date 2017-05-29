@@ -772,8 +772,8 @@
  427:/usr/avr/include/avr/wdt.h **** 	{
  428:/usr/avr/include/avr/wdt.h **** 		__asm__ __volatile__ (
   60               		.loc 3 428 0
-  61 002e 9CE0      		ldi r25,lo8(12)
-  62 0030 88E1      		ldi r24,lo8(24)
+  61 002e 88E1      		ldi r24,lo8(24)
+  62 0030 9CE0      		ldi r25,lo8(12)
   63               	/* #APP */
   64               	 ;  428 "/usr/avr/include/avr/wdt.h" 1
   65 0032 0FB6      		in __tmp_reg__,__SREG__
@@ -957,14 +957,14 @@
  160               		.file 10 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bootloader.c
-     /tmp/ccMMvc0g.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccMMvc0g.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccMMvc0g.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccMMvc0g.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccMMvc0g.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccMMvc0g.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
-     /tmp/ccMMvc0g.s:150    .noinit:0000000000000000 reset_key
-     /tmp/ccMMvc0g.s:84     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
+     /tmp/cc3zDLWL.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc3zDLWL.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc3zDLWL.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc3zDLWL.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc3zDLWL.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc3zDLWL.s:13     .text.bootloader_jump:0000000000000000 bootloader_jump
+     /tmp/cc3zDLWL.s:150    .noinit:0000000000000000 reset_key
+     /tmp/cc3zDLWL.s:84     .init3:0000000000000000 bootloader_jump_after_watchdog_reset
 
 UNDEFINED SYMBOLS
 USB_Disable

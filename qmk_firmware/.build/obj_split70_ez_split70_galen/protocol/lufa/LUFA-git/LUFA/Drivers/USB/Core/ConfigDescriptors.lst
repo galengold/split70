@@ -843,15 +843,15 @@
  424               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ConfigDescriptors.c
-     /tmp/ccUpSOqo.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccUpSOqo.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccUpSOqo.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccUpSOqo.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccUpSOqo.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccUpSOqo.s:12     .text.USB_GetNextDescriptor:0000000000000000 USB_GetNextDescriptor
-     /tmp/ccUpSOqo.s:73     .text.USB_GetNextDescriptorOfType:0000000000000000 USB_GetNextDescriptorOfType
-     /tmp/ccUpSOqo.s:143    .text.USB_GetNextDescriptorOfTypeBefore:0000000000000000 USB_GetNextDescriptorOfTypeBefore
-     /tmp/ccUpSOqo.s:225    .text.USB_GetNextDescriptorOfTypeAfter:0000000000000000 USB_GetNextDescriptorOfTypeAfter
-     /tmp/ccUpSOqo.s:302    .text.USB_GetNextDescriptorComp:0000000000000000 USB_GetNextDescriptorComp
+     /tmp/ccHE6xnI.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccHE6xnI.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccHE6xnI.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccHE6xnI.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccHE6xnI.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccHE6xnI.s:12     .text.USB_GetNextDescriptor:0000000000000000 USB_GetNextDescriptor
+     /tmp/ccHE6xnI.s:73     .text.USB_GetNextDescriptorOfType:0000000000000000 USB_GetNextDescriptorOfType
+     /tmp/ccHE6xnI.s:143    .text.USB_GetNextDescriptorOfTypeBefore:0000000000000000 USB_GetNextDescriptorOfTypeBefore
+     /tmp/ccHE6xnI.s:225    .text.USB_GetNextDescriptorOfTypeAfter:0000000000000000 USB_GetNextDescriptorOfTypeAfter
+     /tmp/ccHE6xnI.s:302    .text.USB_GetNextDescriptorComp:0000000000000000 USB_GetNextDescriptorComp
 
 NO UNDEFINED SYMBOLS

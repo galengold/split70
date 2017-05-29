@@ -28,146 +28,149 @@
    7:quantum/process_keycode/process_unicode_common.c ****   input_mode = os_target;
   23               		.loc 1 7 0
   24 0000 8093 0000 		sts input_mode,r24
-  25 0004 0895      		ret
-  26               		.cfi_endproc
-  27               	.LFE107:
-  29               		.section	.text.get_unicode_input_mode,"ax",@progbits
-  30               	.global	get_unicode_input_mode
-  32               	get_unicode_input_mode:
-  33               	.LFB108:
+  25               	/* epilogue start */
    8:quantum/process_keycode/process_unicode_common.c **** }
+  26               		.loc 1 8 0
+  27 0004 0895      		ret
+  28               		.cfi_endproc
+  29               	.LFE107:
+  31               		.section	.text.get_unicode_input_mode,"ax",@progbits
+  32               	.global	get_unicode_input_mode
+  34               	get_unicode_input_mode:
+  35               	.LFB108:
    9:quantum/process_keycode/process_unicode_common.c **** 
   10:quantum/process_keycode/process_unicode_common.c **** uint8_t get_unicode_input_mode(void) {
-  34               		.loc 1 10 0
-  35               		.cfi_startproc
-  36               	/* prologue: function */
-  37               	/* frame size = 0 */
-  38               	/* stack size = 0 */
-  39               	.L__stack_usage = 0
+  36               		.loc 1 10 0
+  37               		.cfi_startproc
+  38               	/* prologue: function */
+  39               	/* frame size = 0 */
+  40               	/* stack size = 0 */
+  41               	.L__stack_usage = 0
   11:quantum/process_keycode/process_unicode_common.c ****   return input_mode;
   12:quantum/process_keycode/process_unicode_common.c **** }
-  40               		.loc 1 12 0
-  41 0000 8091 0000 		lds r24,input_mode
-  42 0004 0895      		ret
-  43               		.cfi_endproc
-  44               	.LFE108:
-  46               		.section	.text.unicode_input_start,"ax",@progbits
-  47               		.weak	unicode_input_start
-  49               	unicode_input_start:
-  50               	.LFB109:
+  42               		.loc 1 12 0
+  43 0000 8091 0000 		lds r24,input_mode
+  44               	/* epilogue start */
+  45 0004 0895      		ret
+  46               		.cfi_endproc
+  47               	.LFE108:
+  49               		.section	.text.unicode_input_start,"ax",@progbits
+  50               		.weak	unicode_input_start
+  52               	unicode_input_start:
+  53               	.LFB109:
   13:quantum/process_keycode/process_unicode_common.c **** 
   14:quantum/process_keycode/process_unicode_common.c **** __attribute__((weak))
   15:quantum/process_keycode/process_unicode_common.c **** void unicode_input_start (void) {
-  51               		.loc 1 15 0
-  52               		.cfi_startproc
-  53               	/* prologue: function */
-  54               	/* frame size = 0 */
-  55               	/* stack size = 0 */
-  56               	.L__stack_usage = 0
+  54               		.loc 1 15 0
+  55               		.cfi_startproc
+  56               	/* prologue: function */
+  57               	/* frame size = 0 */
+  58               	/* stack size = 0 */
+  59               	.L__stack_usage = 0
   16:quantum/process_keycode/process_unicode_common.c ****   // save current mods
   17:quantum/process_keycode/process_unicode_common.c ****   mods = keyboard_report->mods;
-  57               		.loc 1 17 0
-  58 0000 E091 0000 		lds r30,keyboard_report
-  59 0004 F091 0000 		lds r31,keyboard_report+1
-  60 0008 8081      		ld r24,Z
-  61 000a 8093 0000 		sts mods,r24
+  60               		.loc 1 17 0
+  61 0000 E091 0000 		lds r30,keyboard_report
+  62 0004 F091 0000 		lds r31,keyboard_report+1
+  63 0008 8081      		ld r24,Z
+  64 000a 8093 0000 		sts mods,r24
   18:quantum/process_keycode/process_unicode_common.c **** 
   19:quantum/process_keycode/process_unicode_common.c ****   // unregister all mods to start from clean state
   20:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LSFT)) unregister_code(KC_LSFT);
-  62               		.loc 1 20 0
-  63 000e 81FF      		sbrs r24,1
-  64 0010 00C0      		rjmp .L4
-  65               		.loc 1 20 0 is_stmt 0 discriminator 1
-  66 0012 81EE      		ldi r24,lo8(-31)
-  67 0014 0E94 0000 		call unregister_code
-  68               	.LVL1:
-  69               	.L4:
+  65               		.loc 1 20 0
+  66 000e 81FF      		sbrs r24,1
+  67 0010 00C0      		rjmp .L4
+  68               		.loc 1 20 0 is_stmt 0 discriminator 1
+  69 0012 81EE      		ldi r24,lo8(-31)
+  70 0014 0E94 0000 		call unregister_code
+  71               	.LVL1:
+  72               	.L4:
   21:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RSFT)) unregister_code(KC_RSFT);
-  70               		.loc 1 21 0 is_stmt 1
-  71 0018 8091 0000 		lds r24,mods
-  72 001c 85FF      		sbrs r24,5
-  73 001e 00C0      		rjmp .L5
-  74               		.loc 1 21 0 is_stmt 0 discriminator 1
-  75 0020 85EE      		ldi r24,lo8(-27)
-  76 0022 0E94 0000 		call unregister_code
-  77               	.LVL2:
-  78               	.L5:
+  73               		.loc 1 21 0 is_stmt 1
+  74 0018 8091 0000 		lds r24,mods
+  75 001c 85FF      		sbrs r24,5
+  76 001e 00C0      		rjmp .L5
+  77               		.loc 1 21 0 is_stmt 0 discriminator 1
+  78 0020 85EE      		ldi r24,lo8(-27)
+  79 0022 0E94 0000 		call unregister_code
+  80               	.LVL2:
+  81               	.L5:
   22:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LCTL)) unregister_code(KC_LCTL);
-  79               		.loc 1 22 0 is_stmt 1
-  80 0026 8091 0000 		lds r24,mods
-  81 002a 80FF      		sbrs r24,0
-  82 002c 00C0      		rjmp .L6
-  83               		.loc 1 22 0 is_stmt 0 discriminator 1
-  84 002e 80EE      		ldi r24,lo8(-32)
-  85 0030 0E94 0000 		call unregister_code
-  86               	.LVL3:
-  87               	.L6:
+  82               		.loc 1 22 0 is_stmt 1
+  83 0026 8091 0000 		lds r24,mods
+  84 002a 80FF      		sbrs r24,0
+  85 002c 00C0      		rjmp .L6
+  86               		.loc 1 22 0 is_stmt 0 discriminator 1
+  87 002e 80EE      		ldi r24,lo8(-32)
+  88 0030 0E94 0000 		call unregister_code
+  89               	.LVL3:
+  90               	.L6:
   23:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RCTL)) unregister_code(KC_RCTL);
-  88               		.loc 1 23 0 is_stmt 1
-  89 0034 8091 0000 		lds r24,mods
-  90 0038 84FF      		sbrs r24,4
-  91 003a 00C0      		rjmp .L7
-  92               		.loc 1 23 0 is_stmt 0 discriminator 1
-  93 003c 84EE      		ldi r24,lo8(-28)
-  94 003e 0E94 0000 		call unregister_code
-  95               	.LVL4:
-  96               	.L7:
+  91               		.loc 1 23 0 is_stmt 1
+  92 0034 8091 0000 		lds r24,mods
+  93 0038 84FF      		sbrs r24,4
+  94 003a 00C0      		rjmp .L7
+  95               		.loc 1 23 0 is_stmt 0 discriminator 1
+  96 003c 84EE      		ldi r24,lo8(-28)
+  97 003e 0E94 0000 		call unregister_code
+  98               	.LVL4:
+  99               	.L7:
   24:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LALT)) unregister_code(KC_LALT);
-  97               		.loc 1 24 0 is_stmt 1
-  98 0042 8091 0000 		lds r24,mods
-  99 0046 82FF      		sbrs r24,2
- 100 0048 00C0      		rjmp .L8
- 101               		.loc 1 24 0 is_stmt 0 discriminator 1
- 102 004a 82EE      		ldi r24,lo8(-30)
- 103 004c 0E94 0000 		call unregister_code
- 104               	.LVL5:
- 105               	.L8:
+ 100               		.loc 1 24 0 is_stmt 1
+ 101 0042 8091 0000 		lds r24,mods
+ 102 0046 82FF      		sbrs r24,2
+ 103 0048 00C0      		rjmp .L8
+ 104               		.loc 1 24 0 is_stmt 0 discriminator 1
+ 105 004a 82EE      		ldi r24,lo8(-30)
+ 106 004c 0E94 0000 		call unregister_code
+ 107               	.LVL5:
+ 108               	.L8:
   25:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RALT)) unregister_code(KC_RALT);
- 106               		.loc 1 25 0 is_stmt 1
- 107 0050 8091 0000 		lds r24,mods
- 108 0054 86FF      		sbrs r24,6
- 109 0056 00C0      		rjmp .L9
- 110               		.loc 1 25 0 is_stmt 0 discriminator 1
- 111 0058 86EE      		ldi r24,lo8(-26)
- 112 005a 0E94 0000 		call unregister_code
- 113               	.LVL6:
- 114               	.L9:
+ 109               		.loc 1 25 0 is_stmt 1
+ 110 0050 8091 0000 		lds r24,mods
+ 111 0054 86FF      		sbrs r24,6
+ 112 0056 00C0      		rjmp .L9
+ 113               		.loc 1 25 0 is_stmt 0 discriminator 1
+ 114 0058 86EE      		ldi r24,lo8(-26)
+ 115 005a 0E94 0000 		call unregister_code
+ 116               	.LVL6:
+ 117               	.L9:
   26:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LGUI)) unregister_code(KC_LGUI);
- 115               		.loc 1 26 0 is_stmt 1
- 116 005e 8091 0000 		lds r24,mods
- 117 0062 83FF      		sbrs r24,3
- 118 0064 00C0      		rjmp .L10
- 119               		.loc 1 26 0 is_stmt 0 discriminator 1
- 120 0066 83EE      		ldi r24,lo8(-29)
- 121 0068 0E94 0000 		call unregister_code
- 122               	.LVL7:
- 123               	.L10:
+ 118               		.loc 1 26 0 is_stmt 1
+ 119 005e 8091 0000 		lds r24,mods
+ 120 0062 83FF      		sbrs r24,3
+ 121 0064 00C0      		rjmp .L10
+ 122               		.loc 1 26 0 is_stmt 0 discriminator 1
+ 123 0066 83EE      		ldi r24,lo8(-29)
+ 124 0068 0E94 0000 		call unregister_code
+ 125               	.LVL7:
+ 126               	.L10:
   27:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RGUI)) unregister_code(KC_RGUI);
- 124               		.loc 1 27 0 is_stmt 1
- 125 006c 8091 0000 		lds r24,mods
- 126 0070 87FF      		sbrs r24,7
- 127 0072 00C0      		rjmp .L11
- 128               		.loc 1 27 0 is_stmt 0 discriminator 1
- 129 0074 87EE      		ldi r24,lo8(-25)
- 130 0076 0E94 0000 		call unregister_code
- 131               	.LVL8:
- 132               	.L11:
+ 127               		.loc 1 27 0 is_stmt 1
+ 128 006c 8091 0000 		lds r24,mods
+ 129 0070 87FF      		sbrs r24,7
+ 130 0072 00C0      		rjmp .L11
+ 131               		.loc 1 27 0 is_stmt 0 discriminator 1
+ 132 0074 87EE      		ldi r24,lo8(-25)
+ 133 0076 0E94 0000 		call unregister_code
+ 134               	.LVL8:
+ 135               	.L11:
   28:quantum/process_keycode/process_unicode_common.c **** 
   29:quantum/process_keycode/process_unicode_common.c ****   switch(input_mode) {
- 133               		.loc 1 29 0 is_stmt 1
- 134 007a 8091 0000 		lds r24,input_mode
- 135 007e 8130      		cpi r24,lo8(1)
- 136 0080 01F0      		breq .L13
- 137 0082 00F0      		brlo .L14
- 138 0084 8230      		cpi r24,lo8(2)
- 139 0086 01F0      		breq .L15
- 140 0088 8430      		cpi r24,lo8(4)
- 141 008a 01F0      		breq .L16
- 142               	.L12:
- 143               	.LVL9:
- 144               	.LBB4:
- 145               	.LBB5:
- 146               		.file 2 "/usr/avr/include/util/delay.h"
+ 136               		.loc 1 29 0 is_stmt 1
+ 137 007a 8091 0000 		lds r24,input_mode
+ 138 007e 8130      		cpi r24,lo8(1)
+ 139 0080 01F0      		breq .L13
+ 140 0082 00F0      		brlo .L14
+ 141 0084 8230      		cpi r24,lo8(2)
+ 142 0086 01F0      		breq .L15
+ 143 0088 8430      		cpi r24,lo8(4)
+ 144 008a 01F0      		breq .L16
+ 145               	.L12:
+ 146               	.LVL9:
+ 147               	.LBB4:
+ 148               	.LBB5:
+ 149               		.file 2 "/usr/avr/include/util/delay.h"
    1:/usr/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
    3:/usr/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
@@ -355,58 +358,27 @@
  185:/usr/avr/include/util/delay.h **** 	#endif
  186:/usr/avr/include/util/delay.h **** 
  187:/usr/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 147               		.loc 2 187 0
- 148 008c 8FE3      		ldi r24,lo8(-25537)
- 149 008e 9CE9      		ldi r25,hi8(-25537)
- 150 0090 0197      	1:	sbiw r24,1
- 151 0092 01F4      		brne 1b
- 152 0094 00C0      		rjmp .
- 153 0096 0000      		nop
- 154               	.LVL10:
- 155 0098 0895      		ret
- 156               	.L14:
- 157               	.LBE5:
- 158               	.LBE4:
+ 150               		.loc 2 187 0
+ 151 008c 8FE3      		ldi r24,lo8(-25537)
+ 152 008e 9CE9      		ldi r25,hi8(-25537)
+ 153 0090 0197      	1:	sbiw r24,1
+ 154 0092 01F4      		brne 1b
+ 155 0094 00C0      		rjmp .
+ 156 0096 0000      		nop
+ 157               	.LVL10:
+ 158               	/* epilogue start */
+ 159               	.LBE5:
+ 160               	.LBE4:
   30:quantum/process_keycode/process_unicode_common.c ****   case UC_OSX:
   31:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_LALT);
- 159               		.loc 1 31 0
- 160 009a 82EE      		ldi r24,lo8(-30)
- 161 009c 0E94 0000 		call register_code
- 162               	.LVL11:
   32:quantum/process_keycode/process_unicode_common.c ****     break;
- 163               		.loc 1 32 0
- 164 00a0 00C0      		rjmp .L12
- 165               	.L13:
   33:quantum/process_keycode/process_unicode_common.c ****   case UC_LNX:
   34:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_LCTL);
- 166               		.loc 1 34 0
- 167 00a2 80EE      		ldi r24,lo8(-32)
- 168 00a4 0E94 0000 		call register_code
- 169               	.LVL12:
   35:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_LSFT);
- 170               		.loc 1 35 0
- 171 00a8 81EE      		ldi r24,lo8(-31)
- 172 00aa 0E94 0000 		call register_code
- 173               	.LVL13:
   36:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_U);
- 174               		.loc 1 36 0
- 175 00ae 88E1      		ldi r24,lo8(24)
- 176 00b0 0E94 0000 		call register_code
- 177               	.LVL14:
   37:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_U);
- 178               		.loc 1 37 0
- 179 00b4 88E1      		ldi r24,lo8(24)
- 180 00b6 0E94 0000 		call unregister_code
- 181               	.LVL15:
   38:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_LSFT);
- 182               		.loc 1 38 0
- 183 00ba 81EE      		ldi r24,lo8(-31)
- 184 00bc 0E94 0000 		call unregister_code
- 185               	.LVL16:
   39:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_LCTL);
- 186               		.loc 1 39 0
- 187 00c0 80EE      		ldi r24,lo8(-32)
- 188               	.L38:
   40:quantum/process_keycode/process_unicode_common.c ****     break;
   41:quantum/process_keycode/process_unicode_common.c ****   case UC_WIN:
   42:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_LALT);
@@ -418,317 +390,362 @@
   48:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_RALT);
   49:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_U);
   50:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_U);
- 189               		.loc 1 50 0
- 190 00c2 0E94 0000 		call unregister_code
- 191               	.LVL17:
- 192 00c6 00C0      		rjmp .L12
- 193               	.L15:
-  42:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_PPLS);
- 194               		.loc 1 42 0
- 195 00c8 82EE      		ldi r24,lo8(-30)
- 196 00ca 0E94 0000 		call register_code
- 197               	.LVL18:
-  43:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_PPLS);
- 198               		.loc 1 43 0
- 199 00ce 87E5      		ldi r24,lo8(87)
- 200 00d0 0E94 0000 		call register_code
- 201               	.LVL19:
-  44:quantum/process_keycode/process_unicode_common.c ****     break;
- 202               		.loc 1 44 0
- 203 00d4 87E5      		ldi r24,lo8(87)
- 204 00d6 00C0      		rjmp .L38
- 205               	.L16:
-  47:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_RALT);
- 206               		.loc 1 47 0
- 207 00d8 86EE      		ldi r24,lo8(-26)
- 208 00da 0E94 0000 		call register_code
- 209               	.LVL20:
-  48:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_U);
- 210               		.loc 1 48 0
- 211 00de 86EE      		ldi r24,lo8(-26)
- 212 00e0 0E94 0000 		call unregister_code
- 213               	.LVL21:
-  49:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_U);
- 214               		.loc 1 49 0
- 215 00e4 88E1      		ldi r24,lo8(24)
- 216 00e6 0E94 0000 		call register_code
- 217               	.LVL22:
- 218               		.loc 1 50 0
- 219 00ea 88E1      		ldi r24,lo8(24)
- 220 00ec 00C0      		rjmp .L38
- 221               		.cfi_endproc
- 222               	.LFE109:
- 224               		.section	.text.unicode_input_finish,"ax",@progbits
- 225               		.weak	unicode_input_finish
- 227               	unicode_input_finish:
- 228               	.LFB110:
   51:quantum/process_keycode/process_unicode_common.c ****   }
   52:quantum/process_keycode/process_unicode_common.c ****   wait_ms(UNICODE_TYPE_DELAY);
   53:quantum/process_keycode/process_unicode_common.c **** }
+ 161               		.loc 1 53 0
+ 162 0098 0895      		ret
+ 163               	.L14:
+  31:quantum/process_keycode/process_unicode_common.c ****     break;
+ 164               		.loc 1 31 0
+ 165 009a 82EE      		ldi r24,lo8(-30)
+ 166 009c 0E94 0000 		call register_code
+ 167               	.LVL11:
+  32:quantum/process_keycode/process_unicode_common.c ****   case UC_LNX:
+ 168               		.loc 1 32 0
+ 169 00a0 00C0      		rjmp .L12
+ 170               	.L13:
+  34:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_LSFT);
+ 171               		.loc 1 34 0
+ 172 00a2 80EE      		ldi r24,lo8(-32)
+ 173 00a4 0E94 0000 		call register_code
+ 174               	.LVL12:
+  35:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_U);
+ 175               		.loc 1 35 0
+ 176 00a8 81EE      		ldi r24,lo8(-31)
+ 177 00aa 0E94 0000 		call register_code
+ 178               	.LVL13:
+  36:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_U);
+ 179               		.loc 1 36 0
+ 180 00ae 88E1      		ldi r24,lo8(24)
+ 181 00b0 0E94 0000 		call register_code
+ 182               	.LVL14:
+  37:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_LSFT);
+ 183               		.loc 1 37 0
+ 184 00b4 88E1      		ldi r24,lo8(24)
+ 185 00b6 0E94 0000 		call unregister_code
+ 186               	.LVL15:
+  38:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_LCTL);
+ 187               		.loc 1 38 0
+ 188 00ba 81EE      		ldi r24,lo8(-31)
+ 189 00bc 0E94 0000 		call unregister_code
+ 190               	.LVL16:
+  39:quantum/process_keycode/process_unicode_common.c ****     break;
+ 191               		.loc 1 39 0
+ 192 00c0 80EE      		ldi r24,lo8(-32)
+ 193               	.L38:
+  50:quantum/process_keycode/process_unicode_common.c ****   }
+ 194               		.loc 1 50 0
+ 195 00c2 0E94 0000 		call unregister_code
+ 196               	.LVL17:
+ 197 00c6 00C0      		rjmp .L12
+ 198               	.L15:
+  42:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_PPLS);
+ 199               		.loc 1 42 0
+ 200 00c8 82EE      		ldi r24,lo8(-30)
+ 201 00ca 0E94 0000 		call register_code
+ 202               	.LVL18:
+  43:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_PPLS);
+ 203               		.loc 1 43 0
+ 204 00ce 87E5      		ldi r24,lo8(87)
+ 205 00d0 0E94 0000 		call register_code
+ 206               	.LVL19:
+  44:quantum/process_keycode/process_unicode_common.c ****     break;
+ 207               		.loc 1 44 0
+ 208 00d4 87E5      		ldi r24,lo8(87)
+ 209 00d6 00C0      		rjmp .L38
+ 210               	.L16:
+  47:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_RALT);
+ 211               		.loc 1 47 0
+ 212 00d8 86EE      		ldi r24,lo8(-26)
+ 213 00da 0E94 0000 		call register_code
+ 214               	.LVL20:
+  48:quantum/process_keycode/process_unicode_common.c ****     register_code(KC_U);
+ 215               		.loc 1 48 0
+ 216 00de 86EE      		ldi r24,lo8(-26)
+ 217 00e0 0E94 0000 		call unregister_code
+ 218               	.LVL21:
+  49:quantum/process_keycode/process_unicode_common.c ****     unregister_code(KC_U);
+ 219               		.loc 1 49 0
+ 220 00e4 88E1      		ldi r24,lo8(24)
+ 221 00e6 0E94 0000 		call register_code
+ 222               	.LVL22:
+  50:quantum/process_keycode/process_unicode_common.c ****   }
+ 223               		.loc 1 50 0
+ 224 00ea 88E1      		ldi r24,lo8(24)
+ 225 00ec 00C0      		rjmp .L38
+ 226               		.cfi_endproc
+ 227               	.LFE109:
+ 229               		.section	.text.unicode_input_finish,"ax",@progbits
+ 230               		.weak	unicode_input_finish
+ 232               	unicode_input_finish:
+ 233               	.LFB110:
   54:quantum/process_keycode/process_unicode_common.c **** 
   55:quantum/process_keycode/process_unicode_common.c **** __attribute__((weak))
   56:quantum/process_keycode/process_unicode_common.c **** void unicode_input_finish (void) {
- 229               		.loc 1 56 0
- 230               		.cfi_startproc
- 231               	/* prologue: function */
- 232               	/* frame size = 0 */
- 233               	/* stack size = 0 */
- 234               	.L__stack_usage = 0
+ 234               		.loc 1 56 0
+ 235               		.cfi_startproc
+ 236               	/* prologue: function */
+ 237               	/* frame size = 0 */
+ 238               	/* stack size = 0 */
+ 239               	.L__stack_usage = 0
   57:quantum/process_keycode/process_unicode_common.c ****   switch(input_mode) {
- 235               		.loc 1 57 0
- 236 0000 8091 0000 		lds r24,input_mode
- 237 0004 8130      		cpi r24,lo8(1)
- 238 0006 01F0      		breq .L41
- 239 0008 00F0      		brlo .L42
- 240 000a 8230      		cpi r24,lo8(2)
- 241 000c 01F4      		brne .L40
- 242               	.L42:
+ 240               		.loc 1 57 0
+ 241 0000 8091 0000 		lds r24,input_mode
+ 242 0004 8130      		cpi r24,lo8(1)
+ 243 0006 01F0      		breq .L41
+ 244 0008 00F0      		brlo .L42
+ 245 000a 8230      		cpi r24,lo8(2)
+ 246 000c 01F4      		brne .L40
+ 247               	.L42:
   58:quantum/process_keycode/process_unicode_common.c ****     case UC_OSX:
   59:quantum/process_keycode/process_unicode_common.c ****     case UC_WIN:
   60:quantum/process_keycode/process_unicode_common.c ****       unregister_code(KC_LALT);
- 243               		.loc 1 60 0
- 244 000e 82EE      		ldi r24,lo8(-30)
- 245               	.L75:
+ 248               		.loc 1 60 0
+ 249 000e 82EE      		ldi r24,lo8(-30)
+ 250               	.L75:
   61:quantum/process_keycode/process_unicode_common.c ****       break;
   62:quantum/process_keycode/process_unicode_common.c ****     case UC_LNX:
   63:quantum/process_keycode/process_unicode_common.c ****       register_code(KC_SPC);
   64:quantum/process_keycode/process_unicode_common.c ****       unregister_code(KC_SPC);
- 246               		.loc 1 64 0
- 247 0010 0E94 0000 		call unregister_code
- 248               	.LVL23:
- 249               	.L40:
+ 251               		.loc 1 64 0
+ 252 0010 0E94 0000 		call unregister_code
+ 253               	.LVL23:
+ 254               	.L40:
   65:quantum/process_keycode/process_unicode_common.c ****       break;
   66:quantum/process_keycode/process_unicode_common.c ****   }
   67:quantum/process_keycode/process_unicode_common.c **** 
   68:quantum/process_keycode/process_unicode_common.c ****   // reregister previously set mods
   69:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LSFT)) register_code(KC_LSFT);
- 250               		.loc 1 69 0
- 251 0014 8091 0000 		lds r24,mods
- 252 0018 81FF      		sbrs r24,1
- 253 001a 00C0      		rjmp .L43
- 254               		.loc 1 69 0 is_stmt 0 discriminator 1
- 255 001c 81EE      		ldi r24,lo8(-31)
- 256 001e 0E94 0000 		call register_code
- 257               	.LVL24:
- 258               	.L43:
+ 255               		.loc 1 69 0
+ 256 0014 8091 0000 		lds r24,mods
+ 257 0018 81FF      		sbrs r24,1
+ 258 001a 00C0      		rjmp .L43
+ 259               		.loc 1 69 0 is_stmt 0 discriminator 1
+ 260 001c 81EE      		ldi r24,lo8(-31)
+ 261 001e 0E94 0000 		call register_code
+ 262               	.LVL24:
+ 263               	.L43:
   70:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RSFT)) register_code(KC_RSFT);
- 259               		.loc 1 70 0 is_stmt 1
- 260 0022 8091 0000 		lds r24,mods
- 261 0026 85FF      		sbrs r24,5
- 262 0028 00C0      		rjmp .L44
- 263               		.loc 1 70 0 is_stmt 0 discriminator 1
- 264 002a 85EE      		ldi r24,lo8(-27)
- 265 002c 0E94 0000 		call register_code
- 266               	.LVL25:
- 267               	.L44:
+ 264               		.loc 1 70 0 is_stmt 1
+ 265 0022 8091 0000 		lds r24,mods
+ 266 0026 85FF      		sbrs r24,5
+ 267 0028 00C0      		rjmp .L44
+ 268               		.loc 1 70 0 is_stmt 0 discriminator 1
+ 269 002a 85EE      		ldi r24,lo8(-27)
+ 270 002c 0E94 0000 		call register_code
+ 271               	.LVL25:
+ 272               	.L44:
   71:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LCTL)) register_code(KC_LCTL);
- 268               		.loc 1 71 0 is_stmt 1
- 269 0030 8091 0000 		lds r24,mods
- 270 0034 80FF      		sbrs r24,0
- 271 0036 00C0      		rjmp .L45
- 272               		.loc 1 71 0 is_stmt 0 discriminator 1
- 273 0038 80EE      		ldi r24,lo8(-32)
- 274 003a 0E94 0000 		call register_code
- 275               	.LVL26:
- 276               	.L45:
+ 273               		.loc 1 71 0 is_stmt 1
+ 274 0030 8091 0000 		lds r24,mods
+ 275 0034 80FF      		sbrs r24,0
+ 276 0036 00C0      		rjmp .L45
+ 277               		.loc 1 71 0 is_stmt 0 discriminator 1
+ 278 0038 80EE      		ldi r24,lo8(-32)
+ 279 003a 0E94 0000 		call register_code
+ 280               	.LVL26:
+ 281               	.L45:
   72:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RCTL)) register_code(KC_RCTL);
- 277               		.loc 1 72 0 is_stmt 1
- 278 003e 8091 0000 		lds r24,mods
- 279 0042 84FF      		sbrs r24,4
- 280 0044 00C0      		rjmp .L46
- 281               		.loc 1 72 0 is_stmt 0 discriminator 1
- 282 0046 84EE      		ldi r24,lo8(-28)
- 283 0048 0E94 0000 		call register_code
- 284               	.LVL27:
- 285               	.L46:
+ 282               		.loc 1 72 0 is_stmt 1
+ 283 003e 8091 0000 		lds r24,mods
+ 284 0042 84FF      		sbrs r24,4
+ 285 0044 00C0      		rjmp .L46
+ 286               		.loc 1 72 0 is_stmt 0 discriminator 1
+ 287 0046 84EE      		ldi r24,lo8(-28)
+ 288 0048 0E94 0000 		call register_code
+ 289               	.LVL27:
+ 290               	.L46:
   73:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LALT)) register_code(KC_LALT);
- 286               		.loc 1 73 0 is_stmt 1
- 287 004c 8091 0000 		lds r24,mods
- 288 0050 82FF      		sbrs r24,2
- 289 0052 00C0      		rjmp .L47
- 290               		.loc 1 73 0 is_stmt 0 discriminator 1
- 291 0054 82EE      		ldi r24,lo8(-30)
- 292 0056 0E94 0000 		call register_code
- 293               	.LVL28:
- 294               	.L47:
+ 291               		.loc 1 73 0 is_stmt 1
+ 292 004c 8091 0000 		lds r24,mods
+ 293 0050 82FF      		sbrs r24,2
+ 294 0052 00C0      		rjmp .L47
+ 295               		.loc 1 73 0 is_stmt 0 discriminator 1
+ 296 0054 82EE      		ldi r24,lo8(-30)
+ 297 0056 0E94 0000 		call register_code
+ 298               	.LVL28:
+ 299               	.L47:
   74:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RALT)) register_code(KC_RALT);
- 295               		.loc 1 74 0 is_stmt 1
- 296 005a 8091 0000 		lds r24,mods
- 297 005e 86FF      		sbrs r24,6
- 298 0060 00C0      		rjmp .L48
- 299               		.loc 1 74 0 is_stmt 0 discriminator 1
- 300 0062 86EE      		ldi r24,lo8(-26)
- 301 0064 0E94 0000 		call register_code
- 302               	.LVL29:
- 303               	.L48:
+ 300               		.loc 1 74 0 is_stmt 1
+ 301 005a 8091 0000 		lds r24,mods
+ 302 005e 86FF      		sbrs r24,6
+ 303 0060 00C0      		rjmp .L48
+ 304               		.loc 1 74 0 is_stmt 0 discriminator 1
+ 305 0062 86EE      		ldi r24,lo8(-26)
+ 306 0064 0E94 0000 		call register_code
+ 307               	.LVL29:
+ 308               	.L48:
   75:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_LGUI)) register_code(KC_LGUI);
- 304               		.loc 1 75 0 is_stmt 1
- 305 0068 8091 0000 		lds r24,mods
- 306 006c 83FF      		sbrs r24,3
- 307 006e 00C0      		rjmp .L49
- 308               		.loc 1 75 0 is_stmt 0 discriminator 1
- 309 0070 83EE      		ldi r24,lo8(-29)
- 310 0072 0E94 0000 		call register_code
- 311               	.LVL30:
- 312               	.L49:
+ 309               		.loc 1 75 0 is_stmt 1
+ 310 0068 8091 0000 		lds r24,mods
+ 311 006c 83FF      		sbrs r24,3
+ 312 006e 00C0      		rjmp .L49
+ 313               		.loc 1 75 0 is_stmt 0 discriminator 1
+ 314 0070 83EE      		ldi r24,lo8(-29)
+ 315 0072 0E94 0000 		call register_code
+ 316               	.LVL30:
+ 317               	.L49:
   76:quantum/process_keycode/process_unicode_common.c ****   if (mods & MOD_BIT(KC_RGUI)) register_code(KC_RGUI);
- 313               		.loc 1 76 0 is_stmt 1
- 314 0076 8091 0000 		lds r24,mods
- 315 007a 87FF      		sbrs r24,7
- 316 007c 00C0      		rjmp .L39
- 317               		.loc 1 76 0 is_stmt 0 discriminator 1
- 318 007e 87EE      		ldi r24,lo8(-25)
- 319 0080 0C94 0000 		jmp register_code
- 320               	.LVL31:
- 321               	.L41:
+ 318               		.loc 1 76 0 is_stmt 1
+ 319 0076 8091 0000 		lds r24,mods
+ 320 007a 87FF      		sbrs r24,7
+ 321 007c 00C0      		rjmp .L39
+ 322               		.loc 1 76 0 is_stmt 0 discriminator 1
+ 323 007e 87EE      		ldi r24,lo8(-25)
+ 324 0080 0C94 0000 		jmp register_code
+ 325               	.LVL31:
+ 326               	.L41:
   63:quantum/process_keycode/process_unicode_common.c ****       unregister_code(KC_SPC);
- 322               		.loc 1 63 0 is_stmt 1
- 323 0084 8CE2      		ldi r24,lo8(44)
- 324 0086 0E94 0000 		call register_code
- 325               	.LVL32:
+ 327               		.loc 1 63 0 is_stmt 1
+ 328 0084 8CE2      		ldi r24,lo8(44)
+ 329 0086 0E94 0000 		call register_code
+ 330               	.LVL32:
   64:quantum/process_keycode/process_unicode_common.c ****       break;
- 326               		.loc 1 64 0
- 327 008a 8CE2      		ldi r24,lo8(44)
- 328 008c 00C0      		rjmp .L75
- 329               	.L39:
- 330 008e 0895      		ret
- 331               		.cfi_endproc
- 332               	.LFE110:
- 334               		.section	.text.register_hex,"ax",@progbits
- 335               	.global	register_hex
- 337               	register_hex:
- 338               	.LFB111:
+ 331               		.loc 1 64 0
+ 332 008a 8CE2      		ldi r24,lo8(44)
+ 333 008c 00C0      		rjmp .L75
+ 334               	.L39:
+ 335               	/* epilogue start */
   77:quantum/process_keycode/process_unicode_common.c **** }
+ 336               		.loc 1 77 0
+ 337 008e 0895      		ret
+ 338               		.cfi_endproc
+ 339               	.LFE110:
+ 341               		.section	.text.register_hex,"ax",@progbits
+ 342               	.global	register_hex
+ 344               	register_hex:
+ 345               	.LFB111:
   78:quantum/process_keycode/process_unicode_common.c **** 
   79:quantum/process_keycode/process_unicode_common.c **** void register_hex(uint16_t hex) {
- 339               		.loc 1 79 0
- 340               		.cfi_startproc
- 341               	.LVL33:
- 342 0000 EF92      		push r14
- 343               	.LCFI0:
- 344               		.cfi_def_cfa_offset 3
- 345               		.cfi_offset 14, -2
- 346 0002 FF92      		push r15
- 347               	.LCFI1:
- 348               		.cfi_def_cfa_offset 4
- 349               		.cfi_offset 15, -3
- 350 0004 1F93      		push r17
- 351               	.LCFI2:
- 352               		.cfi_def_cfa_offset 5
- 353               		.cfi_offset 17, -4
- 354 0006 CF93      		push r28
- 355               	.LCFI3:
- 356               		.cfi_def_cfa_offset 6
- 357               		.cfi_offset 28, -5
- 358 0008 DF93      		push r29
- 359               	.LCFI4:
- 360               		.cfi_def_cfa_offset 7
- 361               		.cfi_offset 29, -6
- 362               	/* prologue: function */
- 363               	/* frame size = 0 */
- 364               	/* stack size = 5 */
- 365               	.L__stack_usage = 5
- 366 000a 7C01      		movw r14,r24
- 367               	.LVL34:
- 368               		.loc 1 79 0
- 369 000c CCE0      		ldi r28,lo8(12)
- 370 000e D0E0      		ldi r29,0
- 371               	.LVL35:
- 372               	.L77:
- 373               	.LBB6:
- 374               	.LBB7:
+ 346               		.loc 1 79 0
+ 347               		.cfi_startproc
+ 348               	.LVL33:
+ 349 0000 EF92      		push r14
+ 350               	.LCFI0:
+ 351               		.cfi_def_cfa_offset 3
+ 352               		.cfi_offset 14, -2
+ 353 0002 FF92      		push r15
+ 354               	.LCFI1:
+ 355               		.cfi_def_cfa_offset 4
+ 356               		.cfi_offset 15, -3
+ 357 0004 1F93      		push r17
+ 358               	.LCFI2:
+ 359               		.cfi_def_cfa_offset 5
+ 360               		.cfi_offset 17, -4
+ 361 0006 CF93      		push r28
+ 362               	.LCFI3:
+ 363               		.cfi_def_cfa_offset 6
+ 364               		.cfi_offset 28, -5
+ 365 0008 DF93      		push r29
+ 366               	.LCFI4:
+ 367               		.cfi_def_cfa_offset 7
+ 368               		.cfi_offset 29, -6
+ 369               	/* prologue: function */
+ 370               	/* frame size = 0 */
+ 371               	/* stack size = 5 */
+ 372               	.L__stack_usage = 5
+ 373 000a 7C01      		movw r14,r24
+ 374               	.LVL34:
+ 375               		.loc 1 79 0
+ 376 000c CCE0      		ldi r28,lo8(12)
+ 377 000e D0E0      		ldi r29,0
+ 378               	.LVL35:
+ 379               	.L77:
+ 380               	.LBB6:
+ 381               	.LBB7:
   80:quantum/process_keycode/process_unicode_common.c ****   for(int i = 3; i >= 0; i--) {
   81:quantum/process_keycode/process_unicode_common.c ****     uint8_t digit = ((hex >> (i*4)) & 0xF);
- 375               		.loc 1 81 0 discriminator 3
- 376 0010 C701      		movw r24,r14
- 377 0012 0C2E      		mov r0,r28
- 378 0014 00C0      		rjmp 2f
- 379               		1:
- 380 0016 9695      		lsr r25
- 381 0018 8795      		ror r24
- 382               		2:
- 383 001a 0A94      		dec r0
- 384 001c 02F4      		brpl 1b
- 385 001e 182F      		mov r17,r24
- 386 0020 1F70      		andi r17,lo8(15)
- 387               	.LVL36:
+ 382               		.loc 1 81 0 discriminator 3
+ 383 0010 C701      		movw r24,r14
+ 384 0012 0C2E      		mov r0,r28
+ 385 0014 00C0      		rjmp 2f
+ 386               		1:
+ 387 0016 9695      		lsr r25
+ 388 0018 8795      		ror r24
+ 389               		2:
+ 390 001a 0A94      		dec r0
+ 391 001c 02F4      		brpl 1b
+ 392 001e 182F      		mov r17,r24
+ 393 0020 1F70      		andi r17,lo8(15)
+ 394               	.LVL36:
   82:quantum/process_keycode/process_unicode_common.c ****     register_code(hex_to_keycode(digit));
- 388               		.loc 1 82 0 discriminator 3
- 389 0022 812F      		mov r24,r17
- 390 0024 0E94 0000 		call hex_to_keycode
- 391               	.LVL37:
- 392 0028 0E94 0000 		call register_code
- 393               	.LVL38:
+ 395               		.loc 1 82 0 discriminator 3
+ 396 0022 812F      		mov r24,r17
+ 397 0024 0E94 0000 		call hex_to_keycode
+ 398               	.LVL37:
+ 399 0028 0E94 0000 		call register_code
+ 400               	.LVL38:
   83:quantum/process_keycode/process_unicode_common.c ****     unregister_code(hex_to_keycode(digit));
- 394               		.loc 1 83 0 discriminator 3
- 395 002c 812F      		mov r24,r17
- 396 002e 0E94 0000 		call hex_to_keycode
- 397               	.LVL39:
- 398 0032 0E94 0000 		call unregister_code
- 399               	.LVL40:
- 400 0036 2497      		sbiw r28,4
- 401               	.LBE7:
+ 401               		.loc 1 83 0 discriminator 3
+ 402 002c 812F      		mov r24,r17
+ 403 002e 0E94 0000 		call hex_to_keycode
+ 404               	.LVL39:
+ 405 0032 0E94 0000 		call unregister_code
+ 406               	.LVL40:
+ 407 0036 2497      		sbiw r28,4
+ 408               	.LBE7:
   80:quantum/process_keycode/process_unicode_common.c ****   for(int i = 3; i >= 0; i--) {
- 402               		.loc 1 80 0 discriminator 3
- 403 0038 CC3F      		cpi r28,-4
- 404 003a 8FEF      		ldi r24,-1
- 405 003c D807      		cpc r29,r24
- 406 003e 01F4      		brne .L77
- 407               	/* epilogue start */
- 408               	.LBE6:
+ 409               		.loc 1 80 0 discriminator 3
+ 410 0038 CC3F      		cpi r28,-4
+ 411 003a 8FEF      		ldi r24,-1
+ 412 003c D807      		cpc r29,r24
+ 413 003e 01F4      		brne .L77
+ 414               	/* epilogue start */
+ 415               	.LBE6:
   84:quantum/process_keycode/process_unicode_common.c ****   }
   85:quantum/process_keycode/process_unicode_common.c **** }...
- 409               		.loc 1 85 0
- 410 0040 DF91      		pop r29
- 411 0042 CF91      		pop r28
- 412 0044 1F91      		pop r17
- 413               	.LVL41:
- 414 0046 FF90      		pop r15
- 415 0048 EF90      		pop r14
- 416               	.LVL42:
- 417 004a 0895      		ret
- 418               		.cfi_endproc
- 419               	.LFE111:
- 421               		.comm	mods,1,1
- 422               		.section	.bss.input_mode,"aw",@nobits
- 425               	input_mode:
- 426 0000 00        		.zero	1
- 427               		.text
- 428               	.Letext0:
- 429               		.file 3 "/usr/avr/include/stdint.h"
- 430               		.file 4 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
- 431               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
- 432               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
- 433               		.file 7 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
- 434               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
- 435               		.file 9 "/usr/avr/include/stdio.h"
- 436               		.file 10 "./tmk_core/common/report.h"
- 437               		.file 11 "./tmk_core/common/host.h"
- 438               		.file 12 "./tmk_core/common/debug.h"
- 439               		.file 13 "./quantum/keycode_config.h"
- 440               		.file 14 "./quantum/keymap.h"
- 441               		.file 15 "./tmk_core/common/action_layer.h"
- 442               		.file 16 "./tmk_core/common/timer.h"
- 443               		.file 17 "./tmk_core/common/action_util.h"
- 444               		.file 18 "/usr/avr/include/stdlib.h"
- 445               		.file 19 "quantum/process_keycode/process_unicode_common.h"
- 446               		.file 20 "./quantum/quantum.h"
- 447               		.file 21 "./tmk_core/common/action.h"
- 448               		.file 22 "./tmk_core/common/keycode.h"
+ 416               		.loc 1 85 0
+ 417 0040 DF91      		pop r29
+ 418 0042 CF91      		pop r28
+ 419 0044 1F91      		pop r17
+ 420               	.LVL41:
+ 421 0046 FF90      		pop r15
+ 422 0048 EF90      		pop r14
+ 423               	.LVL42:
+ 424 004a 0895      		ret
+ 425               		.cfi_endproc
+ 426               	.LFE111:
+ 428               		.comm	mods,1,1
+ 429               		.section	.bss.input_mode,"aw",@nobits
+ 432               	input_mode:
+ 433 0000 00        		.zero	1
+ 434               		.text
+ 435               	.Letext0:
+ 436               		.file 3 "/usr/avr/include/stdint.h"
+ 437               		.file 4 "/usr/lib/gcc/avr/7.1.0/include/stddef.h"
+ 438               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
+ 439               		.file 6 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
+ 440               		.file 7 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
+ 441               		.file 8 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/HostStandardReq.h"
+ 442               		.file 9 "/usr/avr/include/stdio.h"
+ 443               		.file 10 "./tmk_core/common/report.h"
+ 444               		.file 11 "./tmk_core/common/host.h"
+ 445               		.file 12 "./tmk_core/common/debug.h"
+ 446               		.file 13 "./quantum/keycode_config.h"
+ 447               		.file 14 "./quantum/keymap.h"
+ 448               		.file 15 "./tmk_core/common/action_layer.h"
+ 449               		.file 16 "./tmk_core/common/timer.h"
+ 450               		.file 17 "./tmk_core/common/action_util.h"
+ 451               		.file 18 "/usr/avr/include/stdlib.h"
+ 452               		.file 19 "quantum/process_keycode/process_unicode_common.h"
+ 453               		.file 20 "./quantum/quantum.h"
+ 454               		.file 21 "./tmk_core/common/action.h"
+ 455               		.file 22 "./tmk_core/common/keycode.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 process_unicode_common.c
-     /tmp/cc6Qx3HK.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc6Qx3HK.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc6Qx3HK.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc6Qx3HK.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc6Qx3HK.s:6      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc6Qx3HK.s:13     .text.set_unicode_input_mode:0000000000000000 set_unicode_input_mode
-     /tmp/cc6Qx3HK.s:425    .bss.input_mode:0000000000000000 input_mode
-     /tmp/cc6Qx3HK.s:32     .text.get_unicode_input_mode:0000000000000000 get_unicode_input_mode
-     /tmp/cc6Qx3HK.s:49     .text.unicode_input_start:0000000000000000 unicode_input_start
+     /tmp/ccY8LCI1.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccY8LCI1.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccY8LCI1.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccY8LCI1.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccY8LCI1.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccY8LCI1.s:13     .text.set_unicode_input_mode:0000000000000000 set_unicode_input_mode
+     /tmp/ccY8LCI1.s:432    .bss.input_mode:0000000000000000 input_mode
+     /tmp/ccY8LCI1.s:34     .text.get_unicode_input_mode:0000000000000000 get_unicode_input_mode
+     /tmp/ccY8LCI1.s:52     .text.unicode_input_start:0000000000000000 unicode_input_start
                             *COM*:0000000000000001 mods
-     /tmp/cc6Qx3HK.s:227    .text.unicode_input_finish:0000000000000000 unicode_input_finish
-     /tmp/cc6Qx3HK.s:337    .text.register_hex:0000000000000000 register_hex
+     /tmp/ccY8LCI1.s:232    .text.unicode_input_finish:0000000000000000 unicode_input_finish
+     /tmp/ccY8LCI1.s:344    .text.register_hex:0000000000000000 register_hex
 
 UNDEFINED SYMBOLS
 keyboard_report

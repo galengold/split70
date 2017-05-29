@@ -9,7 +9,7 @@
    9               		.cfi_sections	.debug_frame
   10               	.Letext0:
   11               		.file 1 "/usr/avr/include/stdint.h"
-  12               		.file 2 "/usr/lib/gcc/avr/6.3.0/include/stddef.h"
+  12               		.file 2 "/usr/lib/gcc/avr/7.1.0/include/stddef.h"
   13               		.file 3 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../StdRequestType.h"
   14               		.file 4 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/AVR8/../DeviceStandardReq.h"
   15               		.file 5 "./tmk_core/protocol/lufa/LUFA-git/LUFA/Drivers/USB/Core/USBTask.h"
@@ -28,10 +28,10 @@
   28               		.file 18 "./quantum/process_keycode/process_unicode_common.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 split70.c
-     /tmp/ccLODEfP.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccLODEfP.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccLODEfP.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccLODEfP.s:5      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccLODEfP.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccWvDq5w.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccWvDq5w.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccWvDq5w.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccWvDq5w.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccWvDq5w.s:6      *ABS*:0000000000000001 __zero_reg__
 
 NO UNDEFINED SYMBOLS
