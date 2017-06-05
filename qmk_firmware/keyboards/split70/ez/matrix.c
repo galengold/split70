@@ -264,7 +264,7 @@ static void  init_cols(void)
 
 static matrix_row_t read_cols(uint8_t row)
 {
-    if (row < 7) {
+    if (row < 6) {
         if (mcp23018_status) { // if there was an error
             return 0;
         } else {
