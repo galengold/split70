@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        |   -  |   [  | Super|  |Shift |  ]   |  =   |
  *                        |------|------|      |  |      |------+------|
  *                        |      |      |------|  |------|      |      |
- *                        | Ctrl |Shift |      |  |      |Bksp  |Space |
+ *                        | Ctrl |Shift |      |  |      |Space |Bksp  |
  *                        |      |      |Alt   |  | Enter|      |      |
  *                        '-------------|      |  | /Fn  |-------------'
  *                                      '------'  '------'
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*3*/   KC_H,     KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
 /*2*/   KC_N,     KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_F12,
 /*1*/             KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-/*0*/   KC_EQL,   KC_RBRC, KC_RSFT, KC_SPC,  KC_BSPC, LT(FN1, KC_ENT)
+/*0*/   KC_EQL,   KC_RBRC, KC_RSFT, KC_BSPC, KC_SPC,  LT(FN1, KC_ENT)
     ),
 /* Keymap 1: Fn Layer
  *
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        |      |      |      |  |      |      |      |
  *                        |------|------|      |  |      |------+------|
  *                        |      |      |------|  |------|      |      |
- *                        |      | Caps |      |  |      | Del  |      |
+ *                        |      | Caps |      |  |      |      | Del  |
  *                        |      |      |      |  |      |      |      |
  *                        '-------------|      |  |      |-------------'
  *                                      '------'  '------'
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*3*/   KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, KC_TRNS, KC_TRNS,
 /*2*/   KC_TRNS,  KC_END,  KC_HOME, KC_TRNS, KC_TRNS, KC_VOLU,
 /*1*/             KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,
-/*0*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_DEL,  KC_TRNS
+/*0*/   KC_TRNS,  KC_TRNS, KC_TRNS, KC_DEL,  KC_TRNS, KC_TRNS
 )
 };
 
