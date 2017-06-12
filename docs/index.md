@@ -1,2 +1,0 @@
-# GH Page
-test
