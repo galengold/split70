@@ -81,11 +81,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *    ,----------------------------------------.  ,----------------------------------------.
  *    |     |      |      |      |      |      |  |      |      |      |      |      |     |
  * ,--------+------+------+------+------+------|  |------+------+------+------+------+--------.
- * |        |      | MoB1 | MoUp | MoB3 |      |  |      | PgDn | PgUp |      |      |        |
+ * |        |      | MoB1 | MoUp | MoB3 |      |  |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|  |------+------+------+------+------+--------|
  * |        |      | MoL  | MoDn | MoR  |      |  |  <   |  v   |  ^   |  >   |      |        |
  * '--------+------+------+------+------+------|  |------+------+------+------+------+--------'
- *    | F13 |      |      |      |      |      |  |      | End  | Home |      |      | VUp |
+ *    | F13 |      |      |      |      |      |  | M1   | M2   | M3   | M4   | M5   | VUp |
  *    |-----+------+------+------+------+------'  '------+------+------+------+------+-----|
  *    | F14 | F15  | F16  | F17  | F18  |                | Prev | Play | Next | Mute | VDn |
  *    '---------------------------------'                '---------------------------------'
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*5*/   _______,  _______, _______, _______, _______, _______,
 /*4*/   _______,  KC_PGDN, KC_PGUP, _______, _______, _______,
 /*3*/   KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-/*2*/   _______,  KC_END,  KC_HOME, _______, _______, KC_VOLU,
+/*2*/   M(0),     M(1),    M(2),    M(3),    M(4),    KC_VOLU,
 /*1*/             KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,
 /*0*/   _______,  _______, _______, KC_DEL,  _______, _______
 )
@@ -129,18 +129,25 @@ const uint16_t PROGMEM fn_actions[] = {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   // MACRODOWN only works in this function
+    if (!record->event.pressed) {
       switch(id) {
         case 0:
-        if (record->event.pressed) {
-          SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-        }
-        break;
+		  SEND_STRING ("tIs only game. Why you have to be mad?");
+          return MACRO(T(ENT), END);
         case 1:
-        if (record->event.pressed) { // For resetting EEPROM
-          eeconfig_init();
-        }
-        break;
+		  SEND_STRING ("tWhat the fuck did you just fucking say about me, you little bitch?");
+          return MACRO(T(ENT), END);
+		case 2:
+		  SEND_STRING ("t");
+          return MACRO(T(ENT), END);
+		case 3:
+		  SEND_STRING ("t");
+          return MACRO(T(ENT), END);
+		case 4:
+		  SEND_STRING ("t");
+          return MACRO(T(ENT), END);
       }
+	}
     return MACRO_NONE;
 };
 
