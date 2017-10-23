@@ -109,14 +109,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*3*/   _______,  _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,
 /*2*/   KC_F13,   _______, _______, _______, _______, _______,
 /*1*/   KC_F14,   KC_F15,  KC_F16,  KC_F17,  KC_F18,
-/*0*/   _______,  KC_CAPS, _______, _______, _______, _______,
+/*0*/   _______,  _______, _______, _______, _______, _______,
         // right hand
 // COL: 6         7        8        9        10       11
 //ROW:
 /*5*/   _______,  _______, _______, _______, _______, _______,
 /*4*/   _______,  KC_PGDN, KC_PGUP, _______, _______, _______,
 /*3*/   KC_LEFT,  KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-/*2*/   M(0),     M(1),    M(2),    M(3),    M(4),    KC_VOLU,
+/*2*/   _______,  _______, _______, _______, _______, KC_VOLU,
 /*1*/             KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD,
 /*0*/   _______,  _______, _______, KC_DEL,  _______, _______
 )
@@ -129,26 +129,26 @@ const uint16_t PROGMEM fn_actions[] = {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   // MACRODOWN only works in this function
-    if (!record->event.pressed) {
-      switch(id) {
-        case 0:
-		  SEND_STRING ("tIs only game. Why you have to be mad?");
-          return MACRO(T(ENT), END);
-        case 1:
-		  SEND_STRING ("tWhat the fuck did you just fucking say about me, you little bitch?");
-          return MACRO(T(ENT), END);
-		case 2:
-		  SEND_STRING ("t");
-          return MACRO(T(ENT), END);
-		case 3:
-		  SEND_STRING ("t");
-          return MACRO(T(ENT), END);
-		case 4:
-		  SEND_STRING ("t");
-          return MACRO(T(ENT), END);
-      }
-	}
-    return MACRO_NONE;
+    /* if (!record->event.pressed) { */
+    /*   switch(id) { */
+    /*     case 0: */
+		  /* SEND_STRING ("tIs only game. Why you have to be mad?"); */
+    /*       return MACRO(T(ENT), END); */
+    /*     case 1: */
+		  /* SEND_STRING ("tWhat the fuck did you just fucking say about me, you little bitch?"); */
+    /*       return MACRO(T(ENT), END); */
+		/* case 2: */
+		  /* SEND_STRING ("t"); */
+    /*       return MACRO(T(ENT), END); */
+		/* case 3: */
+		  /* SEND_STRING ("t"); */
+    /*       return MACRO(T(ENT), END); */
+		/* case 4: */
+		  /* SEND_STRING ("t"); */
+    /*       return MACRO(T(ENT), END); */
+    /*   } */
+	/* } */
+    /* return MACRO_NONE; */
 };
 
 // Runs just one time when the keyboard initializes.
